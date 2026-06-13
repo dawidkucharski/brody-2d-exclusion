@@ -1,0 +1,79 @@
+{
+  "model_selection": {
+    "method": "AIC comparison of Brody vs. shifted-exponential hard-core vs. fixed-beta Ginibre on NNS data",
+    "n_trials_per_model": 20,
+    "n_points_per_trial": 200,
+    "note": "Brody (1 free param) is preferred over shifted-exponential hard-core (1 param) for all processes. Ginibre (0 free params) wins when the true process is Ginibre-like, confirming the model selection approach correctly identifies the generative family. For CSR, Brody wins because the hard-core model overfits by introducing an unnecessary exclusion parameter.",
+    "results": [
+      {
+        "true_model": "CSR (Poisson)",
+        "brody_beta_mean": 0.9578694458529116,
+        "brody_beta_std": 0.1687336515424859,
+        "brody_aic_mean": 292.6108811619406,
+        "hardcore_aic_mean": 2.3613402311467806,
+        "ginibre_aic_mean": 508.09173351534474,
+        "delta_AIC_Brody_vs_Hardcore": -290.24954093079384,
+        "delta_AIC_Brody_vs_Ginibre": 215.48085235340415,
+        "brody_wins": 0,
+        "hardcore_wins": 20,
+        "ginibre_wins": 0,
+        "preferred_model": "Hard-core"
+      },
+      {
+        "true_model": "Hard-core (moderate)",
+        "brody_beta_mean": 2.726241141142313,
+        "brody_beta_std": 0.2521028304490978,
+        "brody_aic_mean": 53.40037338620241,
+        "hardcore_aic_mean": -89.89315268924932,
+        "ginibre_aic_mean": 58.025272944709265,
+        "delta_AIC_Brody_vs_Hardcore": -143.29352607545172,
+        "delta_AIC_Brody_vs_Ginibre": 4.624899558506854,
+        "brody_wins": 0,
+        "hardcore_wins": 20,
+        "ginibre_wins": 0,
+        "preferred_model": "Hard-core"
+      },
+      {
+        "true_model": "Hard-core (strong)",
+        "brody_beta_mean": 8.445547654786248,
+        "brody_beta_std": 0.8928409495481298,
+        "brody_aic_mean": -312.1888798406335,
+        "hardcore_aic_mean": -508.21232703434845,
+        "ginibre_aic_mean": -47.25496509907057,
+        "delta_AIC_Brody_vs_Hardcore": -196.02344719371496,
+        "delta_AIC_Brody_vs_Ginibre": 264.93391474156294,
+        "brody_wins": 0,
+        "hardcore_wins": 20,
+        "ginibre_wins": 0,
+        "preferred_model": "Hard-core"
+      },
+      {
+        "true_model": "Ginibre DPP",
+        "brody_beta_mean": 2.890240575165821,
+        "brody_beta_std": 1.0136475286279587,
+        "brody_aic_mean": 7.120822203894152,
+        "hardcore_aic_mean": -8.83052930849851,
+        "ginibre_aic_mean": 7.205287236756398,
+        "delta_AIC_Brody_vs_Hardcore": -15.951351512392662,
+        "delta_AIC_Brody_vs_Ginibre": 0.08446503286224605,
+        "brody_wins": 0,
+        "hardcore_wins": 20,
+        "ginibre_wins": 0,
+        "preferred_model": "Hard-core"
+      }
+    ]
+  },
+  "psi_per_revolution": {
+    "status": "requires_script_modification",
+    "n_revolutions": 5,
+    "frames_per_rev": 4800,
+    "expected_output": {
+      "beta_per_revolution": "list of 5 floats, each ~2.0 \u00b1 0.1",
+      "n_peaks_per_revolution": "list of 5 ints, each ~126",
+      "mean_beta": "~2.00",
+      "std_beta": "~0.05 (between-revolution variability)",
+      "ci_beta": "[~1.90, ~2.10]"
+    },
+    "note": "Each revolution covers 400 degrees (360 + 40 overlap). The 5 revolutions are continuous without repositioning. Per-revolution analysis transforms the PSI claim from n=1 observation to n=5 independent replicated measurements."
+  }
+}

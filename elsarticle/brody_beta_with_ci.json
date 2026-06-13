@@ -1,0 +1,170 @@
+[
+  {
+    "label": "1.4301 steel Honed",
+    "beta": 4.0,
+    "n_peaks": 49,
+    "n_spacings": 49,
+    "ci_low": 3.2223262831879413,
+    "ci_high": 5.117318018160532
+  },
+  {
+    "label": "1.4301 steel Ground",
+    "beta": 2.2,
+    "n_peaks": 32,
+    "n_spacings": 21,
+    "ci_low": 1.4405522226186327,
+    "ci_high": 3.455784499039409
+  },
+  {
+    "label": "1.4301 steel Finish turned",
+    "beta": 0.4,
+    "n_peaks": 458,
+    "n_spacings": 428,
+    "ci_low": 0.29875183596202143,
+    "ci_high": 0.518145798725605
+  },
+  {
+    "label": "Al7075 Finish turned",
+    "beta": 1.3000000000000003,
+    "n_peaks": 34,
+    "n_spacings": 33,
+    "ci_low": 0.8670567252480699,
+    "ci_high": 2.023444887838519
+  },
+  {
+    "label": "Al Bead blasted",
+    "beta": 2.4000000000000004,
+    "n_peaks": 25,
+    "n_spacings": 23,
+    "ci_low": 1.6816410540164666,
+    "ci_high": 3.7357815496862883
+  },
+  {
+    "label": "Al Ground",
+    "beta": 1.2000000000000002,
+    "n_peaks": 169,
+    "n_spacings": 167,
+    "ci_low": 0.9942617670913905,
+    "ci_high": 1.460552448037156
+  },
+  {
+    "label": "Graphite Honed",
+    "beta": 0.9,
+    "n_peaks": 54,
+    "n_spacings": 52,
+    "ci_low": 0.5796717981345635,
+    "ci_high": 1.3203564443149736
+  },
+  {
+    "label": "1.4301 steel Finish milled",
+    "beta": 3.1,
+    "n_peaks": 29,
+    "n_spacings": 18,
+    "ci_low": 2.0342378259315073,
+    "ci_high": 4.8563869213156154
+  },
+  {
+    "label": "1.4301 steel Burnished",
+    "beta": 1.8000000000000003,
+    "n_peaks": 68,
+    "n_spacings": 65,
+    "ci_low": 1.362645712685535,
+    "ci_high": 2.383447089036762
+  },
+  {
+    "label": "Al7075 Burnished",
+    "beta": 3.1,
+    "n_peaks": 30,
+    "n_spacings": 29,
+    "ci_low": 2.350215451649681,
+    "ci_high": 4.493015698820591
+  },
+  {
+    "label": "Al7075 Finish milled",
+    "beta": 3.7000000000000006,
+    "n_peaks": 44,
+    "n_spacings": 43,
+    "ci_low": 2.944149922784707,
+    "ci_high": 4.909476459071195
+  },
+  {
+    "label": "C45 steel Burnished",
+    "beta": 1.3000000000000003,
+    "n_peaks": 89,
+    "n_spacings": 88,
+    "ci_low": 0.9879045902309413,
+    "ci_high": 1.7181647684542105
+  },
+  {
+    "label": "MO58A brass Finish milled",
+    "beta": 0.0,
+    "n_peaks": 183,
+    "n_spacings": 180,
+    "ci_low": -0.09583524297622951,
+    "ci_high": 0.12094962326699793
+  },
+  {
+    "label": "MO58A brass Burnished",
+    "beta": 4.3,
+    "n_peaks": 41,
+    "n_spacings": 41,
+    "ci_low": 3.375052297655532,
+    "ci_high": 5.81329653898436
+  },
+  {
+    "label": "MO58A brass Rough turned",
+    "beta": 0.7000000000000001,
+    "n_peaks": 335,
+    "n_spacings": 279,
+    "ci_low": 0.5612340620682388,
+    "ci_high": 0.8665464497813862
+  },
+  {
+    "label": "MO58A brass WEDM finish",
+    "beta": 0.8000000000000002,
+    "n_peaks": 86,
+    "n_spacings": 61,
+    "ci_low": 0.5166384160132359,
+    "ci_high": 1.2087315868551194
+  },
+  {
+    "label": "Ti6Al4V Rough milled",
+    "beta": 0.4,
+    "n_peaks": 109,
+    "n_spacings": 84,
+    "ci_low": 0.19355883311476305,
+    "ci_high": 0.6589179057666307
+  },
+  {
+    "label": "Ti6Al4V Burnished",
+    "beta": 2.6,
+    "n_peaks": 28,
+    "n_spacings": 28,
+    "ci_low": 1.846172137626217,
+    "ci_high": 3.861314111728639
+  },
+  {
+    "label": "Ti6Al4V Honed",
+    "beta": 1.4,
+    "n_peaks": 32,
+    "n_spacings": 27,
+    "ci_low": 0.8700832233345198,
+    "ci_high": 2.337936359217962
+  },
+  {
+    "label": "Ti6Al4V Bead blasted",
+    "beta": -0.09999999999999998,
+    "n_peaks": 97,
+    "n_spacings": 94,
+    "ci_low": -0.2188019689444893,
+    "ci_high": 0.07344327079464733
+  },
+  {
+    "label": "Ti6Al4V Ground",
+    "beta": -0.2,
+    "n_peaks": 98,
+    "n_spacings": 96,
+    "ci_low": -0.3074705693499815,
+    "ci_high": -0.05213661614312156
+  }
+]

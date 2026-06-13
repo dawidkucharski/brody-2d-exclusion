@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex*
+*.run.xml
+*.bcf
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large data files (available on request)
+*.sur
+*.sur.bak
+*.png
+*.jpg
+thesis.pdf
+sample.pdf
+build/
+
+# Backup files
+*.bak
+*.backup
+
+# Compiled manuscript (rebuild from source)
+elsarticle/aurora_manuscript.pdf

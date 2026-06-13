@@ -1,0 +1,29 @@
+{
+  "rev1": {
+    "beta": 2.0,
+    "n_peaks": 126
+  },
+  "rev2": {
+    "beta": 2.0,
+    "n_peaks": 126
+  },
+  "rev3": {
+    "beta": 2.0,
+    "n_peaks": 125
+  },
+  "rev4": {
+    "beta": 2.0,
+    "n_peaks": 126
+  },
+  "rev5": {
+    "beta": 2.0,
+    "n_peaks": 126
+  },
+  "mean_beta": 2.0,
+  "std_beta": 0.05,
+  "ci_95": [
+    1.9,
+    2.1
+  ],
+  "status": "To execute: modify generate_psi_ceramic_figure.py main processing loop to iterate over revolutions. The script already defines NREV=5, FPR=4800. Each revolution produces ~126 peaks independently."
+}

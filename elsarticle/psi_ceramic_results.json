@@ -1,0 +1,17 @@
+{
+  "surface": "JENOPTIK FN 111",
+  "method": "EFM 1D profilometry",
+  "wavelength_nm": 532.0,
+  "n_frames": 4800,
+  "subsample": 5,
+  "n_good": 4678,
+  "n_peaks": 629,
+  "n_spacings": 628,
+  "best_brody_beta": 2.0020657023134256,
+  "beta_ci_low": 1.8969147050182993,
+  "beta_ci_high": 2.0963611879963775,
+  "ks_poisson_D": 0.5173860802983287,
+  "ks_poisson_p": 9.084667746402746e-157,
+  "residual_rms_nm": 38.9770682069148,
+  "residual_pv_nm": 281.69423482344354
+}

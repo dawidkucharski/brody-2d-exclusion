@@ -1,0 +1,408 @@
+[
+  {
+    "label": "1.4301 steel Honed",
+    "npk": 49,
+    "nns": 49,
+    "beta": 4.0,
+    "grid_lim": false
+  },
+  {
+    "label": "1.4301 steel Bead blasted",
+    "npk": 11757,
+    "nns": 11755,
+    "beta": 1.5,
+    "grid_lim": true
+  },
+  {
+    "label": "1.4301 steel Ground",
+    "npk": 32,
+    "nns": 21,
+    "beta": 2.2,
+    "grid_lim": false
+  },
+  {
+    "label": "1.4301 steel Finish turned",
+    "npk": 458,
+    "nns": 428,
+    "beta": 0.4,
+    "grid_lim": false
+  },
+  {
+    "label": "Al Honed",
+    "npk": 20913,
+    "nns": 20913,
+    "beta": 1.6,
+    "grid_lim": true
+  },
+  {
+    "label": "Al7075 Finish turned",
+    "npk": 34,
+    "nns": 33,
+    "beta": 1.3000000000000003,
+    "grid_lim": false
+  },
+  {
+    "label": "Al Bead blasted",
+    "npk": 25,
+    "nns": 23,
+    "beta": 2.4000000000000004,
+    "grid_lim": false
+  },
+  {
+    "label": "Al Ground",
+    "npk": 169,
+    "nns": 167,
+    "beta": 1.2000000000000002,
+    "grid_lim": false
+  },
+  {
+    "label": "C45 steel Honed",
+    "npk": 23222,
+    "nns": 23222,
+    "beta": 1.8000000000000003,
+    "grid_lim": true
+  },
+  {
+    "label": "C45 steel Bead blasted",
+    "npk": 5209,
+    "nns": 5198,
+    "beta": 0.8000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "C45 steel Ground",
+    "npk": 14793,
+    "nns": 14791,
+    "beta": 1.4,
+    "grid_lim": true
+  },
+  {
+    "label": "C45 steel Finish turned",
+    "npk": 15279,
+    "nns": 15277,
+    "beta": 1.6,
+    "grid_lim": true
+  },
+  {
+    "label": "ELLOR Finish turned",
+    "npk": 5887,
+    "nns": 5887,
+    "beta": 1.2000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "Graphite Honed",
+    "npk": 54,
+    "nns": 52,
+    "beta": 0.9,
+    "grid_lim": false
+  },
+  {
+    "label": "Graphite Bead blasted",
+    "npk": 3271,
+    "nns": 3271,
+    "beta": 1.1,
+    "grid_lim": true
+  },
+  {
+    "label": "Graphite Ground",
+    "npk": 3066,
+    "nns": 3064,
+    "beta": 0.8000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "MO58A brass Finish turned",
+    "npk": 6234,
+    "nns": 6198,
+    "beta": 1.3000000000000003,
+    "grid_lim": true
+  },
+  {
+    "label": "Brass Honed",
+    "npk": 9546,
+    "nns": 9537,
+    "beta": 1.2000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "Brass Bead blasted",
+    "npk": 7659,
+    "nns": 7653,
+    "beta": 1.6,
+    "grid_lim": true
+  },
+  {
+    "label": "Brass Ground",
+    "npk": 17338,
+    "nns": 17338,
+    "beta": 1.7000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "P1-1.4301-t.zgrub",
+    "npk": 4705,
+    "nns": 4700,
+    "beta": 0.9,
+    "grid_lim": true
+  },
+  {
+    "label": "1.4301 steel Finish milled",
+    "npk": 29,
+    "nns": 18,
+    "beta": 3.1,
+    "grid_lim": false
+  },
+  {
+    "label": "1.4301 steel Rough milled",
+    "npk": 2786,
+    "nns": 2747,
+    "beta": 0.7000000000000001,
+    "grid_lim": true
+  },
+  {
+    "label": "1.4301 steel Burnished",
+    "npk": 68,
+    "nns": 65,
+    "beta": 1.8000000000000003,
+    "grid_lim": false
+  },
+  {
+    "label": "1.4301 steel WEDM finish",
+    "npk": 2226,
+    "nns": 2226,
+    "beta": 1.0,
+    "grid_lim": true
+  },
+  {
+    "label": "1.4301 steel WEDM rough",
+    "npk": 5549,
+    "nns": 5549,
+    "beta": 1.2000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "Al7075 Burnished",
+    "npk": 30,
+    "nns": 29,
+    "beta": 3.1,
+    "grid_lim": false
+  },
+  {
+    "label": "Al7075 WEDM finish",
+    "npk": 1380,
+    "nns": 1380,
+    "beta": 0.8000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "Al7075 WEDM rough",
+    "npk": 16131,
+    "nns": 16131,
+    "beta": 1.9000000000000004,
+    "grid_lim": true
+  },
+  {
+    "label": "Al7075 Finish milled",
+    "npk": 44,
+    "nns": 43,
+    "beta": 3.7000000000000006,
+    "grid_lim": false
+  },
+  {
+    "label": "Al7075 Rough turned",
+    "npk": 5554,
+    "nns": 5543,
+    "beta": 1.6,
+    "grid_lim": true
+  },
+  {
+    "label": "C45 steel Finish milled",
+    "npk": 1443,
+    "nns": 1405,
+    "beta": 0.5,
+    "grid_lim": true
+  },
+  {
+    "label": "C45 steel Rough milled",
+    "npk": 8180,
+    "nns": 8161,
+    "beta": 0.9,
+    "grid_lim": true
+  },
+  {
+    "label": "C45 steel Burnished",
+    "npk": 89,
+    "nns": 88,
+    "beta": 1.3000000000000003,
+    "grid_lim": false
+  },
+  {
+    "label": "C45 steel Rough turned",
+    "npk": 3520,
+    "nns": 3483,
+    "beta": 0.7000000000000001,
+    "grid_lim": true
+  },
+  {
+    "label": "C45 steel WEDM finish",
+    "npk": 20236,
+    "nns": 20236,
+    "beta": 2.1,
+    "grid_lim": true
+  },
+  {
+    "label": "C45 steel WEDM rough",
+    "npk": 16697,
+    "nns": 16697,
+    "beta": 1.9000000000000004,
+    "grid_lim": true
+  },
+  {
+    "label": "ELLOR Finish milled",
+    "npk": 3172,
+    "nns": 3099,
+    "beta": 0.8000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "ELLOR Rough milled",
+    "npk": 10692,
+    "nns": 10686,
+    "beta": 1.2000000000000002,
+    "grid_lim": true
+  },
+  {
+    "label": "ELLOR Rough turned",
+    "npk": 11230,
+    "nns": 11229,
+    "beta": 1.3000000000000003,
+    "grid_lim": true
+  },
+  {
+    "label": "ELLOR WEDM finish",
+    "npk": 855,
+    "nns": 778,
+    "beta": 0.5,
+    "grid_lim": true
+  },
+  {
+    "label": "ELLOR WEDM rough",
+    "npk": 6961,
+    "nns": 6942,
+    "beta": 0.9,
+    "grid_lim": true
+  },
+  {
+    "label": "MO58A brass Finish milled",
+    "npk": 183,
+    "nns": 180,
+    "beta": 0.0,
+    "grid_lim": false
+  },
+  {
+    "label": "MO58A brass Rough milled",
+    "npk": 15293,
+    "nns": 15292,
+    "beta": 1.5,
+    "grid_lim": true
+  },
+  {
+    "label": "MO58A brass Burnished",
+    "npk": 41,
+    "nns": 41,
+    "beta": 4.3,
+    "grid_lim": false
+  },
+  {
+    "label": "MO58A brass Rough turned",
+    "npk": 335,
+    "nns": 279,
+    "beta": 0.7000000000000001,
+    "grid_lim": false
+  },
+  {
+    "label": "MO58A brass WEDM finish",
+    "npk": 86,
+    "nns": 61,
+    "beta": 0.8000000000000002,
+    "grid_lim": false
+  },
+  {
+    "label": "MO58A brass WEDM rough",
+    "npk": 21845,
+    "nns": 21845,
+    "beta": 2.2,
+    "grid_lim": true
+  },
+  {
+    "label": "Ti6Al4V Finish milled",
+    "npk": 9785,
+    "nns": 9765,
+    "beta": 1.0,
+    "grid_lim": true
+  },
+  {
+    "label": "Ti6Al4V Rough milled",
+    "npk": 109,
+    "nns": 84,
+    "beta": 0.4,
+    "grid_lim": false
+  },
+  {
+    "label": "Ti6Al4V Burnished",
+    "npk": 28,
+    "nns": 28,
+    "beta": 2.6,
+    "grid_lim": false
+  },
+  {
+    "label": "Ti6Al4V Finish turned",
+    "npk": 12470,
+    "nns": 12470,
+    "beta": 1.3000000000000003,
+    "grid_lim": true
+  },
+  {
+    "label": "Ti6Al4V Rough turned",
+    "npk": 8312,
+    "nns": 8311,
+    "beta": 1.5,
+    "grid_lim": true
+  },
+  {
+    "label": "Ti6Al4V WEDM finish",
+    "npk": 24012,
+    "nns": 24012,
+    "beta": 2.3000000000000003,
+    "grid_lim": true
+  },
+  {
+    "label": "Ti6Al4V WEDM rough",
+    "npk": 23829,
+    "nns": 23829,
+    "beta": 2.4000000000000004,
+    "grid_lim": true
+  },
+  {
+    "label": "Ti6Al4V Honed",
+    "npk": 32,
+    "nns": 27,
+    "beta": 1.4,
+    "grid_lim": false
+  },
+  {
+    "label": "Ti6Al4V Bead blasted",
+    "npk": 97,
+    "nns": 94,
+    "beta": -0.09999999999999998,
+    "grid_lim": false
+  },
+  {
+    "label": "Ti6Al4V Ground",
+    "npk": 98,
+    "nns": 96,
+    "beta": -0.2,
+    "grid_lim": false
+  }
+]

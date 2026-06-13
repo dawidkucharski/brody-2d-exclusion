@@ -1,0 +1,99 @@
+{
+  "spatial_permutation": {
+    "beta_original": 2.1525823663186565,
+    "beta_spatial_perm_mean": 4.3176813014381354e-06,
+    "beta_spatial_perm_std": 1.0213825391335402e-06,
+    "beta_csr_2d_mean": 0.9807289145571577,
+    "beta_csr_2d_std": 0.022219162554843026,
+    "delta_original_vs_perm": 2.152578048637355,
+    "delta_original_vs_csr": 1.171853451761499,
+    "n_trials": 30,
+    "interpretation": "Spatial permutation destroys 2D correlation but preserves density. CSR creates random positions with same count."
+  },
+  "beta_N_convergence": [
+    {
+      "N": 1000,
+      "W": 31,
+      "n_pts": 162,
+      "density": 0.16857440166493237,
+      "beta": 2.197
+    },
+    {
+      "N": 2000,
+      "W": 44,
+      "n_pts": 295,
+      "density": 0.15237603305785125,
+      "beta": 2.097
+    },
+    {
+      "N": 5000,
+      "W": 70,
+      "n_pts": 654,
+      "density": 0.13346938775510203,
+      "beta": 1.689
+    },
+    {
+      "N": 10000,
+      "W": 100,
+      "n_pts": 1229,
+      "density": 0.1229,
+      "beta": 1.966
+    },
+    {
+      "N": 20000,
+      "W": 141,
+      "n_pts": 2248,
+      "density": 0.11307278305920225,
+      "beta": 2.187
+    },
+    {
+      "N": 50000,
+      "W": 223,
+      "n_pts": 5106,
+      "density": 0.10267650666613043,
+      "beta": 1.941
+    },
+    {
+      "N": 100000,
+      "W": 316,
+      "n_pts": 9580,
+      "density": 0.09593815093734978,
+      "beta": 2.153
+    },
+    {
+      "N": 200000,
+      "W": 447,
+      "n_pts": 17969,
+      "density": 0.08993088399421448,
+      "beta": 2.046
+    },
+    {
+      "N": 500000,
+      "W": 707,
+      "n_pts": 41527,
+      "density": 0.08307908988514531,
+      "beta": 1.781
+    },
+    {
+      "N": 1000000,
+      "W": 1000,
+      "n_pts": 78498,
+      "density": 0.078498,
+      "beta": 1.75
+    },
+    {
+      "N": 5000000,
+      "W": 2236,
+      "n_pts": 348492,
+      "density": 0.06970263792038556,
+      "beta": 1.864
+    },
+    {
+      "N": 10000000,
+      "W": 3162,
+      "n_pts": 664477,
+      "density": 0.06645937026541861,
+      "beta": 1.255
+    }
+  ]
+}

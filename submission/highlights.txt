@@ -1,0 +1,13 @@
+================================================================================
+HIGHLIGHTS
+================================================================================
+
+• 2D CSR baseline for the Brody exponent is β = 0.96 ± 0.15, not β = 0.
+
+• Monotonic β–r_excl/⟨NN⟩ calibration translates β into a physical exclusion radius.
+
+• Density-thinning protocol: CSR baseline density-stable (0.95–0.99), isolating genuine exclusion.
+
+• Spatial permutation destroys prime β (2.15 → 0.00): 2D arrangement, not density, drives the signal.
+
+• Arithmetic divisibility constraints produce measurable anti-clustering (ΔD₂ > 0) in prime embeddings.

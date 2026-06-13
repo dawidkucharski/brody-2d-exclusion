@@ -1,0 +1,119 @@
+{
+  "beta_gamma_spearman": -0.22424242424242422,
+  "beta_gamma_pvalue": 0.5334005612725947,
+  "beta_reff_spearman": 0.9878787878787878,
+  "beta_reff_pvalue": 9.307459988955517e-08,
+  "results": [
+    {
+      "r_excl": 0,
+      "r_excl_norm": 0.0,
+      "n_points": 200,
+      "beta_brody": 0.9,
+      "mean_nn": 3.442,
+      "gamma_strauss": 0.9724,
+      "R_strauss": 6.88,
+      "r_eff_area": 0.856,
+      "r_eff_norm": 0.249
+    },
+    {
+      "r_excl": 0.5,
+      "r_excl_norm": 0.13882274946662773,
+      "n_points": 200,
+      "beta_brody": 1.195,
+      "mean_nn": 3.602,
+      "gamma_strauss": 1.0,
+      "R_strauss": 7.2,
+      "r_eff_area": 1.339,
+      "r_eff_norm": 0.372
+    },
+    {
+      "r_excl": 1.0,
+      "r_excl_norm": 0.2676679289688542,
+      "n_points": 200,
+      "beta_brody": 1.06,
+      "mean_nn": 3.736,
+      "gamma_strauss": 0.9591,
+      "R_strauss": 7.47,
+      "r_eff_area": 1.407,
+      "r_eff_norm": 0.376
+    },
+    {
+      "r_excl": 1.5,
+      "r_excl_norm": 0.38663725420532413,
+      "n_points": 200,
+      "beta_brody": 1.567,
+      "mean_nn": 3.88,
+      "gamma_strauss": 0.9833,
+      "R_strauss": 7.76,
+      "r_eff_area": 1.867,
+      "r_eff_norm": 0.481
+    },
+    {
+      "r_excl": 2.0,
+      "r_excl_norm": 0.49298415261195644,
+      "n_points": 200,
+      "beta_brody": 1.911,
+      "mean_nn": 4.057,
+      "gamma_strauss": 0.9728,
+      "R_strauss": 8.11,
+      "r_eff_area": 2.239,
+      "r_eff_norm": 0.552
+    },
+    {
+      "r_excl": 2.5,
+      "r_excl_norm": 0.5781374403776273,
+      "n_points": 200,
+      "beta_brody": 2.346,
+      "mean_nn": 4.324,
+      "gamma_strauss": 0.9637,
+      "R_strauss": 8.65,
+      "r_eff_area": 2.667,
+      "r_eff_norm": 0.617
+    },
+    {
+      "r_excl": 3.0,
+      "r_excl_norm": 0.6482231133658041,
+      "n_points": 200,
+      "beta_brody": 2.36,
+      "mean_nn": 4.628,
+      "gamma_strauss": 0.9665,
+      "R_strauss": 9.26,
+      "r_eff_area": 3.103,
+      "r_eff_norm": 0.67
+    },
+    {
+      "r_excl": 4.0,
+      "r_excl_norm": 0.7593865190762803,
+      "n_points": 200,
+      "beta_brody": 3.671,
+      "mean_nn": 5.267,
+      "gamma_strauss": 0.9713,
+      "R_strauss": 10.53,
+      "r_eff_area": 4.213,
+      "r_eff_norm": 0.8
+    },
+    {
+      "r_excl": 5.0,
+      "r_excl_norm": 0.8703167019270234,
+      "n_points": 200,
+      "beta_brody": 6.529,
+      "mean_nn": 5.745,
+      "gamma_strauss": 0.9692,
+      "R_strauss": 11.49,
+      "r_eff_area": 5.067,
+      "r_eff_norm": 0.882
+    },
+    {
+      "r_excl": 6.0,
+      "r_excl_norm": 0.9299902369537024,
+      "n_points": 200,
+      "beta_brody": 9.176,
+      "mean_nn": 6.452,
+      "gamma_strauss": 0.9717,
+      "R_strauss": 12.9,
+      "r_eff_area": 6.028,
+      "r_eff_norm": 0.934
+    }
+  ],
+  "note": "\u03b3=1 means CSR (no interaction), \u03b3\u21920 means hard-core exclusion. r_eff is 5th percentile of NN distances (effective hard-core radius)."
+}

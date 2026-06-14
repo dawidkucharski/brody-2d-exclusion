@@ -36,60 +36,71 @@ surfaces, prime embeddings, and interferometric profilometry}
 
 \begin{abstract}
 The Brody distribution $P_\beta(s)\propto s^\beta\exp(-a s^{\beta+1})$,
-originally introduced in quantum chaos as an interpolation between
-Poisson and Wigner level-spacing statistics, is shown to provide a
-quantitative descriptor of effective short-range exclusion in 2D
-spatial point processes. A monotonic mapping between the Brody
+originally introduced as a phenomenological interpolation between
+Poisson and Wigner level-spacing statistics in quantum chaos, is
+calibrated here as a quantitative descriptor of short-range exclusion
+in 2D spatial point processes. A monotonic mapping between the Brody
 exponent $\beta$ and a normalised exclusion length scale
 $r_{\text{excl}}/\langle\text{NN}\rangle$ is established using
-synthetic hard-core point processes, spanning the complete spatial
-randomness regime ($\beta\approx0.96$) to strongly constrained
-regimes ($\beta\approx10$).
+synthetic hard-core and soft-core point processes, spanning the
+complete-spatial-randomness regime ($\beta\approx0.96$) to
+near-crystalline exclusion ($\beta\approx10$).
 
-A key methodological result is the recalibration of the 2D complete
-spatial randomness baseline, yielding $\beta=0.96\pm0.15$, rather
-than the standard 1D Poisson reference $\beta=0$. This provides a
-consistent reference frame for interpreting spatial point statistics
-in two dimensions. The $\beta$--$r_{\text{excl}}$ mapping is
-established empirically through synthetic point-process calibration
-rather than derived from first principles; values of $\beta>2$ are
-used solely as a phenomenological measure of exclusion strength,
-not as indicators of higher-order RMT symmetry classes.
+Two methodological results form the core of this work. First, the 2D
+complete-spatial-randomness (CSR) baseline is recalibrated to
+$\beta=0.96\pm0.15$ (30 realisations), correcting the standard 1D
+Poisson reference $\beta=0$ that is inappropriate in two dimensions.
+This baseline is density-stable across $\rho\in[0.01,0.10]$ and
+provides the necessary reference for any application of Brody
+statistics to 2D spatial data. Second, the empirical
+$\beta$--$r_{\text{excl}}/\langle\text{NN}\rangle$ calibration
+is validated against the effective hard-core radius with Spearman
+$\rho=0.988$, establishing $\beta$ as a single-parameter proxy for
+exclusion strength. The calibration is empirical---derived from
+synthetic point-process experiments rather than first principles---and
+values of $\beta>2$ are interpreted solely as a phenomenological
+measure of exclusion strength, not as indicators of higher-order RMT
+symmetry classes.
 
-The calibrated framework is applied to three distinct classes of
-data: (i)~manufactured surface topographies (58 surfaces across
-multiple materials and processes), where finishing operations
-produce systematically higher $\beta$ values than abrasive
-processes; (ii)~2D spatial embeddings of
-prime numbers as a test system for arithmetic constraints,
-yielding $\beta=2.15$ (row-major), $1.87$ (Ulam),
-and $1.40$ (Cantor) at $N=10^5$, demonstrating that $\beta$
-depends on the embedding geometry;
-and (iii)~phase-reconstructed interferometric profilometry of a
-certified roundness standard (JENOPTIK FN~111), yielding
-$\beta=2.00~[1.90,2.10]$. Density-thinning experiments show that
-exclusion strength is density-dependent ($\beta$ for row-major primes
-decreases to $1.46\pm0.02$ when thinned to $\rho=0.032$) but remains
-well above the CSR baseline ($\beta_{\text{CSR}}=0.98\pm0.05$) at all
-densities. The three domains exhibit shared exclusion
-signatures---$\beta$ values significantly exceeding their respective
-CSR baselines---despite distinct generative mechanisms, but absolute
-$\beta$ values are both density-dependent and, for arithmetic
-embeddings, embedding-dependent.
+The calibrated framework is demonstrated on three data classes:
+(i)~58 manufactured surface topographies (10 materials, 10 processes,
+focus-variation microscopy), yielding $\beta=0$ to $+4.6$ with
+finishing operations producing systematically higher values than
+abrasive processes in the present dataset;
+(ii)~2D binary embeddings of prime numbers, yielding
+$\beta=2.15$ (row-major), $1.87$ (Ulam), and $1.40$ (Cantor)
+at $N=10^5$, establishing that $\beta$ for arithmetic sequences
+depends on the embedding geometry---with the Cantor embedding
+producing $\beta$ below the spatially random Bernoulli control,
+indicating that the exclusion signal is embedding-created rather
+than intrinsic to the prime sequence; and
+(iii)~phase-reconstructed interferometric profilometry of a
+certified roundness standard (JENOPTIK FN~111, 24\,000 frames,
+5 continuous $400^\circ$ revolutions), yielding
+$\beta=2.00~[1.90,2.10]$ from 629 concatenated peaks
+(individual revolutions: 5--9 peaks, $\beta$ unstable).
+Density-thinning experiments confirm that $\beta$ captures exclusion
+rather than point density: the CSR baseline is flat, while structured
+data exceed it at all densities. However, absolute $\beta$ values are
+density-dependent ($\beta$ for row-major primes decreases from $2.15$
+to $1.46\pm0.02$ when thinned to $\rho=0.032$), so cross-domain
+comparison requires density matching or use of the density-invariant
+$r_{\text{excl}}/\langle\text{NN}\rangle$ calibration.
 
 The pair correlation function $g_2(r)$ independently supports the
-interpretation of $\beta$ as an exclusion measure, with progressive
-suppression of short-range correlations as $\beta$ increases. For
-non-peak-based representations, complementary structural descriptors,
-including the correlation dimension $D_2$ and gradient-based norms
-$\|\nabla Z\|_2$, provide additional characterisation of spatial
-structure.
+interpretation of $\beta$ as an exclusion measure. For binary patterns
+where peak detection is inapplicable, complementary $D_2$ correlation
+dimension and Banach-space descriptors are developed in the
+Supplementary Information.
 
-Taken together, these results indicate that the Brody exponent
-serves as a continuous and empirically robust descriptor of
-short-range spatial exclusion in 2D point processes, provided
-that the 2D CSR baseline is used as reference and both density
-dependence and embedding dependence are accounted for.
+The Brody exponent, when referenced to the 2D CSR baseline and
+calibrated against synthetic exclusion processes, provides a
+reproducible, single-parameter measure of short-range spatial
+exclusion. The $\beta$--$r_{\text{excl}}$ calibration, the CSR
+baseline correction, and the density-thinning and
+embedding-robustness protocols together constitute a calibrated
+measurement framework applicable across physical, mathematical,
+and engineering point-process domains.
 \end{abstract}
 
 \begin{keyword}
@@ -104,10 +115,11 @@ pair correlation function \sep interferometric profilometry
 \section{Introduction}
 %=====================================================================
 
-A central question in the statistical physics of complex systems
-is whether a single parameter can quantify the degree of spatial
-order across fundamentally different pattern-forming
-processes. In quantum chaos,
+A practical question in the statistical characterisation of spatial
+point patterns is whether a single, interpretable parameter can
+quantify short-range exclusion strength on a continuous scale,
+analogous to how the hard-sphere packing fraction parameterises
+excluded volume in liquid-state theory. In quantum chaos,
 the Brody distribution
 $P_\beta(s) = (\beta+1) a s^\beta \exp(-a s^{\beta+1})$,
 $a = [\Gamma((\beta+2)/(\beta+1))]^{\beta+1}$,
@@ -143,14 +155,20 @@ Keating~\cite{BOGOMOLNY-1996} developed the semiclassical framework
 beyond the diagonal approximation, and Keating and
 Snaith~\cite{KEATING-1999} established the connection to random-matrix
 moments.
-This raises a fundamental question: is the Brody parameter merely a
-convenient fitting function for 1D spectral sequences, or does it
-capture something deeper about spatial exclusion that transcends
-dimensionality and generative mechanism?
+This raises a practical question: can the Brody parameter, when
+properly calibrated for two dimensions, serve as a transferable
+measure of short-range exclusion strength across different classes
+of 2D point processes?
 
 \textbf{The gap.} Despite the breadth of Brody applications to 1D
-spectra, its extension to 2D spatial point processes remains largely
-unexplored. Sakhr and Nieminen~\cite{SAKHR-NIEMINEN-2005} demonstrated
+spectra, its extension to 2D spatial point processes raises two
+unresolved issues. First, the appropriate CSR baseline for 2D Brody
+statistics has not been established: the 2D nearest-neighbour spacing
+distribution under CSR is Rayleigh, $P(s)=(\pi s/2)\exp(-\pi s^2/4)$,
+which is not a member of the Brody family, so the 1D Poisson reference
+$\beta=0$ does not apply. Second, no calibration exists to translate
+the dimensionless $\beta$ into a physically interpretable exclusion
+measure. Sakhr and Nieminen~\cite{SAKHR-NIEMINEN-2005} demonstrated
 a Poisson-to-Wigner crossover in the nearest-neighbour statistics of
 random points on fractals, establishing that RMT-style spacing
 distributions can characterise spatial point patterns outside quantum
@@ -167,68 +185,65 @@ strength. Recent work on spatial form factors for Coulomb gas and
 vortex statistics~\cite{MASSARO-DELCAMPO-2025} and Fourier analysis
 of spatial point processes~\cite{YANG-GUAN-2026} has begun bridging
 spectral and spatial approaches, but a framework connecting these to
-the Brody one-parameter family is lacking. A manufactured surface contains a spatial point process
-formed by its peaks---features arising from cutting tools, abrasive
-grains, plastic deformation, and fracture
-mechanics~\cite{HELMLI-2011-FV}. Similarly, binary embeddings
-of arithmetic sequences produce 2D point patterns governed by
-multiplicative constraints rather than physical interactions.
+the Brody one-parameter family is lacking. A manufactured surface
+contains a spatial point process formed by its peaks---features
+arising from cutting tools, abrasive grains, plastic deformation,
+and fracture mechanics~\cite{HELMLI-2011-FV}. Similarly, binary
+embeddings of arithmetic sequences produce 2D point patterns governed
+by multiplicative constraints rather than physical interactions.
 Phase-extracted interferometric profiles~\cite{KUCHARSKI-2025-MEASUREMENT}
 introduce yet a third generative domain: optical wavefront
-reconstruction. The question of whether the Brody exponent quantifies
-exclusion strength in 2D---and whether this quantification reflects a
-shared statistical signature of local order across generative
-mechanisms---has not been systematically investigated.
+reconstruction. Whether the Brody exponent can be calibrated as a
+transferable exclusion measure across these domains---and what the
+necessary corrections (CSR baseline, density matching, embedding
+specification) are---has not been systematically investigated.
 
-\textbf{This work.} This study tests the hypothesis that Brody statistics
-quantify exclusion strength in spatial point processes independently
-of the underlying physical or mathematical origin of the points.
-The investigation proceeds in four stages. First, synthetic hard-core
-and soft-core point processes are used to establish the empirical
-$\beta$--$r_{\text{excl}}/\langle\text{NN}\rangle$ calibration curve
-and to determine the correct 2D CSR baseline ($\beta \approx 0.96$,
-not $\beta = 0$). Second, the calibrated framework is applied to
-58 manufactured surface textures (10 materials, 10 processes,
-focus-variation microscopy). Third, phase-extracted interferometric
-profilometry of a certified roundness standard (JENOPTIK FN~111,
-24\,000 frames, 5 continuous $400^\circ$ rotations) provides an
-independent test on a surface generated by optical wavefront
-reconstruction rather than material manufacturing. Fourth, 2D binary
-embeddings of prime numbers serve as an external validation benchmark:
-a mathematically controlled system whose arithmetic divisibility
-constraints produce non-trivial exclusion effects without any physical
-interaction mechanism. Density-thinning, spatial-permutation,
-embedding-robustness, and peak-detection sensitivity controls are
-applied throughout to isolate genuine exclusion from confounding
-effects.
-The central finding is that all systems exhibit $\beta$ values
-significantly exceeding their density-matched CSR baselines,
-establishing genuine exclusion beyond density effects.
+\textbf{This work.} This study develops and validates a calibrated
+measurement framework for Brody statistics in 2D spatial point
+processes. The framework comprises three components: (i)~the correct
+2D CSR baseline ($\beta=0.96\pm0.15$, density-stable),
+(ii)~an empirical $\beta$--$r_{\text{excl}}/\langle\text{NN}\rangle$
+calibration curve derived from synthetic hard-core and soft-core
+point processes, and (iii)~a set of control protocols
+(density-thinning, embedding-robustness, spatial-permutation,
+and peak-detection sensitivity tests) that isolate genuine exclusion
+from confounding effects. The framework is demonstrated on three
+data classes: 58 manufactured surface topographies (10 materials,
+10 processes, focus-variation microscopy); phase-extracted
+interferometric profilometry of a certified roundness standard
+(JENOPTIK FN~111, 24\,000 frames, 5 continuous $400^\circ$
+revolutions); and 2D binary embeddings of prime numbers as a
+mathematically controlled benchmark. The aim is not to claim that
+$\beta$ reveals a universal exclusion mechanism---any process that
+prevents point coincidence (material continuity, optical resolution
+limits, arithmetic gap constraints) will produce $\beta>\beta_{\text{CSR}}$---but
+to establish the measurement tools and correction protocols required
+for quantitative, reproducible Brody analysis in two dimensions.
 
-\textbf{Discovery versus interpretation.} Throughout this work, a
-clear distinction is maintained between what is observed and what is
-inferred. \emph{Observed:} $\beta$ values, nearest-neighbour spacing
+\textbf{Observation versus interpretation.} Throughout this work, a
+clear distinction is maintained between what is measured and what is
+inferred. \emph{Measured:} $\beta$ values, nearest-neighbour spacing
 distributions, $g_2(r)$ profiles, $D_2$ excesses, and their associated
-confidence intervals. \emph{Interpreted:} exclusion strength, spatial
-ordering, effective hard-core radii, and clustering suppression.
-The $\beta$--$r_{\text{excl}}$ relation is calibration-based rather
-than derived from first principles; it is an empirical mapping
-established through synthetic point-process experiments, not a
-theoretical necessity. Density dependence and embedding sensitivity
-indicate that shared exclusion signatures---rather than a single
-universal mechanism---characterise the three systems.
+confidence intervals. \emph{Inferred:} exclusion strength, effective
+hard-core radii, and spatial ordering. The $\beta$--$r_{\text{excl}}$
+relation is calibration-based rather than derived from first
+principles; it is an empirical mapping established through synthetic
+point-process experiments, not a theoretical necessity. Density
+dependence and embedding sensitivity demonstrate that absolute
+$\beta$ values reflect both the exclusion mechanism and the
+measurement conditions (point density, embedding geometry).
 
 Throughout, the Brody distribution is employed as a phenomenological
 fitting function; no claim of random-matrix universality is made for
-surface peaks. The central finding is that three unrelated
-domains---manufacturing processes, multiplicative number theory, and
-optical interferometry---exhibit $\beta$ values that, when each is
-referenced to its own density-matched CSR baseline, map onto
-overlapping regions of the $\beta$--$r_{\text{excl}}$ calibration
-curve. This supports the interpretation of $\beta$ as an empirically
-robust exclusion measure. Density-thinning experiments
-show that absolute $\beta$ values depend on point density,
-qualifying any claim of density-independent universality.
+surface peaks. The three domains---manufacturing processes,
+multiplicative number theory, and optical interferometry---all yield
+$\beta$ values exceeding their density-matched CSR baselines. This is
+expected for any process with short-range repulsion, and the
+contribution of the present work is not the observation of exclusion
+but the provision of the calibrated tools to quantify it:
+the 2D CSR baseline, the $\beta$--$r_{\text{excl}}$ mapping, and
+the control protocols that separate genuine structure from
+density, embedding, and detection artefacts.
 
 %=====================================================================
 \section{Methods}
@@ -1174,10 +1189,21 @@ $RONt = 244 \pm 52$\,nm (Hommel Roundscan~535, $n = 104$
 tactile reference measurements).
 The specified
 $R_a < 0.02\;\mu\text{m}$ applies to the roughness component
-only. The extracted
-peak spacings follow a Brody distribution with $\beta = 2.00$,
-indicating strong repulsion among the detected roundness
-deviation features.
+only.
+
+\textbf{Per-revolution stability.} Individual revolutions contain only
+5--9 detected peaks---insufficient for stable Brody estimation (bootstrap
+CI width $>2.0$). Per-revolution $\beta$ values span $1.00$--$3.68$,
+reflecting this instability. The concatenated profile (629 peaks across
+5 revolutions) yields $\beta = 2.00~[1.90,2.10]$. The concatenation
+assumes stationarity across revolutions; this assumption is plausible
+for a certified roundness standard measured under continuous rotation
+without repositioning, but is not independently verified. The per-revolution
+instability qualifies the PSI result as exploratory: the $\beta=2.00$
+estimate for the concatenated profile should be interpreted as a
+proof-of-concept demonstration that Brody analysis is feasible on
+phase-extracted interferometric data, pending replication on additional
+standards and at higher per-revolution peak counts.
 The full analysis pipeline is archived as
 \texttt{generate\_psi\_ceramic\_figure.py} in the
 manuscript repository; all PSI-derived numbers reported
@@ -1316,10 +1342,10 @@ classification accuracy. This null result is expected: $\beta$ measures
 one specific aspect of spatial structure---short-range exclusion---while
 manufacturing processes differ in many aspects (roughness amplitude,
 skewness, waviness, material properties). Where $\beta$ may add value
-is in predicting functional properties that depend specifically on peak
-proximity, such as contact stiffness, seal performance, or optical
-scatter. Testing such predictions requires functional performance data
-not available in the present dataset.
+is in providing a quantitative, reproducible exclusion measure for
+applications where peak proximity is the parameter of interest.
+Testing whether $\beta$ predicts functional performance requires
+appropriate functional data not available in the present dataset.
 
 \subsection{Density dependence and cross-domain comparison}
 
@@ -1487,8 +1513,8 @@ behaviour.
 
 The $\beta$--$r_{\text{excl}}$ calibration established here enables
 several directions. In surface engineering, $\beta$ could serve as a
-target parameter for processes whose functional performance depends on
-peak proximity (sealing, contact stiffness, optical scatter). In spatial
+quantitative target parameter for processes where peak proximity is the
+parameter of interest. In spatial
 statistics, connecting $\beta$ to formal point-process model parameters
 (Strauss interaction parameter $\gamma$, area-interaction radius,
 determinantal kernel) would provide the theoretical bridge between
@@ -1565,14 +1591,21 @@ and Banach-space descriptors capture orthogonal aspects of spatial structure
 (Pearson $r = -0.31$), with square-free numbers and the Liouville function
 serving as decisive negative controls (Supplementary Information).
 
-The shared exclusion signatures observed across unrelated generative
-mechanisms---all exceed their respective CSR baselines---support the
-interpretation of $\beta$ as a broadly applicable exclusion measure. The
-$\beta$--$r_{\text{excl}}$ calibration, the 2D CSR baseline correction,
-and the density-thinning and embedding-robustness protocols established
-here provide a calibrated measurement framework that enables systematic,
-reproducible characterisation of short-range exclusion in 2D spatial
-point processes across physical, mathematical, and engineering domains.
+The three domains---manufactured surfaces, prime embeddings, and
+interferometric profilometry---all yield $\beta$ values exceeding
+their respective CSR baselines. That any process preventing point
+coincidence produces $\beta>\beta_{\text{CSR}}$ is physically expected;
+the contribution of the present work is the provision of the calibrated
+tools to quantify this exclusion on a common scale. The
+$\beta$--$r_{\text{excl}}$ calibration (Spearman $\rho=0.988$ with
+$r_{\text{eff}}$), the 2D CSR baseline correction
+($\beta=0.96\pm0.15$), and the density-thinning and
+embedding-robustness protocols together constitute a calibrated
+measurement framework for systematic, reproducible characterisation
+of short-range exclusion in 2D spatial point processes. The framework
+is applicable across physical, mathematical, and engineering domains,
+provided the necessary corrections---density matching, embedding
+specification, and reference to the 2D CSR baseline---are applied.
 
 %=====================================================================
 \section*{Acknowledgements}

@@ -1063,20 +1063,45 @@ both the 1D sequence statistics and the 2D embedding geometry; claims
 about ``prime point processes'' must therefore specify the embedding.
 Figure~\ref{fig:embedding-robustness} summarises these results.
 
+\textbf{Sparse-integer control: sparsity versus arithmetic structure.}
+To test whether the elevated $\beta$ for row-major primes
+($\beta=2.15$) reflects the arithmetic constraint of primality or
+merely the sparsity of the prime set ($\pi(10^5)=9\,592$,
+$\rho=0.096$), a sparse-integer control was performed: $\pi(N)$
+random integers uniformly distributed in $[1,N]$ were embedded in the
+identical row-major geometry and $\beta$ was computed (30 trials).
+The sparse-integer control yields $\beta=1.47\pm0.02$ [1.43,1.50],
+which is indistinguishable from the Bernoulli CSR baseline
+($\beta=1.46\pm0.02$) and substantially below the prime value
+($\Delta\beta=+0.68$). This result establishes that the elevated
+$\beta$ for row-major primes is a genuine arithmetic signal---not
+a sparsity artefact---and that the CSR baseline for binary fields at
+this density ($\rho=0.096$) is $\beta_{\text{CSR}}^{\text{(binary)}}
+\approx 1.46$, distinct from the continuous 2D CSR baseline of
+$\beta=0.96\pm0.15$ (Section~3.4). The binary CSR baseline shift
+reflects the discrete-grid NNS distribution at low fill fraction;
+all comparisons between binary arithmetic surfaces and their null
+models use the appropriate binary CSR reference.
+Figure~\ref{fig:density-thinning-control} presents the density-thinning
+and sparse-integer control results.
+
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{fig_embedding_robustness.pdf}
-  \caption{Embedding dependence of the Brody exponent for 2D primes
-           at $N=10^5$. (a) $\beta$ under three deterministic embeddings
-           and the Bernoulli 2D control (matched density). Row-major
-           and Ulam embeddings produce $\beta$ significantly above the
-           spatially random control; Cantor pairing does not.
-           (b) Distribution of $\beta$ for 30 Bernoulli 2D realisations,
-           with the row-major prime value indicated.
-           The embedding dependence demonstrates that $\beta$ for
-           arithmetic sequences reflects both sequence structure and
-           embedding geometry.}
-  \label{fig:embedding-robustness}
+  \includegraphics[width=\textwidth]{fig_density_thinning_control.pdf}
+  \caption{Density-thinning and sparse-integer controls.
+           (a) Brody exponent $\beta$ for row-major primes thinned
+           to five densities ($\rho=0.01$--$0.096$), compared with
+           density-matched CSR baselines (grey band). $\beta$ decreases
+           with density ($\beta=2.15$ at $\rho=0.096$ to $\beta=1.30$
+           at $\rho=0.01$) but remains above CSR at all densities.
+           (b) Sparse-integer control: 30 trials of $\pi(N)$ random
+           integers embedded identically to primes yield
+           $\beta=1.47\pm0.02$, indistinguishable from the Bernoulli
+           CSR baseline ($1.46\pm0.02$) and substantially below the
+           prime value ($\beta=2.15$). The prime $\beta$ signal is
+           therefore a genuine arithmetic effect, not a sparsity
+           artefact.}
+  \label{fig:density-thinning-control}
 \end{figure*}
 
 \subsection{Peak-detection sensitivity}

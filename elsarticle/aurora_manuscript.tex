@@ -1227,13 +1227,13 @@ implication is summarised in Table~\ref{tab:csr-baseline}.
   \caption{CSR baseline selection for 2D Brody analysis.}
   \label{tab:csr-baseline}
   \small
-  \begin{tabular}{@{}lll@{}}
+  \begin{tabular}{@{}p{0.32\linewidth}p{0.32\linewidth}p{0.28\linewidth}@{}}
     \toprule
-    Data type & CSR baseline & When to use \\
+    Data type & CSR baseline & Example \\
     \midrule
-    Continuous 2D point processes & $\beta_{\text{CSR}}=0.96\pm0.15$ & Default for FV surfaces, PSI \\
-    Binary fields at $\rho<0.2$ & Density-matched Bernoulli & Primes, arithmetic sequences \\
-    Uncertain & Generate own CSR (20 realisations) & Any new data class \\
+    Continuous 2D & $\beta_{\text{CSR}}=0.96\pm0.15$ & FV surfaces, PSI \\
+    Binary, $\rho<0.2$ & Density-matched Bernoulli & Primes, arithmetic \\
+    Uncertain & Generate own (20 reps) & Any new class \\
     \bottomrule
   \end{tabular}
 \end{table}

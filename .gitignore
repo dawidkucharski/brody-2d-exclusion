@@ -39,5 +39,41 @@ build/
 *.bak
 *.backup
 
+# Large data directories (available on request)
+FV/
+aurora_lab/
+elsarticle/doc/
+
 # Compiled manuscript (rebuild from source)
 elsarticle/aurora_manuscript.pdf
+
+# Internal evaluation / audit files (not for public repo)
+*audit*
+*referee_fixes*
+*p0_improvements*
+*q1_readiness*
+*final_*_actions*
+*EDITOR_EVALUATION*
+*FRESH_EVALUATION*
+*LITERATURE_ANALYSIS*
+*changelog.txt*
+*.docx
+aurora_bootstrap*
+AURORA_BOOTSTRAP*
+workspace.code-workspace
+Scopus*
+scopus*
+elsarticle/README
+elsarticle/manifest.txt
+elsarticle/Untitled*
+elsarticle/aurora_manuscript.spl
+elsarticle/aurora_manuscript.tex.bak*
+elsarticle/elsarticle-harv.bst
+elsarticle/elsarticle-num-names.bst
+elsarticle/elsarticle-num.bst
+elsarticle/elsarticle-template-harv.tex
+elsarticle/elsarticle-template-num-names.tex
+elsarticle/elsarticle-template-num.tex
+elsarticle/elsarticle.dtx
+elsarticle/elsarticle.ins
+submission/aurora_manuscript.pdf

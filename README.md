@@ -1,6 +1,6 @@
 # Brody Spacing Statistics of Surface Textures
 
-## Reproducibility package for: *"The Brody exponent as a measure of exclusion strength in 2D spatial point processes"*
+## Reproducibility package for: *"The Brody exponent as a measure of exclusion strength in 2D spatial point processes: evidence from manufactured surfaces, prime embeddings, and interferometric profilometry"*
 ### Kucharski (2026), Physica A: Statistical Mechanics and its Applications
 
 ---

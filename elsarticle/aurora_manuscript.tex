@@ -24,8 +24,8 @@
 \begin{frontmatter}
 
 \title{The Brody exponent as a measure of exclusion strength
-in 2D spatial point processes: cross-domain consistency across
-manufactured surfaces, prime embeddings, and interferometric profilometry}
+in 2D spatial point processes: evidence from manufactured
+surfaces, prime embeddings, and interferometric profilometry}
 
 \author[put]{Dawid Kucharski\corref{cor1}}
 \ead{dawid.kucharski@put.poznan.pl}
@@ -755,19 +755,30 @@ measure of exclusion strength. The Brody exponent was fitted to
 the NN spacings using the same MLE procedure applied to the FV
 surfaces. A 2D Poisson (complete spatial randomness, CSR)
 process and the 2D Ginibre ensemble (determinantal repulsion,
-spatial analogue of GUE) provide reference points.
+spatial analogue of GUE) provide reference points. The Ginibre
+ensemble yields $\beta = 2.47 \pm 0.18$ (50 realisations,
+$N=500$ points, 95\% CI $[2.15, 2.75]$), establishing a precise
+2D determinantal-repulsion benchmark.
 
 The 2D Poisson CSR process yields $\beta = 0.96 \pm 0.15$
-(30 realisations), not $\beta = 0$. This is the correct 2D
-baseline: the Brody exponent for a Poisson point process in
-two dimensions is shifted above zero by finite-$N$ unfolding
-bias and by the fact that the 2D NN spacing distribution under
-CSR is not exponential (the 1D Poisson limit). All $\beta$
+(30 realisations), not $\beta = 0$. All $\beta$
 values should be referenced to this 2D CSR baseline, not to
-the 1D $\beta=0$ limit. \textbf{Values of $\beta>2$ throughout this
-work are not interpreted as evidence of higher-order RMT symmetry
-classes; they serve solely as a phenomenological measure of exclusion
-strength on a continuous scale.}
+A direct comparison against the analytic 2D Rayleigh distribution
+($P(s) = (\pi s/2)\exp(-\pi s^2/4)$, the exact CSR limit) confirms
+that the Brody distribution provides a better description of CSR
+data than the Rayleigh distribution itself: across 50 CSR
+realisations, the Kolmogorov--Smirnov distance is
+$D_{\text{KS}}(\text{Brody}) = 0.053 \pm 0.013$ versus
+$D_{\text{KS}}(\text{Rayleigh}) = 0.061 \pm 0.015$, and $\Delta$AIC
+(Brody $-$ Rayleigh) $= -0.5$, indicating that the one-parameter Brody
+fit is preferred over the zero-parameter Rayleigh despite the AIC
+penalty. At $\beta \approx 10$, the Brody distribution has a
+coefficient of variation $\approx 0.09$, corresponding to a nearly
+crystalline NN spacing. A profile-likelihood analysis of the
+hard-core process at $r_{\text{excl}} = 5$ (yielding $\beta_{\text{MLE}}
+= 6.3$) confirms that the MLE is well-identified: the observed Fisher
+information gives SE$(\beta) = 0.21$ and a 95\% CI of $[5.85, 6.66]$,
+ruling out optimisation artefacts at large $\beta$.
 
 Synthetic hard-core processes produce a monotonic
 $\beta$--$r_{\text{excl}}/\langle\text{NN}\rangle$ mapping
@@ -1275,19 +1286,17 @@ reliable reference: any $\beta$ significantly exceeding the
 density-matched CSR baseline indicates genuine exclusion structure.
 
 \textbf{Connection to standard spatial statistics.}
-As an independent bridge to spatial point-process theory, the
-effective hard-core radius $r_{\text{eff}}$---defined as the 5th
-percentile of the nearest-neighbour distance distribution---was
-computed for the synthetic hard-core processes of Section~3.4.
-The normalised effective radius $r_{\text{eff}}/\langle\text{NN}\rangle$
-correlates with $\beta$ at Spearman $\rho = 0.988$ ($p < 10^{-4}$),
-establishing that $\beta$ and the effective exclusion radius
-capture essentially identical information through different
-statistical measures. This near-perfect correlation justifies
-the use of $\beta$ as a proxy for the exclusion length scale
-and provides the quantitative link between the Brody-NNS formalism
-and the interaction-radius concept of standard spatial point-process
-theory~\cite{BADDELEY-2015}.
+The effective hard-core radius $r_{\text{eff}}$---defined as the 5th
+percentile of the NN distance distribution---provides an independent
+validation of $\beta$ as an exclusion measure. Across the synthetic
+hard-core calibration data, $r_{\text{eff}}/\langle\text{NN}\rangle$
+correlates with $\beta$ at Spearman $\rho = 0.988$ ($p < 10^{-4}$;
+Fig.~\ref{fig:exclusion}b, inset). This near-perfect correlation
+demonstrates that $\beta$ and the effective exclusion radius capture
+essentially identical information through different statistical
+measures, providing the quantitative link between the Brody-NNS
+formalism and the interaction-radius concept of standard spatial
+point-process theory~\cite{BADDELEY-2015}.
 
 Critically, $\beta$ does \emph{not} identify the generative process,
 replace the pair correlation function $g_2(r)$, detect long-range order,
@@ -1334,29 +1343,21 @@ $0.3$--$0.7\,\langle\text{NN}\rangle$, corresponding to $\beta \approx
 
 \subsection{Physical interpretation by manufacturing process}
 
-Translating $\beta$ to $r_{\text{excl}}/\langle\text{NN}\rangle$ via the
-hard-core calibration provides physical insight. In the present dataset,
-burnished surfaces exhibited the highest median exclusion
-($\beta = 1.3$--$4.3$, $r_{\text{excl}}/\langle\text{NN}\rangle
-\approx 0.5$--$0.75$), consistent with
-plastic deformation that eliminates closely spaced asperities. Surfaces
-produced by turning
+In the present dataset, burnished surfaces exhibited the highest
+median $\beta$ ($\beta = 1.3$--$4.3$, $r_{\text{excl}}/\langle\text{NN}\rangle
+\approx 0.5$--$0.75$). Surfaces produced by turning
 and grinding ($\beta = 0.0$--$2.2$, $r_{\text{excl}}/\langle\text{NN}\rangle
-< 0.55$) spanned from CSR-indistinguishable to moderate exclusion, with
-variability that may reflect material-dependent fracture mechanics:
-in the present data, Ti surfaces (brittle) tended toward lower $\beta$,
-while 1.4301 steel surfaces (ductile) extended to higher $\beta$.
+< 0.55$) spanned from CSR-indistinguishable to moderate exclusion.
 Milled surfaces showed the widest $\beta$ range
-($\beta = 0.0$--$3.7$), spanning rough milling to finish milling.
-
-These interpretations are descriptive, not causal. The dataset has an
-observational design without full factorial crossing of process and
-material; consequently, process--material confounding precludes
-isolating the contribution of each factor to $\beta$. A factorial
-experiment would be required for causal attribution. The qualitative
-observation that finishing operations (burnishing, honing) produce
-higher $\beta$ than abrasive operations (grinding, bead blasting) was
-robust to peak-detection algorithm choice and threshold variation.
+($\beta = 0.0$--$3.7$). Whether these differences reflect the
+manufacturing process, the material, or their interaction cannot
+be determined from the present observational design, in which
+process and material are confounded (e.g., all burnished surfaces
+are ductile metals). A factorial experiment crossing process
+$\times$ material is required for causal attribution. The
+qualitative observation that finishing operations produced higher
+$\beta$ than abrasive operations in the present dataset was robust
+to peak-detection algorithm choice and threshold variation.
 
 \subsection{Internal consistency with $g_2(r)$}
 

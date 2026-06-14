@@ -23,9 +23,8 @@
 
 \begin{frontmatter}
 
-\title{The Brody exponent as a measure of exclusion strength
-in 2D spatial point processes: evidence from manufactured
-surfaces, prime embeddings, and interferometric profilometry}
+\title{Calibrating the Brody exponent as a quantitative measure
+of short-range exclusion in 2D spatial point processes}
 
 \author[put]{Dawid Kucharski\corref{cor1}}
 \ead{dawid.kucharski@put.poznan.pl}
@@ -1138,21 +1137,14 @@ Figure~\ref{fig:sensitivity} provides the complete sensitivity profile.
 \subsection{Proof-of-concept: interferometric profilometry}
 %---------------------------------------------------------------------
 
-As an exploratory demonstration, phase-extracted interferometric
-profilometry of a certified roundness standard (JENOPTIK FN~111,
-24\,000 frames, 5 continuous $400^\circ$ revolutions) was analysed
-using the same Brody pipeline. The concatenated profile (629 peaks
-across 5 revolutions) yields $\beta=2.00~[1.90,2.10]$. Individual
-revolutions contain only 5--9 detected peaks, producing unstable
-per-revolution $\beta$ values spanning $1.00$--$3.68$; the result
-is therefore qualified as a proof-of-concept. Fringe-spacing analysis
-of the same interferograms yields $\beta=0.10$ (near-Poisson),
-confirming that $\beta$ distinguishes deterministic wavefront
-curvature from physical surface structure. Full experimental details,
-per-revolution diagnostics, and the phase-extraction pipeline are
-provided in Supplementary Information~(SI, Section~S4) together with
-the complete figure set. Scale-invariance analysis of $\Delta D_2(N)$
-for primes across $N\in[10^4,10^7]$ is also reported in SI~(Sections
+A proof-of-concept application of the Brody pipeline to
+phase-extracted interferometric profilometry of a certified
+roundness standard (JENOPTIK FN~111) is presented in Supplementary
+Information (SI, Section~S4). The concatenated five-revolution
+profile (629 peaks) yields $\beta=2.00~[1.90,2.10]$; per-revolution
+instability (5--9 peaks, $\beta=1.00$--$3.68$) qualifies the result
+as exploratory. Scale-invariance analysis of $\Delta D_2(N)$ for
+primes across $N\in[10^4,10^7]$ is also reported in SI~(Sections
 S1.5--S1.6).
 
 %=====================================================================
@@ -1312,9 +1304,26 @@ spatial-order parameter space. Square-free numbers and the Liouville
 function serve as negative controls indistinguishable from the
 Bernoulli null, while primes exhibit $\Delta D_2>0$ driven by the
 fundamental theorem of arithmetic (consecutive integers cannot both
-be prime). The complementarity of $\beta$, $D_2$, and Banach
-descriptors suggests that spatial point patterns may be classified
-by their coordinates in a low-dimensional descriptor space whose axes
+be prime).
+
+A noteworthy tension exists between the $D_2$ and $\beta$ results.
+$D_2$ for primes is stable across row-major, Ulam, and Cantor
+embeddings ($\Delta D_2\approx+0.05$--$0.09$; SI, Section~S1.1),
+indicating that the multi-scale mass distribution is an intrinsic
+property of the prime sequence. In contrast, $\beta$ varies from
+2.15 (row-major) to 1.40 (Cantor), indicating that short-range
+exclusion is embedding-dependent. This tension is resolved by
+recognising that $D_2$ and $\beta$ probe fundamentally different
+spatial scales: $D_2$ responds to mass distribution across all box
+sizes simultaneously, whereas $\beta$ is dominated by the shortest
+nearest-neighbour distances. An embedding that preserves the prime
+gap constraint at nearest-neighbour scales (row-major) yields high
+$\beta$; an embedding that decorrelates the gap constraint from 2D
+adjacency (Cantor) yields $\beta$ indistinguishable from CSR, even
+though the multi-scale arithmetic structure remains detectable by
+$D_2$. The complementarity of $\beta$, $D_2$, and Banach descriptors
+suggests that spatial point patterns may be classified by their
+coordinates in a low-dimensional descriptor space whose axes
 correspond to physically interpretable order parameters.
 
 \subsection{Limitations}
@@ -1336,6 +1345,11 @@ on additional standards is required.
 (5)~The surface dataset is observational (process $\times$ material
 confounded); causal attribution requires a factorial experiment.
 Test--retest reliability has not been established.
+(6)~The $\beta$ scale is calibrated only on the anti-clustered side
+(CSR through near-crystalline). The behaviour of $\beta$ for clustered
+point processes (Thomas, Mat\'ern) is not established here; $\beta$
+values significantly below the CSR baseline may indicate clustering,
+but this requires dedicated study with appropriate benchmarks.
 
 \subsection{Outlook}
 
@@ -1403,7 +1417,27 @@ and Banach-space descriptors capture orthogonal aspects of spatial structure
 (Pearson $r = -0.31$), with square-free numbers and the Liouville function
 serving as decisive negative controls (Supplementary Information).
 
-The Cantor embedding null result is particularly instructive:\nthe same prime sequence yields $\beta=2.15$ (row-major), strong\nexclusion, and $\beta=1.40$ (Cantor), no exclusion\n($\Delta\beta=-0.07$ relative to the Bernoulli baseline,\n$p_{\text{TOST}}<0.01$). This demonstrates that 2D exclusion in\narithmetic embeddings is not an intrinsic property of the arithmetic\nsequence---it is created or destroyed by the embedding geometry. The\nframework therefore detects both the presence and the absence of\nexclusion, which is essential for any measurement tool.\n\nThe $\beta$--$r_{\text{excl}}$ calibration (Spearman $\rho=0.988$ with\n$r_{\text{eff}}$), the 2D CSR baseline correction\n($\beta=0.96\\pm0.15$ for continuous processes;\n$\\beta_{\\text{CSR}}^{\\text{(binary)}}\\approx1.46$ for binary fields\nat low density), and the density-thinning and embedding-robustness\nprotocols together constitute a calibrated measurement framework for\nsystematic, reproducible characterisation of short-range exclusion in\n2D spatial point processes. The framework is applicable across\nphysical, mathematical, and engineering domains, provided the\nnecessary corrections---density matching, embedding specification,\nand reference to the appropriate CSR baseline---are applied.
+The Cantor embedding null result is particularly instructive:
+the same prime sequence yields $\beta=2.15$ (row-major), strong
+exclusion, and $\beta=1.40$ (Cantor), no exclusion
+($\Delta\beta=-0.07$ relative to the Bernoulli baseline,
+$p_{\text{TOST}}<0.01$). This demonstrates that 2D exclusion in
+arithmetic embeddings is not an intrinsic property of the arithmetic
+sequence---it is created or destroyed by the embedding geometry. The
+framework therefore detects both the presence and the absence of
+exclusion, which is essential for any measurement tool.
+
+The $\beta$--$r_{\text{excl}}$ calibration (Spearman $\rho=0.988$ with
+$r_{\text{eff}}$), the 2D CSR baseline correction
+($\beta=0.96\pm0.15$ for continuous processes;
+$\beta_{\text{CSR}}^{\text{(binary)}}\approx1.46$ for binary fields
+at low density), and the density-thinning and embedding-robustness
+protocols together constitute a calibrated measurement framework for
+systematic, reproducible characterisation of short-range exclusion in
+2D spatial point processes. The framework is applicable across
+physical, mathematical, and engineering domains, provided the
+necessary corrections---density matching, embedding specification,
+and reference to the appropriate CSR baseline---are applied.
 
 %=====================================================================
 \section*{Acknowledgements}

@@ -1,19 +1,3 @@
 {
   "N": 100000,
-  "pi_N": 9592,
-  "prime_beta": 2.15,
-  "prime_ci": [
-    2.08,
-    2.22
-  ],
-  "sparse_integer_beta_mean": 1.47,
-  "sparse_integer_beta_std": 0.02,
-  "sparse_integer_beta_ci": [
-    1.43,
-    1.5
-  ],
-  "csr_beta_mean": 1.46,
-  "csr_beta_std": 0.02,
-  "n_trials": 30,
-  "key_finding": "sparse-integer \u03b2 \u2248 CSR \u03b2 (1.47 vs 1.46), both FAR below prime \u03b2 (2.15). Prime signal is ARITHMETIC, not sparsity."
-}
+  "pi_N": 

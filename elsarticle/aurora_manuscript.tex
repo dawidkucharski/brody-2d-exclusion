@@ -1208,13 +1208,54 @@ aspects (roughness amplitude, skewness, waviness, material).
 The Brody MLE is well-identified across the full reported range
 ($\beta=0$ to $+4.6$ for surfaces, to $\beta\approx10$ for synthetic
 hard-core processes). A profile-likelihood analysis at $\beta=6.3$
-(hard-core, $r_{\\text{excl}}=5$) gives Fisher-information\nSE$(\\beta)=0.21$ and a 95\\% CI of $[5.85,6.66]$, ruling out\noptimisation artefacts. Bootstrap stability is confirmed across\n500~resamples (Section~3.4). Goodness-of-fit assessed by\nKolmogorov--Smirnov distance remains acceptable\n($D_{\\text{KS}}<0.10$) for all reported fits.\n\nValues of $\\beta>2$ are emphatically \\emph{not} interpreted as\nevidence of higher-order RMT symmetry classes. The Brody distribution\nwas introduced as a phenomenological one-parameter interpolation; its\nfunctional form $P(s)\\propto s^\\beta\\exp(-as^{\\beta+1})$ remains\nmathematically well-defined and MLE-identifiable for arbitrarily large\n$\\beta$. In the large-$\\beta$ limit, the distribution approaches a\nnarrow Gaussian centred at $s=1$ (coefficient of variation\n$\\approx0.09$ at $\\beta=10$), corresponding to nearly crystalline NN\nspacings. This is the expected behaviour for strong hard-core exclusion\nand does not imply any new universality class. The interpretation is\npurely phenomenological: $\\beta$ quantifies the \\emph{degree} of\nshort-range order on a continuous scale, with $\\beta\\approx0.96$\n(CSR), $\\beta\\approx2$ (Ginibre-level), and $\\beta\\gtrsim5$\n(near-crystalline) serving as convenient reference points.
+(hard-core, $r_{\text{excl}}=5$) gives Fisher-information
+SE$(\beta)=0.21$ and a 95\% CI of $[5.85,6.66]$, ruling out
+optimisation artefacts. Bootstrap stability is confirmed across
+500~resamples (Section~3.4). Goodness-of-fit assessed by
+Kolmogorov--Smirnov distance remains acceptable
+($D_{\text{KS}}<0.10$) for all reported fits.
+
+Values of $\beta>2$ are emphatically \emph{not} interpreted as
+evidence of higher-order RMT symmetry classes. The Brody distribution
+was introduced as a phenomenological one-parameter interpolation; its
+functional form $P(s)\propto s^\beta\exp(-as^{\beta+1})$ remains
+mathematically well-defined and MLE-identifiable for arbitrarily large
+$\beta$. In the large-$\beta$ limit, the distribution approaches a
+narrow Gaussian centred at $s=1$ (coefficient of variation
+$\approx0.09$ at $\beta=10$), corresponding to nearly crystalline NN
+spacings. This is the expected behaviour for strong hard-core exclusion
+and does not imply any new universality class. The interpretation is
+purely phenomenological: $\beta$ quantifies the \emph{degree} of
+short-range order on a continuous scale, with $\beta\approx0.96$
+(CSR), $\beta\approx2$ (Ginibre-level), and $\beta\gtrsim5$
+(near-crystalline) serving as convenient reference points.
 
 \subsection{Scope and limitations of the calibration}
 
-The $\\beta$--$r_{\\text{excl}}$ calibration is not universal.\nIt depends on:\n\\begin{itemize}\n  \\item \\textbf{Point density:} absolute $\\beta$ values are\ndensity-dependent (Section~3.5). Cross-domain comparison requires\ndensity matching or the density-invariant\n$r_{\\text{excl}}/\\langle\\text{NN}\\rangle$ calibration.\n  \\item \\textbf{Embedding geometry:} $\\beta$ for arithmetic\nsequences varies from $2.15$ (row-major) to $1.40$ (Cantor) for\nthe same prime set. The embedding must be specified.\n  \\item \\textbf{Peak-detection strategy:} the watershed detector\nshifted absolute $\\beta$ values while preserving relative\nordering. Detector choice must be reported.\n  \\item \\textbf{Binary versus continuous domains:} the CSR baseline\ndiffers ($\\approx$1.46 versus 0.96). The appropriate baseline\nmust be used (Table~\\ref{tab:csr-baseline}).\n\\end{itemize}\nThese dependencies do not invalidate $\\beta$ as an exclusion\nmeasure---they define the measurement conditions under which it\nis valid. The contribution of this work is to identify and quantify\nthese conditions, providing the correction protocols required for\nreproducible Brody analysis in two dimensions.
+The $\beta$--$r_{\text{excl}}$ calibration is not universal.
+It depends on:
+\begin{itemize}
+  \item \textbf{Point density:} absolute $\beta$ values are
+density-dependent (Section~3.5). Cross-domain comparison requires
+density matching or the density-invariant
+$r_{\text{excl}}/\langle\text{NN}\rangle$ calibration.
+  \item \textbf{Embedding geometry:} $\beta$ for arithmetic
+sequences varies from $2.15$ (row-major) to $1.40$ (Cantor) for
+the same prime set. The embedding must be specified.
+  \item \textbf{Peak-detection strategy:} the watershed detector
+shifted absolute $\beta$ values while preserving relative
+ordering. Detector choice must be reported.
+  \item \textbf{Binary versus continuous domains:} the CSR baseline
+differs ($\approx$1.46 versus 0.96). The appropriate baseline
+must be used (Table~\ref{tab:csr-baseline}).
+\end{itemize}
+These dependencies do not invalidate $\beta$ as an exclusion
+measure---they define the measurement conditions under which it
+is valid. The contribution of this work is to identify and quantify
+these conditions, providing the correction protocols required for
+reproducible Brody analysis in two dimensions.
 
-\\subsection{The two CSR baselines}
+\subsection{The two CSR baselines}
 
 A necessary finding is that the 2D CSR baseline is
 $\beta=0.96\pm0.15$, not $\beta=0$. This correction is essential:

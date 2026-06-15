@@ -650,7 +650,7 @@ $\beta$.
   \centering
   \includegraphics[width=\textwidth]{fig_unified_beta_landscape.pdf}
   \caption{Brody exponent $\beta$ across all 58 analysable surfaces.
-           (a) Histogram with kernel density estimate. (b) $\beta$ by
+           Left: histogram with kernel density estimate. Right: $\beta$ by
            manufacturing process (box plots with individual points).
            The CSR baseline ($\beta=0.96$, grey band) is indicated.
            The earlier bar chart for 21 prominence-based surfaces
@@ -798,7 +798,7 @@ ruling out optimisation artefacts at large $\beta$.
 
 Synthetic hard-core processes produce a monotonic
 $\beta$--$r_{\text{excl}}/\langle\text{NN}\rangle$ mapping
-(Figure~\ref{fig:exclusion}a), reproducing the full range of
+(Figure~\ref{fig:exclusion}, left), reproducing the full range of
 observed $\beta$ values. An exclusion radius of
 $r_{\text{excl}}/\langle\text{NN}\rangle \approx 0.55$ yields
 $\beta \approx 2.0$, matching the 2D Ginibre ensemble
@@ -876,7 +876,7 @@ radius $r_{\text{excl}}$ around each point suppresses the probability
 density of the NN spacing distribution at $s < r_{\text{excl}}/
 \langle\text{NN}\rangle$, shifting probability mass to larger
 separations and increasing $\beta$. The monotonic $\beta$--$r_{\text{excl}}$
-mapping (Fig.~\ref{fig:exclusion}a) directly quantifies this effect.
+mapping (Fig.~\ref{fig:exclusion}, left) directly quantifies this effect.
 Second, \textbf{soft-core and many-body exclusion}: the Strauss
 soft-core process demonstrates that the $\beta$--exclusion relationship
 extends beyond the hard-core limit; even when points may approach
@@ -897,7 +897,7 @@ microscopic origin.
   \includegraphics[width=\textwidth]{fig_exclusion_physics.pdf}
   \caption{Exclusion physics: the Brody exponent $\beta$ as
            a measure of short-range exclusion.
-           (a) Synthetic hard-core point processes with
+           Left: synthetic hard-core point processes with
            exclusion radius $r_{\text{excl}}$ normalised by
            the mean nearest-neighbour distance (blue),
            2D Poisson CSR baseline ($\beta = 0.96 \pm 0.15$,
@@ -906,7 +906,7 @@ microscopic origin.
            (grey dots, $n=21$), 2D primes (purple), and PSI
            ceramic (red). The 2D CSR baseline is $\beta
            \approx 0.96$, not $\beta = 0$.
-           (b) $\beta$ across synthetic reference processes
+           Right: $\beta$ across synthetic reference processes
            and real-data domains.}
   \label{fig:exclusion}
 \end{figure*}
@@ -943,7 +943,7 @@ $g_2(r)$ across 14 surfaces with sufficient peak counts
 for reliable $g_2(r)$ estimation ($n_{\text{peaks}} \geq 50$;
 7 of 21 valid surfaces were excluded from the ensemble mean
 to avoid noise-dominated contributions)
-(Figure~\ref{fig:unified-g2}f)
+(Figure~\ref{fig:unified-g2}, bottom-left)
 lies between the Poisson and Ginibre limits, with a reduced but
 detectable dip at small $r$.
 
@@ -951,14 +951,14 @@ detectable dip at small $r$.
   \centering
   \includegraphics[width=\textwidth]{fig_unified_pair_correlation.pdf}
   \caption{Pair correlation function $g_2(r)$ across domains.
-           (a--d) Representative manufactured surfaces spanning
+           Top row: four representative manufactured surfaces spanning
            the Brody $\beta$ range, compared with the Ginibre
            prediction (solid black). $\beta$ values are from
-           Table~1. (e) 2D binary embedding of
+           Table~1. Middle left: 2D binary embedding of
            the primes at $N=10^5$ ($\beta=2.15$) and
-           matched-density Bernoulli null. (f) Ensemble-mean
+           matched-density Bernoulli null. Middle right: ensemble-mean
            $g_2(r)$ across 14 manufactured surfaces
-           ($\pm 1\sigma$ band). (g) Brody exponent $\beta$
+           ($\pm 1\sigma$ band). Bottom left: Brody exponent $\beta$
            across the three domains at native density.
            Density-thinning controls (Section~3.6) show that
            absolute $\beta$ values are density-dependent;
@@ -1055,11 +1055,11 @@ Figure~\ref{fig:embedding-robustness} summarises these results.
   \centering
   \includegraphics[width=\textwidth]{fig_embedding_robustness.pdf}
   \caption{Embedding dependence of the Brody exponent for 2D primes
-           at $N=10^5$. (a) $\beta$ under three deterministic embeddings
+           at $N=10^5$. Left: $\beta$ under three deterministic embeddings
            and the Bernoulli 2D control (matched density). Row-major
            and Ulam embeddings produce $\beta$ significantly above the
            spatially random control; Cantor pairing does not.
-           (b) Distribution of $\beta$ for 30 Bernoulli 2D realisations,
+           Right: distribution of $\beta$ for 30 Bernoulli 2D realisations,
            with the row-major prime value indicated.
            The embedding dependence demonstrates that $\beta$ for
            arithmetic sequences reflects both sequence structure and
@@ -1093,12 +1093,12 @@ and sparse-integer control results.
   \centering
   \includegraphics[width=\textwidth]{fig_density_thinning_control.pdf}
   \caption{Density-thinning and sparse-integer controls.
-           (a) Brody exponent $\beta$ for row-major primes thinned
+           Left: Brody exponent $\beta$ for row-major primes thinned
            to five densities ($\rho=0.01$--$0.096$), compared with
            density-matched CSR baselines (grey band). $\beta$ decreases
            with density ($\beta=2.15$ at $\rho=0.096$ to $\beta=1.30$
            at $\rho=0.01$) but remains above CSR at all densities.
-           (b) Sparse-integer control: 30 trials of $\pi(N)$ random
+           Right: sparse-integer control --- 30 trials of $\pi(N)$ random
            integers embedded identically to primes yield
            $\beta=1.47\pm0.02$, indistinguishable from the Bernoulli
            CSR baseline ($1.46\pm0.02$) and substantially below the
@@ -1131,10 +1131,10 @@ Figure~\ref{fig:sensitivity} provides the complete sensitivity profile.
   \centering
   \includegraphics[width=\textwidth]{fig_sensitivity_analysis.pdf}
   \caption{Peak-detection sensitivity analysis on a synthetic surface
-           with 50 embedded Gaussian peaks. (a) Brody $\beta$ versus
+           with 50 embedded Gaussian peaks. Left: Brody $\beta$ versus
            prominence threshold (\% of height range). $\beta$ is stable
            ($<0.01$ variation) across 1\%--11\% thresholds, then
-           decreases as genuine peaks are excluded. (b) Number of
+           decreases as genuine peaks are excluded. Right: number of
            detected peaks versus threshold. The 3\% threshold used
            throughout this work (dashed line) lies within the stable
            plateau.}

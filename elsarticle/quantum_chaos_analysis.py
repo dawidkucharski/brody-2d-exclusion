@@ -18,6 +18,7 @@ Compares against:
 """
 import numpy as np, os, struct, json
 from scipy import ndimage, signal, spatial, stats
+from scipy.special import erf
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
@@ -217,8 +218,9 @@ def compute_ks_statistics(spacings, label, n_bootstrap=200):
     # KS distances to each distribution
     ks_poisson = np.max(np.abs(ecdf - (1 - np.exp(-s))))
     ks_goe = np.max(np.abs(ecdf - (1 - np.exp(-np.pi * s**2 / 4))))
-    ks_gue = np.max(np.abs(ecdf - (1 - np.exp(-4 * s**2 / np.pi) * 
-                                   (1 + 4 * s**2 / np.pi))))
+    # GUE Wigner surmise CDF: F(s) = erf(2s/√π) − (4s/π)·exp(−4s²/π)
+    ks_gue = np.max(np.abs(ecdf - (erf(2 * s / np.sqrt(np.pi))
+                                   - (4 * s / np.pi) * np.exp(-4 * s**2 / np.pi))))
     
     # Fit Brody parameter β by maximum likelihood (simple grid search)
     from scipy.special import gamma as gamma_func
@@ -497,7 +499,7 @@ else:
 
 plt.suptitle('Quantum chaos statistics in measured surface textures\n'
              'Peak spacings & fringe spacings vs Poisson / GOE / GUE ensembles',
-             fontsize=12, fontweight='bold', y=1.01)
+             fontsize=12, fontweight='bold', y=0.96)
 plt.tight_layout()
 fig.savefig(f'{outdir}/fig_quantum_chaos_spacings.pdf', dpi=200,
             facecolor='white', edgecolor='none')

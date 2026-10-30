@@ -34,26 +34,27 @@
 
 \begin{abstract}
 Deterministic embeddings of one-dimensional arithmetic sequences into two
-dimensions can create or suppress apparent spatial structure. This paper studies
-binary 2D embeddings of the prime sequence at $N=10^5$ under three
+dimensions can create or suppress apparent spatial structure. In this paper,
+binary 2D embeddings of the prime sequence at $N=10^5$ are studied under three
 deterministic mappings: row-major order, the Ulam spiral, and Cantor pairing.
-I compare a local spacing descriptor derived from nearest-neighbour statistics
-with multiscale descriptors based on the correlation dimension $D_2$ and
-Banach-space invariants. The main result is a sharp contrast between descriptor
-classes. The nearest-neighbour spacing fit is strongly embedding-dependent: the
-fitted Brody parameter changes from $2.15$ for row-major embedding to $1.87$
-for the Ulam spiral and $1.40$ for Cantor pairing, while a matched-density
-Bernoulli control gives $1.47\pm0.02$. A sparse-integer control shows that the
-elevated row-major value is not a trivial consequence of low fill fraction.
-Density-thinning experiments further show that absolute Brody values change with
-density, but the row-major prime embedding remains separated from the
-density-matched null. In contrast, $D_2$ remains elevated relative to the
-Bernoulli null across deterministic embeddings, indicating that multiscale
-mass-distribution signatures of the prime sequence are more stable than local
-spacing signatures. These results show that 2D spatial statistics of arithmetic
-patterns are jointly determined by sequence structure and embedding geometry,
-and that local nearest-neighbour summaries and multiscale descriptors should
-not be interpreted interchangeably.
+A local spacing descriptor derived from nearest-neighbour statistics is
+compared with multiscale descriptors based on the correlation dimension $D_2$
+and Banach-space invariants. The main result is a sharp contrast between
+descriptor classes. The nearest-neighbour spacing fit is strongly
+embedding-dependent: the fitted Brody parameter changes from $2.15$ for
+row-major embedding to $1.87$ for the Ulam spiral and $1.40$ for Cantor
+pairing, while a matched-density Bernoulli control gives $1.47\pm0.02$. The
+elevated row-major value is shown by a sparse-integer control not to be a
+trivial consequence of low fill fraction. It is further shown by
+density-thinning experiments that absolute Brody values change with density,
+while the row-major prime embedding remains separated from the density-matched
+null. In contrast, $D_2$ remains elevated relative to the Bernoulli null
+across deterministic embeddings, indicating that multiscale mass-distribution
+signatures of the prime sequence are more stable than local spacing
+signatures. It follows from these results that 2D spatial statistics of
+arithmetic patterns are jointly determined by sequence structure and embedding
+geometry, and that local nearest-neighbour summaries and multiscale descriptors
+should not be interpreted interchangeably.
 \end{abstract}
 
 \begin{keyword}
@@ -93,15 +94,82 @@ a=\left[\Gamma\!\left(\frac{\beta+2}{\beta+1}\right)\right]^{\beta+1},
 \end{equation}
 was introduced in quantum chaos as a one-parameter interpolation between the
 Poisson and Wigner limits of one-dimensional level-spacing
-statistics~\cite{BRODY-1981}. It has since been used as a convenient empirical
-summary of local spacing regularity in several fields
-~\cite{STOCKMANN-1999,ALHASSID-2000,WEAVER-1989,LALOUX-1999}. For spatial point
-patterns, Sakhr and Nieminen showed that nearest-neighbour spacing statistics of
-random points on fractals can be described by Brody-type laws, thereby linking
-RMT-inspired spacing families to spatial data~\cite{SAKHR-NIEMINEN-2005}. In
+statistics~\cite{BRODY-1981}.
+
+The prime sequence itself has been examined with spacing statistics borrowed
+from random-matrix theory. In an analysis by Wolf of the
+nearest-neighbour-spacing distribution of primes, Poisson-type statistics were
+reported after suitable rescaling, which indicates pseudo-random behaviour at
+the smallest scales~\cite{WOLF-2014}. In a complementary study, the spacings between
+adjacent primes were investigated within classical and superstatistical
+random-matrix theory and were described as a mixture of regular and chaotic
+components~\cite{ABDELMAGEED-2021}. The tension between these two descriptions
+suggests that the local statistics attributed to the prime sequence depend on
+the representation, the rescaling, and the fitting model, a sensitivity that is
+made quantitative in the present work.
+
+Brody-type fits have since been used as a convenient empirical summary of
+local spacing regularity in several fields. The crossover between regular and
+chaotic level statistics in quantum-dot spectroscopy was described by
+Brody-type fits~\cite{ALHASSID-2000}. Applications of spacing statistics to
+wave-chaotic systems are reviewed in the monograph of
+St\"ockmann~\cite{STOCKMANN-1999}. In elastodynamics, spectral level spacings
+were fitted by Brody-type distributions to quantify departures from
+random-matrix predictions~\cite{WEAVER-1989}. Brody-type fits were also applied
+to eigenvalue spacings of financial correlation
+matrices~\cite{LALOUX-1999}. For spatial point patterns, it was shown by Sakhr
+and Nieminen that nearest-neighbour spacing statistics of random points on
+fractals can be described by Brody-type laws, thereby linking RMT-inspired
+spacing families to spatial data~\cite{SAKHR-NIEMINEN-2005}. In
 the present paper, $\beta$ is used only as an \emph{empirical fit parameter}
 for local nearest-neighbour spacings, not as a universal exclusion scale and
 not as evidence of any random-matrix symmetry class.
+
+A separate methodological tradition concerns spatial point patterns, for which
+distance-based summaries are standard. The nearest-neighbour index as a
+measure of departure from complete spatial randomness was introduced by Clark
+and Evans~\cite{CLARK-EVANS-1954}. The classical account of second-order
+summaries, centred on the $K$ function, was given by
+Ripley~\cite{RIPLEY-1981}. A systematic treatment of summary statistics and
+their edge corrections is provided in the monograph of Illian and
+co-workers~\cite{ILLIAN-2008}, and model-based inference for point processes is
+developed by Diggle~\cite{DIGGLE-2013}. Practical implementations of these
+diagnostics are available in the spatstat software~\cite{BADDELEY-TURNER-2005}.
+The choice of null model is not innocuous in this setting: it was shown by
+Roxburgh and Matsuki that null models must be validated against the
+autocorrelation structure of the data, because an inappropriate null can
+distort the type I error rate~\cite{ROXBURGH-MATSUKI-1999}. This caution
+applies directly to the Bernoulli nulls used in the present work, which are
+therefore always density-matched to the prime surface.
+
+At larger scales, fractal geometry provides the standard vocabulary for
+mass-distribution structure. Fractional dimension as a statistical descriptor
+was introduced by Mandelbrot~\cite{MANDELBROT-1967}, and fractal
+characterisations of spatial phenomena were surveyed by Goodchild and
+Mark~\cite{GOODCHILD-MARK-1987}. In nonlinear time-series analysis,
+correlation-dimension estimates separate low-dimensional deterministic
+dynamics from randomness; they must, however, be interpreted with
+caution: estimates can saturate for chaotic series, grow without bound for
+stochastic series, and be distorted by limited sample
+size~\cite{ISLAM-SIVAKUMAR-2002}. Related nearest-neighbour embedding
+diagnostics can misclassify stochastic data unless carefully
+modified~\cite{FREDKIN-RICE-1995}, and a statistically reliable
+nearest-neighbour estimator of the embedding dimension was proposed by
+Chelidze~\cite{CHELIDZE-2017}.
+
+These strands have developed largely independently. Prime-gap statistics treat
+the sequence without reference to a two-dimensional geometry; Brody
+nearest-neighbour results for fractals concern random point sets rather than
+deterministic arithmetic patterns; distance-based point-pattern methodology
+has been developed mainly for natural and experimental patterns; and
+correlation-dimension diagnostics have been applied mainly to time series. No
+single study compares a local Brody-type nearest-neighbour fit with multiscale
+descriptors under a validated, density-matched Bernoulli null across several
+deterministic two-dimensional embeddings of one arithmetic sequence. The
+research gap addressed by the present manuscript is therefore the missing
+comparison between descriptor classes for embedded deterministic sequences:
+whether the apparent spatial structure of an embedded prime sequence is a
+property of the sequence, of the embedding, or of the descriptor.
 
 For unit-mean nearest-neighbour spacings under complete spatial randomness in
 two dimensions, the analytic Rayleigh law,
@@ -116,7 +184,7 @@ serve as a compact local descriptor that is sensitive to embedding geometry,
 and how does that sensitivity compare with multiscale descriptors such as the
 correlation dimension $D_2$?
 
-This paper addresses that question for binary 2D prime patterns. Three
+The question is addressed in this paper for binary 2D prime patterns. Three
 deterministic embeddings are compared: row-major order, the Ulam spiral, and
 Cantor pairing. Two classes of controls are used. First, a matched-density
 Bernoulli null separates arithmetic structure from trivial occupancy effects.
@@ -202,10 +270,14 @@ each target $\rho$.
 
 \subsection{Multiscale descriptors}
 
-To contrast short-range and multiscale statistics, the correlation dimension
-$D_2$ is estimated from box-counting partition sums following the usual
-R\'enyi-dimension framework~\cite{RENYI-DIMENSIONS,HENTSCHEL-PROCACCIA-1983,
-GRASSBERGER-PROCACCIA-1983}. For a surface with box masses $M_k(\varepsilon)$
+To contrast short-range and multiscale statistics, $D_2$ is estimated from
+box-counting partition sums. Generalised dimensions of
+order $q$ were introduced by R\'enyi~\cite{RENYI-DIMENSIONS}. For fractals and
+strange attractors, the infinite family of generalised dimensions was
+derived by Hentschel and Procaccia~\cite{HENTSCHEL-PROCACCIA-1983}, and the
+correlation dimension as a practical estimator of strange-attractor structure
+was introduced by Grassberger and Procaccia~\cite{GRASSBERGER-PROCACCIA-1983}.
+For a surface with box masses $M_k(\varepsilon)$
 and total mass $M$, the order-$q$ partition function is
 \begin{equation}
 Z_q(\varepsilon)=\sum_{k}
@@ -279,10 +351,11 @@ to row-major ordering.
 
 \subsection{Sparse-integer and density-thinning controls}
 
-The sparse-integer control shows that the row-major prime signal is not a trivial
-artifact of low occupancy. Replacing the prime set by uniformly sampled random
-integers at matched count collapses the fitted value from $2.15$ to
-$1.47\pm0.02$, indistinguishable from the Bernoulli null. The local-spacing
+The possibility that the row-major prime signal is a trivial artifact of low
+occupancy is excluded by the sparse-integer control: when the prime set is
+replaced by uniformly sampled random integers at matched count, the fitted
+value collapses from $2.15$ to $1.47\pm0.02$, indistinguishable from the
+Bernoulli null. The local-spacing
 signal in the row-major prime embedding is therefore genuinely arithmetic in the
 sense that it depends on the specific prime set, not merely on the number of
 occupied sites.
@@ -312,10 +385,13 @@ A natural criticism of any specialised statistic is that it may add nothing to
 established spatial diagnostics. To address this, Table~\ref{tab:descriptors}
 reports, for the three prime embeddings and the two null configurations, the
 Brody parameter alongside the Clark--Evans nearest-neighbour index
-$R=\bar r\,(2\sqrt{\rho})$ (with $\bar r$ the mean nearest-neighbour distance),
-Ripley's $K$ function summarised both as $L(r)-r$ evaluated at the mean
+$R=\bar r\,(2\sqrt{\rho})$~\cite{CLARK-EVANS-1954} (with $\bar r$ the mean
+nearest-neighbour distance),
+Ripley's $K$ function~\cite{RIPLEY-1981} summarised both as $L(r)-r$ evaluated
+at the mean
 nearest-neighbour scale and through its maximal deviation over
-$r\in[1,W/3]$ pixels, the pair correlation function averaged over the annulus
+$r\in[1,W/3]$ pixels, the pair correlation function~\cite{ILLIAN-2008}
+averaged over the annulus
 $1\le r<3$ pixels, and the correlation dimension $D_2$. Estimator details
 (border correction, toroidal pair counting, bootstrap uncertainties) are given
 in the supplementary material. Null uncertainties are ensemble standard
@@ -364,9 +440,10 @@ The pair correlation function adds a distinctly arithmetic detail. For the
 row-major embedding, $g_2$ is enhanced in the annulus $1\le r<3$ ($1.06$
 versus $0.95$ for the null), reflecting the twin- and cousin-prime excess at
 integer separations $2$ and $4$, which the row-major map converts into direct
-horizontal neighbours. The Ulam and Cantor geometries do not map consecutive
-integers to adjacent row sites and show no such contact enhancement; Cantor
-instead shows small-scale exclusion. The correlation dimension completes the
+horizontal neighbours. In the Ulam and Cantor geometries, consecutive integers
+are not mapped to adjacent row sites, no such contact enhancement is present,
+and small-scale exclusion appears instead for the Cantor pattern. The
+correlation dimension completes the
 picture: it is the only descriptor tested that remains elevated relative to the
 null for all three embeddings, by $+0.025$ to $+0.044$ (6--11 null standard
 deviations).
@@ -449,14 +526,16 @@ viewed as an empirical summary of local nearest-neighbour regularity. It is
 useful precisely because it changes under deterministic re-embeddings that alter
 local adjacency relations, even when the underlying 1D sequence is held fixed.
 
-This makes the Cantor result particularly informative. If one observed only the
-row-major embedding, it would be easy to conclude that the prime sequence has a
-strong and intrinsic 2D local-spacing signature. The Cantor map shows that this
-is false. The observed short-range structure is a property of the pair
+This makes the Cantor result particularly informative. Had only the
+row-major embedding been examined, it would have been natural to conclude that
+the prime sequence has a strong and intrinsic 2D local-spacing signature. This
+conclusion is contradicted by the Cantor map. The observed short-range
+structure is a property of the pair
 (sequence, embedding), not of the sequence alone.
 
-At the same time, the $D_2$ and Banach-space analyses show that not all spatial
-signatures are equally fragile. The persistence of positive $\Delta D_2$ across
+At the same time, not all spatial signatures are shown by the $D_2$ and
+Banach-space analyses to be equally fragile. The persistence of positive
+$\Delta D_2$ across
 deterministic embeddings indicates that multiscale structure is more stable than
 local nearest-neighbour structure. This contrast resolves the tension between
 visual prime patterns, local spacing fits, and multiscale statistics: they are
@@ -486,9 +565,10 @@ Two-dimensional binary prime patterns do not possess a unique local spatial
 signature independent of embedding. The fitted Brody parameter changes from
 $2.15$ for row-major order to $1.87$ for the Ulam spiral and $1.40$ for Cantor
 pairing, while a matched-density Bernoulli null yields $1.47\pm0.02$. The
-sparse-integer control shows that the elevated row-major value is not explained
-by sparsity alone, and density-thinning shows that absolute values are
-density-dependent even when the prime signal remains separated from the null.
+elevated row-major value is shown by the sparse-integer control not to be
+explained by sparsity alone, and absolute values are shown by density-thinning
+to be density-dependent even when the prime signal remains separated from the
+null.
 
 In contrast, multiscale descriptors such as $D_2$ remain elevated relative to
 the Bernoulli null across deterministic embeddings. Local spacing summaries and
@@ -556,7 +636,8 @@ correlation dimension $D_2$ is the least-squares slope of the log--log
 box-counting partition function of order $q=2$ over box sizes $2$--$128$
 pixels. Null uncertainties are standard deviations over 20 independent
 realisations of the matched-density Bernoulli field and the sparse-integer
-control.
+control. Standard implementations of the distance-based diagnostics are
+available in the spatstat software~\cite{BADDELEY-TURNER-2005}.
 
 \subsection*{S2. Supplementary figures}
 

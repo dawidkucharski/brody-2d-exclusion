@@ -93,11 +93,11 @@ def gp_pair(pts, W, n_radii=12):
 
 # ── 5. g2 exact with complete shift classes ─────────────────────
 CLASSES = {
-    'r1':     {'m': 2, 'reps': [(1, 0), (0, 1)]},
+    'r1':     {'m': 4, 'reps': [(1, 0), (0, 1)]},
     'rsqrt2': {'m': 4, 'reps': [(1, 1), (1, -1)]},
-    'r2':     {'m': 2, 'reps': [(2, 0), (0, 2)]},
+    'r2':     {'m': 4, 'reps': [(2, 0), (0, 2)]},
     'rsqrt5': {'m': 8, 'reps': [(1, 2), (1, -2), (2, 1), (2, -1)]},
-    'r4':     {'m': 2, 'reps': [(4, 0), (0, 4)]},
+    'r4':     {'m': 4, 'reps': [(4, 0), (0, 4)]},
 }
 
 def g2_exact_full(surf):
@@ -107,7 +107,7 @@ def g2_exact_full(surf):
         tot = 0.0
         for dx, dy in spec['reps']:
             Ss = np.roll(np.roll(surf, dx, axis=1), dy, axis=0)
-            tot += int((surf & Ss).sum()) / 2.0
+            tot += int((surf & Ss).sum())
         expected = N * rho_ * spec['m'] / 2.0
         out[name] = tot / expected if expected > 0 else np.nan
     return out

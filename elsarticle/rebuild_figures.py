@@ -17,7 +17,7 @@ np.random.seed(2026)
 from audit_v2 import (primes_upto, row_major_surface, ulam_even_surface,
                       cantor_surface, coords, bernoulli_surface)
 from audit_v2b import g2_exact_full, CLASSES
-from benchmark_descriptors import fit_brody, nn_stats
+from benchmark_descriptors import fit_brody, nn_stats, rip_k_border
 
 primes = primes_upto(N_POP)
 surf = {'Row-major': row_major_surface(primes, N_POP, W),
@@ -56,15 +56,15 @@ d2c = {n: resb['boxcount_corr'][n.lower().replace('-', '_')] for n in names}
 gp = {n: det[n.lower().replace('-', '_')]['d2_gp'] for n in names}
 null_d2 = resb['nulls']['bernoulli']
 
-# g2 exact: deterministic + null sd (simulate 1000)
-g2d = {n: resb['g2_exact_full'][n.lower().replace('-', '_')] for n in names}
+# g2 exact: deterministic (recomputed with corrected normalisation) + null sd
+g2d = {n: g2_exact_full(surf[n]) for n in names}
 g2_keys = ['r1', 'rsqrt2', 'r2', 'rsqrt5', 'r4']
 g2_labels = {'r1': r'$r=1$', 'rsqrt2': r'$r=\sqrt{2}$', 'r2': r'$r=2$',
              'rsqrt5': r'$r=\sqrt{5}$', 'r4': r'$r=4$'}
 sim_g2 = {k: [] for k in g2_keys}
 sim_dir = {'h2': [], 'v2': [], 'h4': [], 'v4': []}
 sim_ann = []
-for i in range(1000):
+for i in range(2000):
     s = bernoulli_surface(W, 9580 / N_POP)
     g = g2_exact_full(s)
     for k in g2_keys:
@@ -200,6 +200,8 @@ for n in names:
     vals = [dir_g2[n]['h2'], dir_g2[n]['v2'], dir_g2[n]['h4'], dir_g2[n]['v4']]
     ax.plot(range(4), vals, 'o-', color=colors[n], lw=1.5, label=n)
 ax.axhline(1.0, color='k', lw=1)
+ax.axhline(1.3203, color='red', ls=':', lw=1.2)
+ax.text(3.35, 1.327, r'$2C_2\approx1.3203$', color='red', fontsize=8)
 for i, lab in enumerate(['h2', 'v2', 'h4', 'v4']):
     sd = sim_dir[lab].std(ddof=1)
     ax.fill_between([i - 0.3, i + 0.3], 1 - 1.96 * sd, 1 + 1.96 * sd,
@@ -210,6 +212,28 @@ ax.set_title(r'(b) Direction-resolved: twin ($r=2$) and cousin ($r=4$) separatio
 ax.legend(fontsize=8)
 plt.tight_layout()
 plt.savefig(f'{OUT}/fig_g2_distance.pdf', dpi=200, facecolor='white')
+plt.close()
+
+# ═══ FIG 4b: twin/cousin ablation ══════════════════════════════════
+fig, ax = plt.subplots(figsize=(7, 4))
+abl = {'original': (2.153, 1.466, 0.021),
+       'twins removed': (2.155, 1.408, 0.022),
+       'cousins removed': (2.149, 1.407, 0.023),
+       'both removed': (2.090, 1.350, 0.024)}
+x = np.arange(4)
+vals = np.array([abl[k][0] for k in abl])
+ax.bar(x, vals, color=['#1f77b4', '#ff7f0e', '#2ca02c', '#9467bd'], alpha=0.85)
+for i, k in enumerate(abl):
+    _, mu, sd = abl[k]
+    ax.plot([i - 0.4, i + 0.4], [mu, mu], 'k-', lw=2)
+    ax.fill_between([i - 0.4, i + 0.4], mu - 1.96 * sd, mu + 1.96 * sd,
+                    color='gray', alpha=0.3, zorder=0)
+    ax.text(i, vals[i] + 0.03, f'{vals[i]:.3f}', ha='center', fontsize=9)
+ax.set_xticks(x); ax.set_xticklabels(list(abl.keys()), fontsize=8)
+ax.set_ylabel(r'Brody $\beta$')
+ax.set_title('Ablation: removal of twin and cousin primes (matched nulls in grey)')
+plt.tight_layout()
+plt.savefig(f'{OUT}/fig_ablation.pdf', dpi=200, facecolor='white')
 plt.close()
 
 # ═══ FIG 5: descriptor benchmark (updated) ════════════════════════
@@ -261,6 +285,16 @@ for n in names:
     r = np.array(rip[n.lower().replace('-', '_')]['r'])
     L = np.array(rip[n.lower().replace('-', '_')]['L'])
     ax.plot(r, L, lw=1.8, color=colors[n], label=n)
+# null envelope (100 realisations, 18 bins)
+berL = []
+for i in range(100):
+    s0 = bernoulli_surface(W, 9580 / N_POP)
+    _, _, L0, _, _ = rip_k_border(coords(s0), W, W, r_max=W / 3.0, n_bins=18)
+    berL.append(L0)
+berL = np.array(berL)
+r0 = np.array(rip['row_major']['r'])
+ax.fill_between(r0, np.percentile(berL, 2.5, axis=0), np.percentile(berL, 97.5, axis=0),
+                color='gray', alpha=0.25, zorder=0, label='null 95\% band')
 ax.axhline(0, color='k', lw=0.8)
 ax.set_xlabel('r (pixels)'); ax.set_ylabel(r'$L(r)-r$'); ax.set_title('(c) Ripley summary')
 ax.legend(fontsize=8)

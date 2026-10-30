@@ -41,7 +41,9 @@ def brody_nll(beta, s):
           + beta * np.sum(np.log(s)) - a * np.sum(s ** (beta + 1)))
     return -ll
 
-def fit_brody(nn, n_bootstrap=200):
+def fit_brody(nn, n_bootstrap=200, rng=None):
+    if rng is None:
+        rng = np.random.default_rng()
     nn = nn[nn > 1e-10]
     if len(nn) < 10:
         return {'beta': np.nan, 'ci_low': np.nan, 'ci_high': np.nan, 'n': len(nn)}
@@ -52,7 +54,7 @@ def fit_brody(nn, n_bootstrap=200):
     beta = max(0.0, res.x)
     bs = []
     for _ in range(n_bootstrap):
-        idx = np.random.choice(len(s), len(s), replace=True)
+        idx = rng.choice(len(s), len(s), replace=True)
         try:
             r = optimize.minimize_scalar(
                 lambda b: brody_nll(b, s[idx]) if b >= 0 else 1e10,
@@ -61,6 +63,8 @@ def fit_brody(nn, n_bootstrap=200):
         except Exception:
             pass
     bs = np.array(bs)
+    if len(bs) == 0:
+        return {'beta': beta, 'ci_low': np.nan, 'ci_high': np.nan, 'n': len(nn)}
     return {'beta': beta,
             'ci_low': float(np.percentile(bs, 2.5)),
             'ci_high': float(np.percentile(bs, 97.5)),

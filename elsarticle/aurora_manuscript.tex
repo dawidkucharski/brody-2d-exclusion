@@ -45,14 +45,17 @@ The fitted Brody parameter is found to be strongly embedding-dependent:
 $2.153$ (95\% CI $[2.086,2.224]$) for row-major order, $1.856$ ($[1.811,1.904]$)
 for the Ulam spiral, and $1.413$ ($[1.387,1.440]$) for Cantor pairing, against
 $1.466\pm0.021$ for the density-matched lattice Bernoulli null over $1\,000$
-realisations, none of which exceeds $\beta=1.53$. The ordering survives all
+realisations, none of which approaches the row-major value (zero exceedances;
+a one-sided 95\% bound on the exceedance probability below $0.3\%$ by the
+rule of three). The ordering survives all
 boundary treatments tested, and it is not reproduced by an inhomogeneous
 Bernoulli null calibrated to the prime-number-theorem density. Exact-distance
 pair correlations of the row-major embedding equal $1.337\pm0.030$ at lattice
-distance $2$ in the horizontal direction, in agreement with the
-Hardy--Littlewood twin-prime constant $2C_2\approx1.3203$; the measured
-exact-distance pair counts of all three embeddings agree with the
-Hardy--Littlewood pair densities of the integer gap classes that each
+distance $2$ in the horizontal direction, consistent with the asymptotic
+Hardy--Littlewood twin-prime benchmark $2C_2\approx1.3203$ at the finite
+window considered; the measured
+exact-distance pair counts of all three embeddings agree with the exact
+prime-pair counts of the integer gap classes that each
 embedding maps to the corresponding lattice distance. The fitted parameter is
 insensitive to removal of all twin and cousin primes, so it is not a proxy
 for those pair excesses alone. None of the multiscale estimators examined
@@ -202,7 +205,13 @@ density gradient of the prime sequence. Third, a sparse-integer control and
 density-thinning experiments test whether the row-major prime signal is merely
 a consequence of low fill fraction. In parallel, multiscale structure is
 quantified through box-counting partition statistics and validated by the
-classical Grassberger--Procaccia pairwise correlation sum. The central result
+classical Grassberger--Procaccia pairwise correlation sum. The central
+contribution is methodological: the local spatial statistics of a
+deterministic sequence embedded in a two-dimensional lattice are not
+intrinsic to the sequence alone; they depend on the embedding, the spatial
+descriptor, and the null model used for interpretation. This dependence
+matters beyond prime-number visualisations, for any spatial analysis of
+discretely embedded deterministic datasets. The central result
 is that local spacing fits are strongly embedding-dependent, whereas none of
 the multiscale estimators examined provides a comparably robust
 discrimination. The same prime sequence therefore does not have a unique 2D
@@ -355,8 +364,9 @@ Cantor pairing. The interior-reference treatment gives $2.199$
 ($[1.402,1.455]$). Boundary effects therefore shift
 the fitted values by at most a few hundredths but do not affect the
 conclusions. As a distribution-free assessment, no null realisation among the
-$1\,000$ Bernoulli replicas produced a fitted $\beta$ above $1.526$, whereas
-the row-major value is $2.153$.
+$1\,000$ Bernoulli replicas approached the row-major value of $2.153$ (zero
+exceedances; a one-sided 95\% confidence bound on the exceedance probability
+is $3/1000\approx0.003$ by the rule of three).
 Figure~\ref{fig:embedding-robustness} compares the fitted values
 with the null ensemble, and Figure~\ref{fig:boundary-sensitivity} shows the
 boundary sensitivity explicitly.
@@ -410,7 +420,7 @@ boundary sensitivity explicitly.
 
 The row-major excess is not a consequence of sparsity. The sparse-integer
 control yields $\beta=1.465\pm0.020$, and the inhomogeneous Bernoulli null
-calibrated to the prime-number-theorem density yields $\beta=1.451\pm0.020$;
+calibrated to the prime-number-theorem density yields $\beta=1.450\pm0.021$;
 both are far below the row-major value of $2.153$ and close to the
 density-matched Bernoulli null. The smooth density gradient of the prime
 sequence therefore does not explain the elevated local spacing regularity of
@@ -423,7 +433,9 @@ $2.153$ (deterministic, no thinning) at $\rho=0.010$, $0.020$, $0.032$,
 $0.050$, $0.096$, against
 density-matched Bernoulli nulls of $1.030\pm0.063$, $1.091\pm0.043$,
 $1.155\pm0.035$, $1.248\pm0.028$, and $1.467\pm0.021$. The prime surface
-remains separated from the matched null at every tested density. The null
+remains separated from the matched null at every tested density, including
+the lowest ($\\rho=0.010$), where the difference is $0.128\\pm0.007$
+($z\\approx18$ with the stated ensemble sizes).
 level itself grows with density and approaches the continuous CSR value as
 the density decreases ($0.945\pm0.140$, $0.991\pm0.094$, $1.026\pm0.062$ at
 $\rho=0.002$, $0.005$, $0.010$), consistently with the known lattice-CSR
@@ -460,29 +472,33 @@ factor $79$ of the window side), consistent with the measured values.
 
 This identification is not merely qualitative. For every embedding and every
 lattice distance tested, the measured pair count was compared with the sum of
-the exact Hardy--Littlewood pair densities $\pi_g(x)$ of the integer gap
-classes $g$ that the embedding maps to that lattice distance (computed by
-sieve over the same window; Section S1.6). The measured-to-predicted ratios
+the exact prime-pair counts $\pi_g(x)$ of the integer gap classes $g$ that
+the embedding maps to that lattice distance, where $\pi_g(x)$ is computed by
+sieve over the same window (Section S1.6). The measured-to-reconstructed
+ratios
 are $0.962$, $0.941$, $0.939$ (row-major, $r=2,\sqrt5,4$), $1.000$, $0.977$,
 $0.987$ (Ulam, $r=\sqrt2,2,4$), and $0.975$, $0.962$, $0.948$ (Cantor,
 $r=\sqrt2,\sqrt5,4$). The exact-distance pair statistics of all three
-embeddings are therefore quantitatively accounted for by the
-Hardy--Littlewood pair densities of the gaps realised by each geometry; the
-survey of Soundararajan provides the context for these densities
-\cite{SOUNDARARAJAN-2007}.
+embeddings are therefore quantitatively accounted for by the prime-pair
+counts of the gaps realised by each geometry. These exact counts are a
+reconstruction of the prime-pair data, not an independent empirical
+validation of the Hardy--Littlewood conjecture; the asymptotic
+Hardy--Littlewood densities were conjectured by Hardy and
+Littlewood~\cite{HARDY-LITTLEWOOD-1923}, and the modern perspective on small
+prime gaps is surveyed by Soundararajan~\cite{SOUNDARARAJAN-2007}.
 
 In the Ulam spiral, distance $\sqrt2$ is enhanced ($g_2=2.057\pm0.021$),
 because spiral diagonal neighbours carry small even gaps ($4,6,8,\dots$) whose
-pair densities exceed the null; distances $2$ and $4$ are enhanced to
-$1.670$ and $1.683$ through the corresponding gap classes. In the Cantor
+exact prime-pair counts exceed the null level; distances $2$ and $4$ are
+enhanced to $1.670$ and $1.683$ through the corresponding gap classes. In the Cantor
 embedding, distance $\sqrt2$ is at the null level ($g_2=1.008\pm0.021$),
 because consecutive integers are diagonal neighbours only within the first
 $W$ diagonal blocks of the swept grid, while the long jumps at block
 boundaries carry large gaps; distance $2$ is almost completely suppressed
 ($g_2=0.010$), because the offsets $(\pm2,0),(0,\pm2)$ correspond to odd gaps
 $2s+3$, which admit almost no prime pairs, and distance $4$ is enhanced
-($g_2=1.931\pm0.021$), in agreement with the gap classes $4s+10$ of the
-sweep. Each embedding thus translates a different set of arithmetic gap
+($g_2=1.931\pm0.021$), in agreement with the exact pair counts of the gap
+classes $4s+10$ of the sweep. Each embedding thus translates a different set of arithmetic gap
 constraints into lattice distances, which is precisely why a single scalar
 spacing summary is embedding-dependent.
 
@@ -565,7 +581,7 @@ Table~\ref{tab:g2}.
     \toprule
     Descriptor & Row-major & Ulam & Cantor & Bernoulli & Inhomog. \\
     \midrule
-    Brody $\beta$ & $2.153$ & $1.856$ & $1.413$ & $1.466\pm0.021$ & $1.451\pm0.020$ \\
+    Brody $\beta$ & $2.153$ & $1.856$ & $1.413$ & $1.466\pm0.021$ & $1.450\pm0.021$ \\
     Clark--Evans $R$ & $1.223\ [1.214,1.231]$ & $1.153\ [1.145,1.162]$ & $1.107\ [1.097,1.116]$ & $1.076\pm0.005$ & $1.075\pm0.005$ \\
     $L(r)-r$ at NN scale & $-0.894$ & $-0.241$ & $-0.184$ & $-0.139\pm0.020$ & --- \\
     $\max|L(r)-r|$ & $8.97$ & $9.01$ & $9.29$ & $8.93\pm0.11$ & --- \\
@@ -631,6 +647,19 @@ survives all boundary treatments tested, and it is not reproduced by an
 inhomogeneous null with the prime-number-theorem density gradient. The
 sparse-integer control likewise fails to reproduce the row-major value.
 
+The relevance of this finding extends beyond prime-number visualisations.
+Spatial summaries such as nearest-neighbour fits, Ripley's $K$ and pair
+correlation functions are routinely applied to deterministic datasets that
+have been discretised onto lattices (rasterised fields, binary masks, coded
+apertures, cellular automata, and sequences visualised for exploratory
+analysis). The present results show that for such datasets the descriptor
+value is a joint property of the data, the embedding, and the null model, and
+that different embeddings of the same information can yield qualitatively
+different statistical characterisations. Reporting an embedding-dependent
+descriptor without specifying the embedding geometry therefore risks
+attributing to the data a structure that is in fact created by the
+representation.
+
 The Cantor result is particularly informative in this respect. Had only the
 row-major embedding been examined, it would have been natural to conclude that
 the prime sequence has a strong and intrinsic 2D local-spacing signature. This
@@ -640,11 +669,12 @@ alone.
 
 The exact-distance pair correlations give the clearest account of why. Each
 embedding translates a specific set of arithmetic gap constraints into
-lattice distances; the measured pair counts are quantitatively predicted by
-the Hardy--Littlewood pair densities of the gap classes realised by each
+lattice distances; the measured pair counts are quantitatively accounted for
+by the exact prime-pair counts of the gap classes realised by each
 embedding (Section S1.6), and for the row-major embedding the horizontal pair
-correlation at distance $2$ equals $1.337\pm0.030$, in quantitative agreement
-with the Hardy--Littlewood twin-prime constant $2C_2\approx1.3203$. The
+correlation at distance $2$ equals $1.337\pm0.030$, consistent with the
+asymptotic Hardy--Littlewood twin-prime benchmark $2C_2\approx1.3203$ at the
+finite window considered. The
 relationship between these distance-resolved effects and the scalar fit was
 tested directly by ablation: removal of all twin primes or of all cousin
 primes leaves the fitted parameter essentially unchanged ($2.153\to2.155$ and
@@ -691,10 +721,11 @@ control and by the inhomogeneous prime-number-theorem null not to be explained
 by sparsity or by the density gradient, and absolute values are shown by
 density-thinning to be density-dependent even when the prime signal remains
 separated from the null. Exact-distance pair correlations of the row-major
-embedding reproduce the Hardy--Littlewood twin-prime excess
-$2C_2\approx1.3203$ at distance $2$, and the pair counts of all three
-embeddings are quantitatively predicted by the Hardy--Littlewood gap
-densities of their realised gap classes. Multiscale estimators, by contrast,
+embedding are consistent with the asymptotic Hardy--Littlewood twin-prime
+benchmark $2C_2\approx1.3203$ at distance $2$ in the finite window
+considered, and the pair counts of all three
+embeddings are quantitatively accounted for by the exact prime-pair counts of
+their realised gap classes. Multiscale estimators, by contrast,
 are found to provide no additional discrimination between embeddings at the
 scales tested. The
 appropriate conclusion is not that one descriptor is universally superior,
@@ -768,30 +799,39 @@ implementations of the distance-based diagnostics are available in the spatstat
 software~\cite{BADDELEY-TURNER-2005}.
 
 \textbf{S1.5 Inhomogeneous null calibration.}
-For cell value $n\ge3$ the occupation probability is $p(n)=c/\ln n$, with
-$p(1)=p(2)=0$ and $c$ chosen so that the expected occupancy equals the prime
-count $9\,580$. The calibration constant is
-$c=9\,580/\sum_{n=3}^{99856}1/\ln n\approx1.048$.
+The inhomogeneous Bernoulli null occupies cell $n=2$ with probability $1$
+(reflecting the prime population, which contains $2$), leaves cell $n=1$
+unoccupied, and occupies each cell $n\ge3$ with probability $p(n)=c/\ln n$,
+where the calibration constant
+$c=9\,579/\sum_{n=3}^{99856}1/\ln n\approx0.9962$ is chosen so that the
+expected number of occupied cells equals the prime count $9\,580$ exactly.
+The probability is bounded by $p(n)\le\min(1,c/\ln n)\approx0.907$ at $n=3$,
+so no truncation is active.
 
-\textbf{S1.6 Gap classes and Hardy--Littlewood predictions.}
+\textbf{S1.6 Gap classes and exact prime-pair counts.}
 For each embedding and each shift class of Section S1.3, the multiset of
 integer gaps realised by that shift was enumerated over all cells of the
 window, and the expected pair count was computed as
 $\sum_g m_g\,\pi_g(x)/(x-g)$, where $m_g$ is the multiplicity of gap $g$ and
 $\pi_g(x)$ is the exact number of prime pairs with difference $g$ below
 $x=99\,856$, obtained by sieve. Table~\ref{tab:hl} lists the measured pair
-counts and the predictions. Ratios near unity show that the exact-distance
-pair statistics of the prime patterns are accounted for by the
-Hardy--Littlewood pair densities~\cite{HARDY-LITTLEWOOD-1923} of the gap
-classes realised by each embedding, with the largest deviations confined to
-wrap cells at the window boundary (e.g., row-major $r=1$, ratio $0.869$).
+counts and the reconstructions. Ratios near unity show that the
+exact-distance pair statistics of the prime patterns are a direct
+consequence of the prime-pair counts of the gap classes realised by each
+embedding, with the largest deviations confined to wrap cells at the window
+boundary (e.g., row-major $r=1$, ratio $0.869$). It is emphasised that these
+counts are exact reconstructions of the prime-pair data and do not constitute
+an independent empirical validation of the Hardy--Littlewood conjecture; the
+asymptotic Hardy--Littlewood densities~\cite{HARDY-LITTLEWOOD-1923}, with the
+twin-prime constant $2C_2$, are used in the main text only as the large-$x$
+background against which the horizontal $r=2$ excess is interpreted.
 
 \begin{table}[h]
   \centering
-  \caption{Measured exact-distance pair counts versus Hardy--Littlewood
-           predictions for the gap classes realised by each embedding.
-           $\pi_g(x)$ denotes the exact number of prime pairs of difference
-           $g$ below $x=99\,856$ (sieve).}
+  \caption{Measured exact-distance pair counts versus exact sieve-based
+           gap-class pair counts for the gap classes realised by each
+           embedding. $\pi_g(x)$ denotes the exact number of prime pairs of
+           difference $g$ below $x=99\,856$ (sieve).}
   \label{tab:hl}
   \footnotesize
   \setlength{\tabcolsep}{3pt}

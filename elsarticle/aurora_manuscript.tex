@@ -13,6 +13,8 @@
 \usepackage{booktabs}
 \usepackage{float}
 \pdfstringdefDisableCommands{\def\corref#1{}}
+\emergencystretch=1.5em
+\Urlmuskip=0mu plus 2mu
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -1061,11 +1063,10 @@ The inputs are the prime set generated from the stated upper bound and the
 cached U.S.~Geological Survey seismic catalogue, which is refetchable with
 the accompanying seismic application script. The analysis scripts, parameter
 settings, random seeds, generated numerical results and figure-building code
-are included in the accompanying reproducibility package, released as version
-2.3.0 at \url{https://github.com/dawidkucharski/brody-2d-exclusion} and
-archived on Zenodo \citep{KUCHARSKI-2026-CODE}. The version DOI is
-\url{https://doi.org/10.5281/zenodo.23942618} and the concept DOI is
-\url{https://doi.org/10.5281/zenodo.23940934}.
+are included in the accompanying reproducibility package, released at
+\url{https://github.com/dawidkucharski/brody-2d-exclusion} and archived on
+Zenodo under the concept DOI \url{https://doi.org/10.5281/zenodo.23940934},
+which resolves to the latest release \citep{KUCHARSKI-2026-CODE}.
 
 \section*{Acknowledgements}
 NumPy \citep{HARRIS-2020} and SciPy \citep{VIRTANEN-2020} were used for the
@@ -1073,6 +1074,12 @@ computations. Figures were prepared using Matplotlib \citep{HUNTER-2007}.
 
 \section*{Declaration of competing interests}
 The author declares no competing interests.
+
+\section*{Declaration of generative AI in scientific writing}
+During the preparation of this work the author used an AI-assisted tool
+(GitHub Copilot). After using this tool, the author reviewed and edited the
+content as needed and takes full responsibility for the content of the
+publication.
 
 \bibliographystyle{elsarticle-harv}
 \bibliography{aurora_refs}

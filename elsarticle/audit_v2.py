@@ -68,19 +68,17 @@ def nn_stats(pts):
 
 def nn_toroidal(pts, W):
     """Nearest-neighbour distances with periodic boundary conditions."""
-    best = np.full(len(pts), np.inf)
-    tree = spatial.KDTree(pts)
-    for dx in (-W, 0, W):
-        for dy in (-W, 0, W):
-            shifted = pts + np.array([dx, dy])
-            d, _ = tree.query(shifted, k=1)
-            best = np.minimum(best, d)
-    return best[best > 1e-9]
+    if len(pts) < 2:
+        return None
+    tree = spatial.cKDTree(pts, boxsize=W)
+    distances, _ = tree.query(pts, k=2)
+    return distances[:, 1]
 
 def nn_interior(pts, W, margin=5):
     """NN distances from interior reference points only (Euclidean)."""
-    mask = ((pts[:, 0] >= margin) & (pts[:, 0] <= W - margin) &
-            (pts[:, 1] >= margin) & (pts[:, 1] <= W - margin))
+    centres = pts + 0.5
+    mask = ((centres[:, 0] >= margin) & (centres[:, 0] <= W - margin) &
+            (centres[:, 1] >= margin) & (centres[:, 1] <= W - margin))
     ref = pts[mask]
     if len(ref) < 2:
         return None
@@ -112,35 +110,40 @@ SHIFTS = [('r1', 1, 0, 2), ('rsqrt2', 1, 1, 4), ('r2', 2, 0, 2),
           ('rsqrt5', 1, 2, 4), ('r4', 4, 0, 2)]
 
 def g2_annulus_toroidal(pts, W, r_min=1.0, r_max=3.0, n_sample=3000, seed=0):
+    if len(pts) < 2 or not 0 <= r_min < r_max <= W / 2 or n_sample < 1:
+        raise ValueError('invalid points, annulus radii, or sample size')
     rng = np.random.default_rng(seed)
     n = len(pts)
     rho = n / (W * W)
-    tree = spatial.KDTree(pts)
+    tree = spatial.cKDTree(pts, boxsize=W)
     idx = rng.choice(n, size=min(n, n_sample), replace=False)
-    pair_count = 0
     area_ann = np.pi * (r_max ** 2 - r_min ** 2)
-    for i in idx:
-        p = pts[i]
-        for dx9 in (-W, 0, W):
-            for dy9 in (-W, 0, W):
-                qs = tree.query_ball_point(p + [dx9, dy9], r_max)
-                for q in qs:
-                    if q == i and dx9 == 0 and dy9 == 0:
-                        continue
-                    dd = np.hypot(pts[q, 0] + dx9 - p[0],
-                                  pts[q, 1] + dy9 - p[1])
-                    if r_min <= dd < r_max:
-                        pair_count += 1
+    outer = tree.query_ball_point(pts[idx], np.nextafter(r_max, -np.inf), return_length=True)
+    inner_radius = max(0.0, np.nextafter(r_min, -np.inf))
+    inner = tree.query_ball_point(pts[idx], inner_radius, return_length=True)
+    pair_count = int(np.sum(outer - inner))
     return float((pair_count / len(idx)) / (rho * area_ann))
 
 # ── Inhomogeneous Bernoulli null (prime-number-theorem density) ───
-def inhomogeneous_surface(W, target, rng):
-    """p(v) = c / ln(v) for v >= 3, calibrated to `target` occupied sites."""
+def inhomogeneous_probabilities(W, target):
+    """Return probabilities and calibration with p(1)=0 and p(2)=1."""
+    if W * W < 3 or not 1 <= target <= W * W - 1:
+        raise ValueError('target must be between 1 and W*W - 1')
     v = np.arange(1, W * W + 1)
     wts = np.zeros_like(v, dtype=float)
     wts[2:] = 1.0 / np.log(v[2:])
-    c = target / wts.sum()
+    c = (target - 1) / wts.sum()
+    if np.any(c * wts[2:] > 1):
+        c = optimize.brentq(
+            lambda value: np.minimum(1.0, value * wts[2:]).sum() + 1 - target,
+            0.0, np.log(W * W))
     p = np.minimum(1.0, c * wts)
+    p[1] = 1.0
+    return p, float(c)
+
+def inhomogeneous_surface(W, target, rng):
+    """Draw a row-major inhomogeneous Bernoulli field with the given mean count."""
+    p, _ = inhomogeneous_probabilities(W, target)
     return rng.random((W, W)) < p.reshape(W, W)
 
 # ── D2: box counting with diagnostics ─────────────────────────────

@@ -261,7 +261,7 @@ def main():
         f'One 360° segment from {NREV} continuous $400^\\circ$ rotations '
         f'({NREV}$\\times${FPR} frames), EFM+tracking, '
         f'$\\lambda$={WL}nm, LSCI+{UPR}UPR Gaussian',
-        fontsize=12,fontweight='bold',y=1.02)
+        fontsize=12,fontweight='bold',y=0.96)
     op=f'{OUTDIR}/fig_psi_ceramic_analysis.pdf'
     fig.savefig(op,dpi=200,facecolor='white',edgecolor='none',bbox_inches='tight')
     plt.close(fig)

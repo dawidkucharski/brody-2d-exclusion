@@ -1,408 +1,656 @@
-[
-  {
-    "label": "1.4301 steel Honed",
-    "npk": 49,
-    "nns": 49,
-    "beta": 4.0,
-    "grid_lim": false
-  },
-  {
-    "label": "1.4301 steel Bead blasted",
-    "npk": 11757,
-    "nns": 11755,
-    "beta": 1.5,
-    "grid_lim": true
-  },
-  {
-    "label": "1.4301 steel Ground",
-    "npk": 32,
-    "nns": 21,
-    "beta": 2.2,
-    "grid_lim": false
-  },
-  {
-    "label": "1.4301 steel Finish turned",
-    "npk": 458,
-    "nns": 428,
-    "beta": 0.4,
-    "grid_lim": false
-  },
-  {
-    "label": "Al Honed",
-    "npk": 20913,
-    "nns": 20913,
-    "beta": 1.6,
-    "grid_lim": true
-  },
-  {
-    "label": "Al7075 Finish turned",
-    "npk": 34,
-    "nns": 33,
-    "beta": 1.3000000000000003,
-    "grid_lim": false
-  },
-  {
-    "label": "Al Bead blasted",
-    "npk": 25,
-    "nns": 23,
-    "beta": 2.4000000000000004,
-    "grid_lim": false
-  },
-  {
-    "label": "Al Ground",
-    "npk": 169,
-    "nns": 167,
-    "beta": 1.2000000000000002,
-    "grid_lim": false
-  },
-  {
-    "label": "C45 steel Honed",
-    "npk": 23222,
-    "nns": 23222,
-    "beta": 1.8000000000000003,
-    "grid_lim": true
-  },
-  {
-    "label": "C45 steel Bead blasted",
-    "npk": 5209,
-    "nns": 5198,
-    "beta": 0.8000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "C45 steel Ground",
-    "npk": 14793,
-    "nns": 14791,
-    "beta": 1.4,
-    "grid_lim": true
-  },
-  {
-    "label": "C45 steel Finish turned",
-    "npk": 15279,
-    "nns": 15277,
-    "beta": 1.6,
-    "grid_lim": true
-  },
-  {
-    "label": "ELLOR Finish turned",
-    "npk": 5887,
-    "nns": 5887,
-    "beta": 1.2000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "Graphite Honed",
-    "npk": 54,
-    "nns": 52,
-    "beta": 0.9,
-    "grid_lim": false
-  },
-  {
-    "label": "Graphite Bead blasted",
-    "npk": 3271,
-    "nns": 3271,
-    "beta": 1.1,
-    "grid_lim": true
-  },
-  {
-    "label": "Graphite Ground",
-    "npk": 3066,
-    "nns": 3064,
-    "beta": 0.8000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "MO58A brass Finish turned",
-    "npk": 6234,
-    "nns": 6198,
-    "beta": 1.3000000000000003,
-    "grid_lim": true
-  },
-  {
-    "label": "Brass Honed",
-    "npk": 9546,
-    "nns": 9537,
-    "beta": 1.2000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "Brass Bead blasted",
-    "npk": 7659,
-    "nns": 7653,
-    "beta": 1.6,
-    "grid_lim": true
-  },
-  {
-    "label": "Brass Ground",
-    "npk": 17338,
-    "nns": 17338,
-    "beta": 1.7000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "P1-1.4301-t.zgrub",
-    "npk": 4705,
-    "nns": 4700,
-    "beta": 0.9,
-    "grid_lim": true
-  },
-  {
-    "label": "1.4301 steel Finish milled",
-    "npk": 29,
-    "nns": 18,
-    "beta": 3.1,
-    "grid_lim": false
-  },
-  {
-    "label": "1.4301 steel Rough milled",
-    "npk": 2786,
-    "nns": 2747,
-    "beta": 0.7000000000000001,
-    "grid_lim": true
-  },
-  {
-    "label": "1.4301 steel Burnished",
-    "npk": 68,
-    "nns": 65,
-    "beta": 1.8000000000000003,
-    "grid_lim": false
-  },
-  {
-    "label": "1.4301 steel WEDM finish",
-    "npk": 2226,
-    "nns": 2226,
-    "beta": 1.0,
-    "grid_lim": true
-  },
-  {
-    "label": "1.4301 steel WEDM rough",
-    "npk": 5549,
-    "nns": 5549,
-    "beta": 1.2000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "Al7075 Burnished",
-    "npk": 30,
-    "nns": 29,
-    "beta": 3.1,
-    "grid_lim": false
-  },
-  {
-    "label": "Al7075 WEDM finish",
-    "npk": 1380,
-    "nns": 1380,
-    "beta": 0.8000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "Al7075 WEDM rough",
-    "npk": 16131,
-    "nns": 16131,
-    "beta": 1.9000000000000004,
-    "grid_lim": true
-  },
-  {
-    "label": "Al7075 Finish milled",
-    "npk": 44,
-    "nns": 43,
-    "beta": 3.7000000000000006,
-    "grid_lim": false
-  },
-  {
-    "label": "Al7075 Rough turned",
-    "npk": 5554,
-    "nns": 5543,
-    "beta": 1.6,
-    "grid_lim": true
-  },
-  {
-    "label": "C45 steel Finish milled",
-    "npk": 1443,
-    "nns": 1405,
-    "beta": 0.5,
-    "grid_lim": true
-  },
-  {
-    "label": "C45 steel Rough milled",
-    "npk": 8180,
-    "nns": 8161,
-    "beta": 0.9,
-    "grid_lim": true
-  },
-  {
-    "label": "C45 steel Burnished",
-    "npk": 89,
-    "nns": 88,
-    "beta": 1.3000000000000003,
-    "grid_lim": false
-  },
-  {
-    "label": "C45 steel Rough turned",
-    "npk": 3520,
-    "nns": 3483,
-    "beta": 0.7000000000000001,
-    "grid_lim": true
-  },
-  {
-    "label": "C45 steel WEDM finish",
-    "npk": 20236,
-    "nns": 20236,
-    "beta": 2.1,
-    "grid_lim": true
-  },
-  {
-    "label": "C45 steel WEDM rough",
-    "npk": 16697,
-    "nns": 16697,
-    "beta": 1.9000000000000004,
-    "grid_lim": true
-  },
-  {
-    "label": "ELLOR Finish milled",
-    "npk": 3172,
-    "nns": 3099,
-    "beta": 0.8000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "ELLOR Rough milled",
-    "npk": 10692,
-    "nns": 10686,
-    "beta": 1.2000000000000002,
-    "grid_lim": true
-  },
-  {
-    "label": "ELLOR Rough turned",
-    "npk": 11230,
-    "nns": 11229,
-    "beta": 1.3000000000000003,
-    "grid_lim": true
-  },
-  {
-    "label": "ELLOR WEDM finish",
-    "npk": 855,
-    "nns": 778,
-    "beta": 0.5,
-    "grid_lim": true
-  },
-  {
-    "label": "ELLOR WEDM rough",
-    "npk": 6961,
-    "nns": 6942,
-    "beta": 0.9,
-    "grid_lim": true
-  },
-  {
-    "label": "MO58A brass Finish milled",
-    "npk": 183,
-    "nns": 180,
-    "beta": 0.0,
-    "grid_lim": false
-  },
-  {
-    "label": "MO58A brass Rough milled",
-    "npk": 15293,
-    "nns": 15292,
-    "beta": 1.5,
-    "grid_lim": true
-  },
-  {
-    "label": "MO58A brass Burnished",
-    "npk": 41,
-    "nns": 41,
-    "beta": 4.3,
-    "grid_lim": false
-  },
-  {
-    "label": "MO58A brass Rough turned",
-    "npk": 335,
-    "nns": 279,
-    "beta": 0.7000000000000001,
-    "grid_lim": false
-  },
-  {
-    "label": "MO58A brass WEDM finish",
-    "npk": 86,
-    "nns": 61,
-    "beta": 0.8000000000000002,
-    "grid_lim": false
-  },
-  {
-    "label": "MO58A brass WEDM rough",
-    "npk": 21845,
-    "nns": 21845,
-    "beta": 2.2,
-    "grid_lim": true
-  },
-  {
-    "label": "Ti6Al4V Finish milled",
-    "npk": 9785,
-    "nns": 9765,
-    "beta": 1.0,
-    "grid_lim": true
-  },
-  {
-    "label": "Ti6Al4V Rough milled",
-    "npk": 109,
-    "nns": 84,
-    "beta": 0.4,
-    "grid_lim": false
-  },
-  {
-    "label": "Ti6Al4V Burnished",
-    "npk": 28,
-    "nns": 28,
-    "beta": 2.6,
-    "grid_lim": false
-  },
-  {
-    "label": "Ti6Al4V Finish turned",
-    "npk": 12470,
-    "nns": 12470,
-    "beta": 1.3000000000000003,
-    "grid_lim": true
-  },
-  {
-    "label": "Ti6Al4V Rough turned",
-    "npk": 8312,
-    "nns": 8311,
-    "beta": 1.5,
-    "grid_lim": true
-  },
-  {
-    "label": "Ti6Al4V WEDM finish",
-    "npk": 24012,
-    "nns": 24012,
-    "beta": 2.3000000000000003,
-    "grid_lim": true
-  },
-  {
-    "label": "Ti6Al4V WEDM rough",
-    "npk": 23829,
-    "nns": 23829,
-    "beta": 2.4000000000000004,
-    "grid_lim": true
-  },
-  {
-    "label": "Ti6Al4V Honed",
-    "npk": 32,
-    "nns": 27,
-    "beta": 1.4,
-    "grid_lim": false
-  },
-  {
-    "label": "Ti6Al4V Bead blasted",
-    "npk": 97,
-    "nns": 94,
-    "beta": -0.09999999999999998,
-    "grid_lim": false
-  },
-  {
-    "label": "Ti6Al4V Ground",
-    "npk": 98,
-    "nns": 96,
-    "beta": -0.2,
-    "grid_lim": false
-  }
-]
+{
+  "fv_surfaces": [
+    {
+      "label": "1.4301 steel Honed (x-spacings)",
+      "n_spacings": 727,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.618798705995775,
+      "ks_goe": 0.5195991147647647,
+      "ks_gue": 0.5024386447457634,
+      "best_brody_beta": 1.4000000000000001,
+      "closest_to": "GUE",
+      "best_ks": 0.5024386447457634
+    },
+    {
+      "label": "1.4301 steel Bead blasted (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "1.4301 steel Ground (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "1.4301 steel Finish turned (x-spacings)",
+      "n_spacings": 512,
+      "mean_spacing": 1.0000000000000002,
+      "ks_poisson": 0.5453668091614592,
+      "ks_goe": 0.5578364717615752,
+      "ks_gue": 0.6067431346734529,
+      "best_brody_beta": 0.20000000000000007,
+      "closest_to": "Poisson",
+      "best_ks": 0.5453668091614592
+    },
+    {
+      "label": "Al Honed (x-spacings)",
+      "n_spacings": 756,
+      "mean_spacing": 0.9999999999999999,
+      "ks_poisson": 0.6245259152127934,
+      "ks_goe": 0.5305748429609016,
+      "ks_gue": 0.5163168567859833,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5163168567859833
+    },
+    {
+      "label": "Al7075 Finish turned (x-spacings)",
+      "n_spacings": 733,
+      "mean_spacing": 0.9999999999999997,
+      "ks_poisson": 0.612647378322698,
+      "ks_goe": 0.5078422465941281,
+      "ks_gue": 0.4875754096581531,
+      "best_brody_beta": 2.1,
+      "closest_to": "GUE",
+      "best_ks": 0.4875754096581531
+    },
+    {
+      "label": "Al Bead blasted (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "Al Ground (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "C45 steel Honed (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "C45 steel Bead blasted (x-spacings)",
+      "n_spacings": 748,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6215567990608383,
+      "ks_goe": 0.5248624469694573,
+      "ks_gue": 0.5090883976780778,
+      "best_brody_beta": 1.7000000000000002,
+      "closest_to": "GUE",
+      "best_ks": 0.5090883976780778
+    },
+    {
+      "label": "C45 steel Ground (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "C45 steel Finish turned (x-spacings)",
+      "n_spacings": 763,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6274503364827082,
+      "ks_goe": 0.5362237851921314,
+      "ks_gue": 0.5234687642693152,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5234687642693152
+    },
+    {
+      "label": "ELLOR Finish turned (x-spacings)",
+      "n_spacings": 709,
+      "mean_spacing": 1.0000000000000002,
+      "ks_poisson": 0.6075993879569804,
+      "ks_goe": 0.49832065365190437,
+      "ks_gue": 0.484934404594873,
+      "best_brody_beta": 1.4000000000000001,
+      "closest_to": "GUE",
+      "best_ks": 0.484934404594873
+    },
+    {
+      "label": "Graphite Honed (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "Graphite Bead blasted (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "Graphite Ground (x-spacings)",
+      "n_spacings": 769,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6303420928318194,
+      "ks_goe": 0.5418310263557856,
+      "ks_gue": 0.5305707063304349,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5305707063304349
+    },
+    {
+      "label": "MO58A brass Finish turned (x-spacings)",
+      "n_spacings": 474,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6238540186134499,
+      "ks_goe": 0.5300101962965066,
+      "ks_gue": 0.5158114291460936,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5158114291460936
+    },
+    {
+      "label": "Brass Honed (x-spacings)",
+      "n_spacings": 575,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.5781640136281653,
+      "ks_goe": 0.5156547558844452,
+      "ks_gue": 0.5518992007279844,
+      "best_brody_beta": 0.4,
+      "closest_to": "GOE",
+      "best_ks": 0.5156547558844452
+    },
+    {
+      "label": "Brass Bead blasted (x-spacings)",
+      "n_spacings": 590,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.5463073279082884,
+      "ks_goe": 0.5840005083171911,
+      "ks_gue": 0.6326725849659982,
+      "best_brody_beta": 0.15000000000000002,
+      "closest_to": "Poisson",
+      "best_ks": 0.5463073279082884
+    },
+    {
+      "label": "Brass Ground (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "1.4301 steel Rough turned (x-spacings)",
+      "n_spacings": 758,
+      "mean_spacing": 1.0000000000000002,
+      "ks_poisson": 0.625023204360629,
+      "ks_goe": 0.5315326539570786,
+      "ks_gue": 0.517528918817147,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.517528918817147
+    },
+    {
+      "label": "1.4301_frez_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "1.4301_frez_zgrub (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "1.4301_nagniat (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "1.4301_wedm_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "1.4301_wedm_zgru (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "AL70752_nagniat (x-spacings)",
+      "n_spacings": 396,
+      "mean_spacing": 0.9999999999999999,
+      "ks_poisson": 0.6268188708198951,
+      "ks_goe": 0.536140322440071,
+      "ks_gue": 0.5236872241075078,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5236872241075078
+    },
+    {
+      "label": "AL70752_wedm_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "AL70752_wedm_zgru_1prz (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "AL7075_frez_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "AL7075_frez_zgr (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "AL7075_t_zgrub (x-spacings)",
+      "n_spacings": 501,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6046167855015057,
+      "ks_goe": 0.49321922825338277,
+      "ks_gue": 0.48279826028637074,
+      "best_brody_beta": 1.35,
+      "closest_to": "GUE",
+      "best_ks": 0.48279826028637074
+    },
+    {
+      "label": "C45_frez_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "C45_frez_zgr (x-spacings)",
+      "n_spacings": 755,
+      "mean_spacing": 1.0000000000000002,
+      "ks_poisson": 0.6235593140099795,
+      "ks_goe": 0.5287101353176847,
+      "ks_gue": 0.5139560892933543,
+      "best_brody_beta": 1.5,
+      "closest_to": "GUE",
+      "best_ks": 0.5139560892933543
+    },
+    {
+      "label": "C45_nagniat (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "C45 steel Rough turned (x-spacings)",
+      "n_spacings": 766,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.628899041363797,
+      "ks_goe": 0.5390304645951375,
+      "ks_gue": 0.5270233665627702,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5270233665627702
+    },
+    {
+      "label": "C45_wedm_wyk (x-spacings)",
+      "n_spacings": 487,
+      "mean_spacing": 0.9999999999999999,
+      "ks_poisson": 0.478738699884918,
+      "ks_goe": 0.6479009997602825,
+      "ks_gue": 0.7128124047431939,
+      "best_brody_beta": 0.0,
+      "closest_to": "Poisson",
+      "best_ks": 0.478738699884918
+    },
+    {
+      "label": "C45_wedm_zgru_1prz (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "ELLOR_frez_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "ELLOR_frez_zgr (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "ELLOR_t_zgrub (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "ELLOR_wedm_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "ELLOR_wedm_zgru_1prz (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "MO58A_frez_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "MO58A_frez_zgr (x-spacings)",
+      "n_spacings": 768,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308184754952243,
+      "ks_goe": 0.5427597889006704,
+      "ks_gue": 0.5317481172572803,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317481172572803
+    },
+    {
+      "label": "MO58A_nagniat (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "MO58A_t_zgrub (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "MO58A_wedm_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "MO58A_wedm_zgru_1prz (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "Ti6A14V_frez_wyk (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "Ti6A14V_frez_zgr (x-spacings)",
+      "n_spacings": 732,
+      "mean_spacing": 1.0000000000000002,
+      "ks_poisson": 0.6150186303323262,
+      "ks_goe": 0.5123601097381459,
+      "ks_gue": 0.49328331017757115,
+      "best_brody_beta": 1.0,
+      "closest_to": "GUE",
+      "best_ks": 0.49328331017757115
+    },
+    {
+      "label": "Ti6A14V_nagniat (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "Ti6A14V_t_wyk (x-spacings)",
+      "n_spacings": 686,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6023184354432716,
+      "ks_goe": 0.4911568221428878,
+      "ks_gue": 0.5164554186614825,
+      "best_brody_beta": 0.75,
+      "closest_to": "GOE",
+      "best_ks": 0.4911568221428878
+    },
+    {
+      "label": "Ti6A14V_t_zgrub (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "Ti6Al4V WEDM finish (x-spacings)",
+      "n_spacings": 723,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6080601479046719,
+      "ks_goe": 0.49916630959914277,
+      "ks_gue": 0.49847134265668425,
+      "best_brody_beta": 0.9000000000000001,
+      "closest_to": "GUE",
+      "best_ks": 0.49847134265668425
+    },
+    {
+      "label": "Ti6Al4V WEDM rough (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    },
+    {
+      "label": "Ti6Al4V Honed (x-spacings)",
+      "n_spacings": 767,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6293806855739439,
+      "ks_goe": 0.5399646696558232,
+      "ks_gue": 0.5282066314803427,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5282066314803427
+    },
+    {
+      "label": "Ti6Al4V Bead blasted (x-spacings)",
+      "n_spacings": 554,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6230830743295616,
+      "ks_goe": 0.5282379034842439,
+      "ks_gue": 0.5134860717797238,
+      "best_brody_beta": 2.9000000000000004,
+      "closest_to": "GUE",
+      "best_ks": 0.5134860717797238
+    },
+    {
+      "label": "Ti6Al4V Ground (x-spacings)",
+      "n_spacings": 770,
+      "mean_spacing": 1.0,
+      "ks_poisson": 0.6308218575298564,
+      "ks_goe": 0.5427631709353026,
+      "ks_gue": 0.5317514992919125,
+      "best_brody_beta": 3.0,
+      "closest_to": "GUE",
+      "best_ks": 0.5317514992919125
+    }
+  ],
+  "psi_fringes": [],
+  "timestamp": "2026-06-10",
+  "note": "Peak/fringe spacing statistics vs GUE/GOE/Poisson ensembles"
+}

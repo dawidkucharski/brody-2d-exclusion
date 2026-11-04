@@ -124,17 +124,20 @@ mr={
 pc={'WEDM finish':'#e41a1c','WEDM rough':'#e41a1c','Ground':'#377eb8',
     'Rough turned':'#4daf4a','Honed':'#984ea3','Bead blasted':'#ff7f00'}
 
-fig,ax=plt.subplots(1,1,figsize=(10,8))
+fig,ax=plt.subplots(1,1,figsize=(12,9))
 for _,d in results.items():
     if np.isnan(d['D2']): continue
     c=pc.get(d['process'],'#999')
-    ax.scatter(d['sobolev_H1'],d['D2'],c=c,s=140,edgecolors='black',lw=0.8,zorder=5,marker='s')
-    ax.annotate(f"{d['material']}\n({d['process']})",(d['sobolev_H1'],d['D2']),
-                fontsize=6.5,xytext=(5,5),textcoords='offset points',alpha=0.85)
+    ax.scatter(d['sobolev_H1'],d['D2'],c=c,s=120,edgecolors='black',lw=0.6,zorder=5,marker='s')
+    # annotate only selected representative surfaces to avoid clutter
+    if d['sobolev_H1']>2000 or d['D2']<1.89 or d['D2']>1.97:
+        ax.annotate(f"{d['material']}",(d['sobolev_H1'],d['D2']),
+                    fontsize=5.5,xytext=(5,3),textcoords='offset points',alpha=0.75)
 for n,ref in mr.items():
-    ax.scatter(ref['H1'],ref['D2'],c=ref['c'],s=180,edgecolors='black',lw=1.2,zorder=6,marker=ref['m'])
-    ax.annotate(n,(ref['H1'],ref['D2']),fontsize=7,fontweight='bold',xytext=(5,-8),textcoords='offset points')
-ax.set_xlabel(r'$\|\nabla Z\|_2$ (Sobolev seminorm)',fontsize=12)
+    ax.scatter(ref['H1'],ref['D2'],c=ref['c'],s=200,edgecolors='black',lw=1.2,zorder=6,marker=ref['m'])
+    ax.annotate(n,(ref['H1'],ref['D2']),fontsize=7.5,fontweight='bold',xytext=(5,-8),textcoords='offset points')
+ax.set_xscale('log')
+ax.set_xlabel(r'$\|\nabla Z\|_2$ (Sobolev seminorm, log scale)',fontsize=12)
 ax.set_ylabel(r'$D_2$ (correlation dimension)',fontsize=12)
 ax.set_title('Physical (FV microscopy) vs mathematical (arithmetic) surfaces\nin the unified Banach–metrological descriptor space',
              fontsize=13,fontweight='bold')

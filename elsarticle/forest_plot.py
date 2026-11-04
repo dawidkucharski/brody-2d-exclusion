@@ -115,8 +115,8 @@ legend_elements = [
     Line2D([0], [0], color='#d62728', linestyle='--', linewidth=1.5,
            label=f'Power threshold ($\\pm${POWER_THRESHOLD})'),
 ]
-ax.legend(handles=legend_elements, loc='lower right', fontsize=8,
-          framealpha=0.9, ncol=2)
+ax.legend(handles=legend_elements, loc='upper left', fontsize=7.5,
+          framealpha=0.85, ncol=1, bbox_to_anchor=(1.02, 1.0))
 
 # Title
 ax.set_title(

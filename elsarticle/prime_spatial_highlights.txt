@@ -1,0 +1,5 @@
+- Paired random labelling compares alternative spatial embeddings.
+- An exact finite-population variance covers irregular graph contrasts.
+- Edge overlap and degree differences determine contrast variability.
+- Prime-pattern nearest-neighbour fits vary across three embeddings.
+- Lattice ties limit the accuracy of continuous Brody fits.

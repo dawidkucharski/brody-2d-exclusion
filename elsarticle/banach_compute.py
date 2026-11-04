@@ -410,7 +410,7 @@ ax.text(0.05, 0.95, f'Pearson r = {r:.3f}', transform=ax.transAxes,
 
 plt.suptitle('Banach / functional-analytic descriptors of arithmetic surfaces\n'
              '(∘ = Bernoulli null mean ± 1σ, n = 30 ensembles)',
-             fontsize=12, fontweight='bold', y=1.02)
+             fontsize=12, fontweight='bold', y=0.96)
 plt.tight_layout()
 plt.savefig('fig_banach_descriptors.pdf', dpi=200, bbox_inches='tight',
             facecolor='white', edgecolor='none')

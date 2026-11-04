@@ -158,7 +158,7 @@ ax3.set_xlabel('Column')
 ax3.set_ylabel('Row')
 
 fig.suptitle('Multifractal analysis of the binary prime surface at N = 10⁵',
-             fontsize=12, fontweight='bold', y=1.03)
+             fontsize=12, fontweight='bold', y=0.96)
 plt.tight_layout()
 fig.savefig('fig_multifractal.pdf', facecolor='white', edgecolor='none')
 plt.close(fig)
@@ -254,7 +254,7 @@ ax_bar.set_title(r'Correlation dimension $D_2$ at $N=5\times10^4$', fontsize=10)
 ax_bar.grid(axis='y', alpha=0.3, linestyle=':')
 
 fig.suptitle('Multifractal characterisation of representative arithmetic surfaces',
-             fontsize=12, fontweight='bold', y=1.01)
+             fontsize=12, fontweight='bold', y=0.96)
 plt.tight_layout()
 fig.savefig('fig_dq_spectra.pdf', facecolor='white', edgecolor='none')
 plt.close(fig)

@@ -546,7 +546,7 @@ def main():
 
     fig.suptitle('Unified pair correlation and Brody spacing statistics\n'
                  'across surface textures, prime embeddings, and quantum-chaos reference ensembles',
-                 fontsize=13, fontweight='bold', y=1.01)
+                 fontsize=13, fontweight='bold', y=0.96)
 
     outpath1 = f'{OUTDIR}/fig_unified_pair_correlation.pdf'
     fig.savefig(outpath1, dpi=200, facecolor='white', edgecolor='none',
@@ -621,7 +621,7 @@ def main():
     ax_s.grid(alpha=0.3, ls=':')
 
     fig2.suptitle('Brody β landscape: manufactured surfaces, primes, and PSI',
-                  fontsize=13, fontweight='bold', y=1.01)
+                  fontsize=13, fontweight='bold', y=0.96)
     plt.tight_layout()
 
     outpath2 = f'{OUTDIR}/fig_unified_beta_landscape.pdf'

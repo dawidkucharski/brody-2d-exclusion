@@ -1,0 +1,11 @@
+{
+  "seed": 20261102,
+  "null_realisations": 2000,
+  "threshold": 1.96,
+  "sigma_zero": 0.029822817937479654,
+  "marginal_row_sd": 0.020935417296066926,
+  "marginal_ulam_sd": 0.021458475094290098,
+  "paired_level": 0.049,
+  "marginal_row_level": 0.049,
+  "marginal_ulam_level": 0.0455
+}

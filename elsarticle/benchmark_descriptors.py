@@ -55,9 +55,11 @@ def fit_brody(nn, n_bootstrap=200, rng=None):
     bs = []
     for _ in range(n_bootstrap):
         idx = rng.choice(len(s), len(s), replace=True)
+        sample = s[idx]
+        sample = sample / np.mean(sample)
         try:
             r = optimize.minimize_scalar(
-                lambda b: brody_nll(b, s[idx]) if b >= 0 else 1e10,
+                lambda b: brody_nll(b, sample) if b >= 0 else 1e10,
                 bounds=(0, 15), method='bounded')
             bs.append(max(0.0, r.x))
         except Exception:
@@ -181,37 +183,34 @@ def clark_evans(pts, W, H=None):
     return float(np.mean(nn) / expected)
 
 def rip_k_border(pts, W, H, r_max, n_bins, n_ang=64):
-    """Ripley K with isotropic border correction (circumference fraction).
-    Returns r, K, LminusR, maxdev, L_at_rmean."""
+    """Ripley K with minus-sampling border correction.
+
+    Returns radius, K, L-r, maximum deviation, and L-r at mean NN distance.
+    The unused n_ang argument is retained for compatibility with older calls.
+    """
     n = len(pts)
+    if n < 2 or r_max <= 1 or n_bins < 1:
+        raise ValueError('at least two points, r_max > 1, and n_bins >= 1 are required')
     area = W * H
-    tree = spatial.KDTree(pts)
-    # radius grid (log-spaced for resolution at small r)
+    tree = spatial.cKDTree(pts)
     r_edges = np.geomspace(1.0, r_max, n_bins + 1)
     r_cent = np.sqrt(r_edges[:-1] * r_edges[1:])
-    ang = np.linspace(0, 2 * np.pi, n_ang, endpoint=False)
-    cos_a, sin_a = np.cos(ang), np.sin(ang)
 
-    K = np.zeros(n_bins)
-    for r_i, r in enumerate(r_cent):
-        # border weight per point: fraction of circumference inside window
-        xs = pts[:, 0][:, None] + r * cos_a[None, :]
-        ys = pts[:, 1][:, None] + r * sin_a[None, :]
-        inside = (xs >= 0) & (xs <= W) & (ys >= 0) & (ys <= H)
-        w = inside.mean(axis=1)
-        w = np.where(w > 0, w, np.inf)
-        pairs = tree.query_pairs(r, output_type='ndarray')
-        if len(pairs) > 0:
-            counts = np.bincount(pairs.ravel(), minlength=n)
-            tot = float(np.sum(counts / w))
-        else:
-            tot = 0.0
-        K[r_i] = area * tot / (n * n)
+    def estimate(radius):
+        interior = ((pts[:, 0] >= radius) & (pts[:, 0] <= W - radius) &
+                    (pts[:, 1] >= radius) & (pts[:, 1] <= H - radius))
+        n_reference = int(interior.sum())
+        if n_reference == 0:
+            return np.nan
+        counts = tree.query_ball_point(pts[interior], radius, return_length=True) - 1
+        return float(area * counts.sum() / (n * n_reference))
+
+    K = np.array([estimate(radius) for radius in r_cent])
     L = np.sqrt(K / np.pi) - r_cent
-    maxdev = float(np.max(np.abs(L)))
+    finite = np.isfinite(L)
+    maxdev = float(np.max(np.abs(L[finite]))) if finite.any() else np.nan
     r_mean = float(np.mean(nn_stats(pts)))
-    # L at r = mean NN (interpolate)
-    L_at_rmean = float(np.interp(r_mean, r_cent, L))
+    L_at_rmean = float(np.sqrt(estimate(r_mean) / np.pi) - r_mean)
     return r_cent, K, L, maxdev, L_at_rmean
 
 def g2_toroidal(pts, W, H, r_min=1.0, r_max=3.0):

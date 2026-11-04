@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""rebuild_figures.py — regenerate all manuscript figures from audited data."""
+"""Superseded figure builder retained for historical reference."""
+if __name__ == '__main__':
+    raise SystemExit('Superseded: run build_prime_figures.py for the current manuscript.')
+
 import json
 import numpy as np
 import matplotlib

@@ -1,4 +1,12 @@
-# Revision Change Log — final audit cycle (2026-11-01)
+# SUPERSEDED: Historical Revision Log
+
+**The verification and submission-readiness claims below were incorrect.**
+In particular, the reported low-density thinning significance, directional
+pair counts, gap reconstruction and claims of a complete independent audit
+must not be relied on. See `prime_spatial_REPRODUCIBILITY.md` for the current
+pipeline, recorded checks, and remaining limitations.
+
+## Historical Log
 
 Original file preserved as `aurora_manuscript.tex.orig`.
 All changes below were applied only after independent recomputation

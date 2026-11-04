@@ -3,19 +3,21 @@
 %% Dawid Kucharski — Poznan University of Technology
 %% Target: Spatial Statistics (Elsevier)
 %%
-\documentclass[final,1p,times]{elsarticle}
+\documentclass[final,1p,times,authoryear]{elsarticle}
 
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{graphicx}
-\usepackage[hypertexnames=false]{hyperref}
+\usepackage[hypertexnames=false,hidelinks]{hyperref}
 \usepackage{booktabs}
 \usepackage{float}
+\pdfstringdefDisableCommands{\def\corref#1{}}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
+\newcommand{\plotAIDisclosure}{Plotting code was developed with assistance from GitHub Copilot Chat 0.72.0.}
 
 \journal{Spatial Statistics}
 
@@ -23,7 +25,7 @@
 
 \begin{frontmatter}
 
-\title{Embedding-dependent nearest-neighbour statistics in two-dimensional binary prime patterns}
+\title{Paired spatial statistics under alternative embeddings: exact graph-count variance and a prime-pattern application}
 
 \author[put]{Dawid Kucharski\corref{cor1}}
 \ead{dawid.kucharski@put.poznan.pl}
@@ -33,36 +35,22 @@
             country={Poland}}
 
 \begin{abstract}
-Binary two-dimensional embeddings of the prime sequence are studied under three
-deterministic mappings: row-major order, the Ulam spiral, and Cantor diagonal
-pairing. The three mappings act on one common integer population, the $9\,580$
-primes below $99\,856$, placed in a $316\times316$ observation window. A local
-spacing descriptor obtained by maximum-likelihood fitting of the Brody
-distribution to unit-mean nearest-neighbour spacings is compared with the
-Clark--Evans index, Ripley's $K$ function, exact-distance pair correlations,
-and box-counting and pairwise estimates of the generalised dimension $D_2$.
-The fitted Brody parameter is found to be strongly embedding-dependent:
-$2.153$ (95\% CI $[2.086,2.224]$) for row-major order, $1.856$ ($[1.811,1.904]$)
-for the Ulam spiral, and $1.413$ ($[1.387,1.440]$) for Cantor pairing, against
-$1.466\pm0.021$ for the density-matched lattice Bernoulli null over $1\,000$
-realisations, none of which approaches the row-major value (zero exceedances;
-a one-sided 95\% bound on the exceedance probability below $0.3\%$ by the
-rule of three). The ordering survives all
-boundary treatments tested, and it is not reproduced by an inhomogeneous
-Bernoulli null calibrated to the prime-number-theorem density. Exact-distance
-pair correlations of the row-major embedding equal $1.337\pm0.030$ at lattice
-distance $2$ in the horizontal direction, consistent with the asymptotic
-Hardy--Littlewood twin-prime benchmark $2C_2\approx1.3203$ at the finite
-window considered; the measured
-exact-distance pair counts of all three embeddings agree with the exact
-prime-pair counts of the integer gap classes that each
-embedding maps to the corresponding lattice distance. The fitted parameter is
-insensitive to removal of all twin and cousin primes, so it is not a proxy
-for those pair excesses alone. None of the multiscale estimators examined
-provides additional discrimination between embeddings at the scales tested.
-It is concluded that the apparent local regularity of embedded
-prime patterns is a joint property of the sequence and of the embedding, not
-of the sequence alone.
+Comparing spatial summaries across alternative mappings of the same set of
+labels requires inference that respects the dependence induced by the shared
+labels. A paired random-labelling procedure is developed in which every
+simulated label set is mapped through each candidate embedding, so that
+contrasts are formed within realisations. For counts of occupied edges on
+finite simple graphs, an exact finite-population variance is derived for the
+difference between two normalised counts under uniform fixed-count sampling.
+The variance depends on the two graphs only through two discrepancies: an
+inverse-size-weighted measure of shared and unshared edges, and the squared
+difference of their normalised degree sequences; a simpler expression obtains
+when both graphs are regular. The formula is verified by exhaustive
+enumeration on small graphs and by paired simulation. The procedure is
+illustrated with three bijective embeddings of the primes not exceeding
+$99\,856$, whose nearest-neighbour summaries differ substantially under the
+fixed-count null. All conclusions are conditional on the stated null models
+and finite windows; no asymptotic claim about the primes is made.
 \end{abstract}
 
 \begin{keyword}
@@ -76,22 +64,24 @@ Brody distribution \sep point processes
 \section{Introduction}
 %=====================================================================
 
-Two-dimensional visualisations of arithmetic sequences have long been used as
-heuristic tools for detecting hidden regularities. The best known example is
-the Ulam spiral, where primes cluster along visually prominent diagonals that
-are absent in a random arrangement of occupied sites~\cite{ULAM-SPIRAL-1963}.
-Such constructions raise a natural statistical question: when a one-dimensional
-arithmetic sequence is embedded in two dimensions, which apparent spatial
-features belong to the sequence itself, and which are created by the embedding?
+Spatial summaries of a finite sequence are affected by the map that assigns
+its labels to locations. Prime numbers provide a concrete example: their
+two-dimensional spiral representation has long been used to display
+arithmetic regularities \citep{ULAM-SPIRAL-1963}. Prime adjacency in the
+Ulam spiral was studied explicitly by \citet{JARA-VERA-SANCHEZ-AVILA-2021},
+so spatial adjacency is not a new question in itself. At a different scale,
+\citet{TORQUATO-ZHANG-DECOURCY-2019} analysed one-dimensional prime pair
+correlations and a structure factor, with limiting conclusions conditional on
+the Hardy--Littlewood conjecture. These results motivate, but do not determine,
+the behaviour of the finite lattice embeddings compared here.
 
-This question is harder than it first appears because different descriptors
-probe different spatial scales. Local spacing summaries focus on short-range
-adjacency, while multiscale descriptors respond to mass distribution over many
-box sizes simultaneously. A sequence may therefore appear highly structured
-under one descriptor and only weakly structured under another. The prime
-sequence provides a useful benchmark because it is deterministic, sparse, and
-subject to well-known local arithmetic constraints such as the impossibility of
-two consecutive integers both being prime for $n>2$~\cite{HARDY-WRIGHT}.
+The statistical question addressed in this paper is how summaries of one
+fixed set of labels change when the same labels are placed by different
+bijective maps. In particular, a comparison is required to preserve the
+dependence between embeddings: separate random point patterns would not
+represent repeated mappings of the same selected labels. This dependence is
+made explicit by mapping each random-label realisation through every embedding
+and calculating contrasts within that realisation.
 
 The Brody distribution,
 \begin{equation}
@@ -102,69 +92,32 @@ a=\left[\Gamma\!\left(\frac{\beta+2}{\beta+1}\right)\right]^{\beta+1},
 \end{equation}
 was introduced in quantum chaos as a one-parameter interpolation between the
 Poisson and Wigner limits of one-dimensional level-spacing
-statistics~\cite{BRODY-1981}.
+statistics~\citep{BRODY-1981}.
 
-The prime sequence itself has been examined with spacing statistics borrowed
-from random-matrix theory. In an analysis by Wolf of the
-nearest-neighbour-spacing distribution of primes, Poisson-type statistics were
-reported after suitable rescaling, which indicates pseudo-random behaviour at
-the smallest scales~\cite{WOLF-2014}. In a complementary study, the spacings
-between adjacent primes were investigated within classical and
-superstatistical random-matrix theory and were described as a mixture of
-regular and chaotic components~\cite{ABDELMAGEED-2021}. The tension between
-these two descriptions suggests that the local statistics attributed to the
-prime sequence depend on the representation, the rescaling, and the fitting
-model, a sensitivity that is made quantitative in the present work.
+Nearest-neighbour spacing fits have also been considered for prime numbers by
+\citet{WOLF-2014}. For spatial point patterns, \citet{SAKHR-NIEMINEN-2005}
+examined Brody-type fits for random points on fractals. Here $\beta$ is used
+only as an empirical descriptor of the fitted spacing distribution, not as
+evidence of a random-matrix symmetry class or a universal exclusion scale.
 
-Brody-type fits have since been used as a convenient empirical summary of
-local spacing regularity in several fields. The crossover between regular and
-chaotic level statistics in quantum-dot spectroscopy was described by
-Brody-type fits~\cite{ALHASSID-2000}. Applications of spacing statistics to
-wave-chaotic systems are reviewed in the monograph of
-St\"ockmann~\cite{STOCKMANN-1999}. In elastodynamics, spectral level spacings
-were fitted by Brody-type distributions to quantify departures from
-random-matrix predictions~\cite{WEAVER-1989}. Brody-type fits were also applied
-to eigenvalue spacings of financial correlation
-matrices~\cite{LALOUX-1999}. For spatial point patterns, it was shown by Sakhr
-and Nieminen that nearest-neighbour spacing statistics of random points on
-fractals can be described by Brody-type laws, thereby linking RMT-inspired
-spacing families to spatial data~\cite{SAKHR-NIEMINEN-2005}. In the present
-paper, $\beta$ is used only as an \emph{empirical fit parameter} for local
-nearest-neighbour spacings, not as a universal exclusion scale and not as
-evidence of any random-matrix symmetry class.
-
-A separate methodological tradition concerns spatial point patterns, for which
-distance-based summaries are standard. The nearest-neighbour index as a
-measure of departure from complete spatial randomness was introduced by Clark
-and Evans~\cite{CLARK-EVANS-1954}. The classical account of second-order
-summaries, centred on the $K$ function, was given by
-Ripley~\cite{RIPLEY-1981}. A systematic treatment of summary statistics and
-their edge corrections is provided in the monograph of Illian and
-co-workers~\cite{ILLIAN-2008}, and model-based inference for point processes is
-developed by Diggle~\cite{DIGGLE-2013}. Practical implementations of these
-diagnostics are available in the spatstat software~\cite{BADDELEY-TURNER-2005}.
-The choice of null model is not innocuous in this setting: it was shown by
-Roxburgh and Matsuki that null models must be validated against the
-autocorrelation structure of the data, because an inappropriate null can
-distort the type I error rate~\cite{ROXBURGH-MATSUKI-1999}. This caution
-applies directly to the Bernoulli nulls used in the present work, which are
-therefore always density-matched to the prime surface.
-
-At larger scales, fractal geometry provides the standard vocabulary for
-mass-distribution structure. Fractional dimension as a statistical descriptor
-was introduced by Mandelbrot~\cite{MANDELBROT-1967}, and fractal
-characterisations of spatial phenomena were surveyed by Goodchild and
-Mark~\cite{GOODCHILD-MARK-1987}. In nonlinear time-series analysis,
-correlation-dimension estimates separate low-dimensional deterministic
-dynamics from randomness; they must, however, be interpreted with caution:
-estimates can saturate for chaotic series, grow without bound for stochastic
-series, and be distorted by limited sample
-size~\cite{ISLAM-SIVAKUMAR-2002}. Related nearest-neighbour embedding
-diagnostics can misclassify stochastic data unless carefully
-modified~\cite{FREDKIN-RICE-1995}, and a statistically reliable
-nearest-neighbour estimator of the embedding dimension was proposed by
-Chelidze~\cite{CHELIDZE-2017}. Finite-sample corrections for dimension
-estimators were analysed by Theiler~\cite{THEILER-1986}.
+The nearest-neighbour index of \citet{CLARK-EVANS-1954} and the second-order
+summaries described by \citet{RIPLEY-1981} provide complementary views of a
+spatial pattern. Monte Carlo testing of spatial patterns was developed by
+\citet{BESAG-DIGGLE-1977}; conditional inference under fixed-count models goes
+back at least to \citet{RIPLEY-1977-MODELLING}, and random-labelling nulls for
+comparisons under a shared label set were discussed by
+\citet{GOREAUD-PELISSIER-2003}; a recent review of point-process
+goodness-of-fit tests is given by \citet{FEND-REDENBACH-2025}. Graph-edge
+counts under permutation have a longer methodological history: join-count
+moments under randomisation were derived by \citet{MORAN-1948}, the
+between-sample edge count of an arbitrary graph by
+\citet{FRIEDMAN-RAFSKY-1979}, and graph-based two-sample tests were developed
+by \citet{HENZE-1988}, \citet{SCHILLING-1986},
+\citet{MAA-PEARL-BARTOSZYNSKI-1996} and \citet{CHEN-FRIEDMAN-2017}, building on
+the finite-population inclusion probabilities of
+\citet{HORVITZ-THOMPSON-1952}. The paired graph-count variance derived below
+is a specific finite-population consequence of this random-labelling
+framework, rather than a new general theory of graph permutation tests.
 
 For unit-mean nearest-neighbour spacings under complete spatial randomness in
 two dimensions, the analytic Rayleigh law,
@@ -176,46 +129,34 @@ coincides algebraically with the Brody family at $\beta=1$. The continuous CSR
 law is, however, not the empirical null for binary fields on a lattice: the
 density-matched lattice Bernoulli null fitted with the same procedure below
 yields $\beta\approx1.47$ at the native density, because lattice discreteness
-modifies the spacing distribution. Both reference levels are therefore
-reported separately in all figures and tables.
+modifies the spacing distribution. The continuous and lattice reference
+levels are therefore distinguished when they are reported.
 
-These strands have developed largely independently. Prime-gap statistics treat
-the sequence without reference to a two-dimensional geometry; Brody
-nearest-neighbour results for fractals concern random point sets rather than
-deterministic arithmetic patterns; distance-based point-pattern methodology
-has been developed mainly for natural and experimental patterns; and
-correlation-dimension diagnostics have been applied mainly to time series. No
-single study compares a local Brody-type nearest-neighbour fit with multiscale
-descriptors under a validated, density-matched Bernoulli null across several
-deterministic two-dimensional embeddings of one arithmetic sequence. To the
-best of the present knowledge, the
-research gap addressed by the present manuscript is therefore the missing
-comparison between descriptor classes for embedded deterministic sequences:
-whether the apparent spatial structure of an embedded prime sequence is a
-property of the sequence, of the embedding, or of the descriptor.
+Random-labelling and permutation tests for spatial point patterns are long
+established, and exact permutation moments for edge counts under a
+randomisation null date at least to the join-count results of Moran and the
+general-graph treatment of Friedman and Rafsky. Comparing the same labelled
+set across two embeddings, however, couples two such statistics through one
+shared realisation, and the two graphs involved may have different, irregular
+edge sets. A closed form for the variance of the difference between two
+normalised counts in this paired setting does not appear to have been
+recorded.
 
-The question is addressed in this paper for binary 2D prime patterns. Three
-deterministic embeddings are compared on one common integer population and one
-common observation window: row-major order, the Ulam spiral, and Cantor
-pairing. Three classes of controls are used. First, a matched-density
-Bernoulli null separates arithmetic structure from trivial occupancy effects.
-Second, an inhomogeneous Bernoulli null calibrated to the
-prime-number-theorem density separates arithmetic structure from the smooth
-density gradient of the prime sequence. Third, a sparse-integer control and
-density-thinning experiments test whether the row-major prime signal is merely
-a consequence of low fill fraction. In parallel, multiscale structure is
-quantified through box-counting partition statistics and validated by the
-classical Grassberger--Procaccia pairwise correlation sum. The central
-contribution is methodological: the local spatial statistics of a
-deterministic sequence embedded in a two-dimensional lattice are not
-intrinsic to the sequence alone; they depend on the embedding, the spatial
-descriptor, and the null model used for interpretation. This dependence
-matters beyond prime-number visualisations, for any spatial analysis of
-discretely embedded deterministic datasets. The central result
-is that local spacing fits are strongly embedding-dependent, whereas none of
-the multiscale estimators examined provides a comparably robust
-discrimination. The same prime sequence therefore does not have a unique 2D
-spatial signature independent of how it is embedded and how it is measured.
+This paper provides that missing finite-population piece. For two simple
+graphs on a common vertex set, the randomisation variance of the normalised
+count difference is expressed through an edge-overlap term and a
+vertex-degree-discrepancy term. The expression is exact, non-negative in its
+components, and reduces to the regular toroidal case used for lattice shells.
+The formula and a paired simulation procedure are illustrated with three
+embeddings of the same finite prime set; the prime example demonstrates the
+procedure rather than providing its justification.
+
+The methodological contribution is an exact finite-population variance for the
+difference of two normalised graph-edge counts under uniform fixed-count
+random labelling, expressed through two graph discrepancies, together with a
+paired simulation procedure that preserves the dependence between embeddings.
+It is an extension of established permutation-moment results, not a new
+general theory of spatial statistics.
 
 %=====================================================================
 \section{Methods}
@@ -233,12 +174,13 @@ for exactly this population.
 
 \subsection{Deterministic embeddings}
 
-All coordinates are zero-indexed; the metric is Euclidean distance between
-cell centres.
+Lattice indices $(x,y)$ are zero-indexed, with $x$ increasing across columns
+and $y$ increasing down rows; the metric is Euclidean distance between cell
+centres.
 
 \begin{definition}[Row-major embedding]
 The integer $n\in\{1,\dots,N_{\rm pop}\}$ is mapped to cell
-$(i,j)=(\lfloor(n-1)/W\rfloor,(n-1)\bmod W)$.
+$(x,y)=((n-1)\bmod W,\lfloor(n-1)/W\rfloor)$.
 \end{definition}
 
 \begin{definition}[Ulam spiral on an even side]
@@ -249,100 +191,208 @@ This procedure is a bijection of $\{1,\dots,99\,856\}$ onto
 $\{0,\dots,315\}^2$ (verified computationally).
 \end{definition}
 
-\begin{definition}[Cantor diagonal sweep with row wrap]
-For $s=0,1,\dots,2W-2$, the cells $(i,j)$ with $i+j=s$ are visited in
-increasing order of $j$, where $j$ runs from $j_0=\max(0,s-W+1)$ to
-$j_1=\min(s,W-1)$ and $i=s-j$; the $n$-th visited cell receives the integer
+\begin{definition}[Finite Cantor-style diagonal sweep]
+For $s=0,1,\dots,2W-2$, the cells $(x,y)$ with $x+y=s$ are visited in
+increasing order of $y$, where $y$ runs from $y_0=\max(0,s-W+1)$ to
+$y_1=\min(s,W-1)$ and $x=s-y$; the $n$-th visited cell receives the integer
 $n$. Each cell of $\{0,\dots,W-1\}^2$ is visited exactly once (verified
 computationally), so this map is a bijection of $\{1,\dots,W^2\}$ onto the
-window. Consecutive integers occupy diagonal neighbours $(i,j)\to(i-1,j+1)$
+window. Consecutive integers occupy diagonal neighbours $(x,y)\to(x-1,y+1)$
 within each diagonal, and the last cell of each diagonal is connected to the
-first cell of the next diagonal by a long jump whose length grows with $s$.
+first cell of the next diagonal by a jump whose length depends on $s$. This
+finite-square sweep is not the unrestricted Cantor pairing function.
 \end{definition}
 
-The three mappings therefore differ only in which arithmetic neighbours
-become lattice neighbours. Row-major maps consecutive integers to horizontally
-adjacent cells; the Ulam spiral maps consecutive integers to adjacent cells
-along the spiral arm; the Cantor sweep maps consecutive integers to diagonally
-adjacent cells within each diagonal block, with long jumps at the block
-boundaries.
+The three mappings differ in which integer labels become lattice neighbours.
+Row-major maps consecutive integers to horizontal neighbours except at row
+transitions; the Ulam spiral maps consecutive integers to adjacent cells along
+the spiral arm; the diagonal sweep maps consecutive integers to diagonal
+neighbours within each block, with jumps at block boundaries.
 
 \subsection{Nearest-neighbour descriptor}
 
-Occupied cells form a point pattern with coordinates $(j,i)$ at pixel centres.
-Euclidean nearest-neighbour distances are computed with a KD-tree, normalised
-to unit mean, and fitted by maximum likelihood to the Brody family
-of Eq.~\eqref{eq:brody}. Bootstrap 95\% confidence intervals are obtained from
-$3\,000$ resamples of the spacing sample. Boundary sensitivity is assessed
-with three treatments applied identically to prime patterns and null models:
-(i) \emph{open} (plain Euclidean distances within the window); (ii)
-\emph{toroidal} (distances under periodic boundary conditions, self-pairs
-excluded); (iii) \emph{interior reference} (only points at distance $\ge5$ px
-from the boundary are used as reference points, with Euclidean distances to
-all points).
+Occupied cells are represented by their centres $(x+1/2,y+1/2)$ in
+$[0,W]^2$. For each reference point, the distance to the nearest other
+occupied point is calculated and divided by the mean distance for that
+pattern. The sum of continuous Brody log-densities in
+Eq.~\eqref{eq:brody} is maximised with $0\le\beta\le15$. Because lattice
+distances have ties and are dependent, this is a quasi-likelihood fit, not a
+joint likelihood for independent continuous observations. Fit discrepancy is
+summarised by $D_{\rm fit}=\sup_s|\widehat F(s)-F_{\hat\beta}(s)|$, where
+$\widehat F$ is the empirical spacing CDF and
+$F_{\hat\beta}(s)=1-\exp(-as^{\hat\beta+1})$ is the fitted continuous CDF.
+No independent-sample goodness-of-fit $p$-value is assigned to this statistic.
+Three boundary treatments are considered: open Euclidean
+distances; toroidal distances; and open distances from reference points at
+least five lattice units from the boundary to all occupied points.
+
+For each observed fit, $2\,000$ independent resamples of the empirical
+distance histogram are refitted after each resample is normalised by its own
+mean. Their 2.5th--97.5th percentiles are reported as descriptive sensitivity
+ranges. Nearest-neighbour distances are dependent, so these ranges are not
+claimed to have 95\% spatial confidence coverage.
 
 \subsection{Null models and controls}
 
-Three null models are used. The \emph{matched-density Bernoulli null} occupies
-each of the $99\,856$ cells independently with probability $\rho$. The
-\emph{sparse-integer control} draws $9\,580$ distinct integers uniformly from
-$\{1,\dots,99\,856\}$ and embeds them row-major. The \emph{inhomogeneous
-Bernoulli null} occupies cell $n$ with probability $p(n)=c/\ln n$ for
-$n\ge3$ and $p(1)=p(2)=0$, where $c$ is calibrated so that the expected number
-of occupied cells equals $9\,580$; this null reproduces the smooth density
-gradient implied by the prime number theorem without any local arithmetic
-correlations. Null distributions are estimated from $1\,000$ independent
-realisations per null model.
+Let $M=W^2$ and let $N$ be the observed number of occupied labels. Under the
+primary null, a set of exactly $N$ labels is sampled uniformly without
+replacement from $\{1,\ldots,M\}$. This fixed-count random-labelling model is
+conditional on $M$ and $N$; it is not asserted to be a generative model for
+the primes. Each of the $B=4\,999$ independent random label sets is mapped
+through all three embeddings. Consequently, the three statistics within each
+realisation are paired. Equal marginal null distributions follow because each
+embedding is a bijection, but the paired statistics need not be independent.
 
-Density effects are assessed by random thinning of the row-major prime
-surface to target fill fractions $\rho\in\{0.010,0.020,0.032,0.050,0.096\}$,
-with $100$ thinning realisations per level, each compared with a
-density-matched Bernoulli ensemble of $1\,000$ realisations.
+For embeddings $a,b$, let $D_{ab}=\hat\beta_a-\hat\beta_b$ and
+$T=\max_{a<b}|D_{ab}|$. The global Monte Carlo value under the null is
+$(1+\sum_{k=1}^{B}\mathbf{1}\{T_k\ge T_{\rm obs}\})/(B+1)$.
+For each contrast, the same simulated maximum is compared with its observed
+absolute difference. These single-step maximum-statistic values account for
+the three displayed contrasts under the complete random-labelling null; no
+general familywise claim is made for alternative null configurations. The
+three maps and the window are treated as fixed in this exploratory comparison;
+the test does not adjust for any prior selection among possible maps, windows,
+or descriptors.
+
+An inhomogeneous comparison uses independent label occupancies with
+$p(1)=0$, $p(2)=1$, and $p(n)=c/\log n$ for $n\ge3$. The constant
+$c=0.9961876724$ gives expected count $N=9\,580$; no probability is truncated
+in this window. Each of $1\,000$ such label sets is again mapped through all
+three embeddings. Its realised count varies, so it is a separate model, not a
+fixed-count randomisation. The smooth intensity is motivated by the prime
+number theorem and does not encode prime-pair constraints. Mapped
+case--control-type comparisons of this kind follow the clustering tests of
+\citet{CUZICK-EDWARDS-1990}.
+
+For the row-major pattern, independent thinning is performed at target
+densities $0.010$, $0.020$, $0.032$, and $0.050$ with $500$ masks per density.
+The original density $9\,580/99\,856$ is shown once without thinning. At
+each density, $1\,000$ independent Bernoulli lattice patterns provide a
+comparison distribution. The thinned patterns share the same prime set and
+are not independent realisations of the primes.
 
 \subsection{Standard spatial diagnostics}
 
-The Clark--Evans nearest-neighbour index is $R=2\sqrt{\rho}\,\bar r$, where
-$\bar r$ is the mean nearest-neighbour distance. A modern treatment of these
-summary statistics and their estimation is collected in the monograph of
-Baddeley, Rubak, and Turner~\cite{BADDELEY-2015}. Ripley's $K$ function is
-estimated with the isotropic border correction (fraction of the circumference
-inside the window, 64 angular samples) on 18 log-spaced radii
-$r\in[1,W/3]$ pixels, and is summarised by $L(r)-r$ evaluated at the mean
-nearest-neighbour scale and by its maximal absolute deviation. The pair
-correlation function at an exact lattice distance $d$ is computed by cyclic
-cross-correlation on the torus,
+The Clark--Evans index is $R=2\sqrt{N/M}\,\bar r$, where $\bar r$ is the
+open-boundary mean nearest-neighbour distance. Its conventional continuous
+reference is not substituted for the simulated lattice reference.
+
+For a toroidal distance shell $d$, each embedding $a$ induces an undirected
+graph $G_{a,d}=(V,E_{a,d})$ on the integer labels $V=\{1,\ldots,M\}$.
+An edge joins two labels when their mapped cells are separated by $d$ on the
+torus. For the shells used here these graphs are simple and $m_d$-regular,
+with $|E_{a,d}|=E_d=Mm_d/2$. Let $X_i$ indicate whether label $i$ is selected,
+and write $(x)_k=x(x-1)\cdots(x-k+1)$ and $p_k=(N)_k/(M)_k$. The occupied
+pair count and its fixed-count normalisation are
 \begin{equation}
-g_2(d)=\frac{\sum_{\mathbf{s}\in\mathcal{S}_d}\sum_{\mathbf{x}}
-Z_{\mathbf{x}}Z_{\mathbf{x}+\mathbf{s}}}
-{N\,\rho\,m_d/2},
+C_a(d)=\sum_{\{i,j\}\in E_{a,d}}X_iX_j,
+\qquad
+g_a(d)=\frac{C_a(d)}{E_d p_2}.
 \label{eq:g2exact}
 \end{equation}
-where $\mathcal{S}_d$ is a set of shift representatives of the lattice
-directions at distance $d$, $m_d$ is the number of lattice directions at
-distance $d$ on the torus ($m_d=4$ for $r=1,\sqrt2,2,4$ and $m_d=8$ for
-$r=\sqrt5$), $N$ is the number of occupied cells, and the inner sum counts each
-unordered pair exactly once; for the lattice Bernoulli null the expectation
-of $g_2(d)$ is exactly $1$ for every $d$ (verified numerically, Section S1.3).
-The continuous annulus version $g_2$ over $1\le r<3$ pixels is computed by
-toroidal pair counting with $3\,000$ reference points.
+Thus $\mathbb E_0[g_a(d)]=1$ exactly for $N\ge2$. The shells
+$d=1,\sqrt2,2,\sqrt5,4$ have $m_d=4,4,4,8,4$, respectively.
 
-Multiscale structure is quantified by the box-counting partition function of
-order two,
+\subsection{Variance of a paired graph-count contrast}
+
+The same construction can be used for any two nonempty simple graphs on
+$M\ge4$ labels, including open-window shell graphs with nonconstant degrees.
+Let $e_a=|E_a|$, $e_b=|E_b|$, $q=|E_a\cap E_b|$, and let $d_a(v)$ and
+$d_b(v)$ be the degrees of label $v$ in the two graphs. Each occupied-edge
+count is normalised by its own fixed-count expectation, $e_ap_2$ or $e_bp_2$.
+Define the edge and degree discrepancies
 \begin{equation}
-Z_2(\varepsilon)=\sum_{k}\left(\frac{M_k(\varepsilon)}
-{M(\varepsilon)}\right)^2,
+S_e=\frac{1}{e_a}+\frac{1}{e_b}-\frac{2q}{e_ae_b},\qquad
+S_v=\sum_{v=1}^{M}\left(\frac{d_a(v)}{e_a}-\frac{d_b(v)}{e_b}\right)^2.
+\label{eq:graph-discrepancies}
 \end{equation}
-where $M_k(\varepsilon)$ are box masses and $M(\varepsilon)$ is the total mass
-of the cropped region at box size $\varepsilon$; the slope of $\log Z_2$
-against $\log\varepsilon$ over $\varepsilon\in\{2,4,\dots,128\}$ px is the
-box-counting estimate of the generalised dimension $D_2$. Because finite-sample
-box-counting and pairwise estimators are not interchangeable, the classical
-Grassberger--Procaccia pairwise correlation sum
+Under uniform fixed-count sampling, the difference of the normalised counts
+has expectation zero under the null and exact null variance
 \begin{equation}
-C(r)=\frac{2}{N(N-1)}\sum_{i<j}\Theta(r-d_{ij})
+\operatorname{Var}_0(g_a-g_b)=
+\frac{S_e(p_2-2p_3+p_4)+S_v(p_3-p_4)}{p_2^2}.
+\label{eq:general-variance}
 \end{equation}
-is computed as an independent validation, and the slope of $\log C(r)$ against
-$\log r$ over $r\in[2,105]$ px is reported separately.
+The derivation is given in \ref{app:variance}. Unlike a periodic
+regular graph, an open-window graph can have a nonzero degree-discrepancy
+term $S_v$.
+
+\begin{remark}[Absorption property]\label{rem:absorption}
+Under the null, the variance in Eq.~\eqref{eq:general-variance} depends on the
+two graphs only through $S_e$ and $S_v$: the between-graph degree interaction
+$\sum_v d_a(v)d_b(v)$ is absorbed into these two discrepancies. Both
+coefficients are non-negative, since
+$p_2-2p_3+p_4=p_2\tfrac{(M-N)(M-N-1)}{(M-2)(M-3)}$ and
+$p_3-p_4=p_3\tfrac{M-N}{M-3}$. Each shared edge carries the combined weight
+$1/e_a-1/e_b$ in $S_e$, and $S_v=0$ if and only if the normalised degree
+sequences coincide. For $N=2$ the variance reduces to $S_e/p_2$, and for
+$N=M$ it is zero, as it must be. Equation~\eqref{eq:general-variance} is a
+null variance: under non-uniform labelling it need not hold, and standardising
+observed contrasts by it is then only descriptive.
+\end{remark}
+
+For two $m_d$-regular toroidal shells, $e_a=e_b=E_d$ and $S_v=0$. Writing
+$q_d=|E_{a,d}\cap E_{b,d}|$, Eq.~\eqref{eq:general-variance} then gives
+\begin{equation}
+\operatorname{Var}_0[C_a(d)-C_b(d)]
+=2(E_d-q_d)p_2
+\frac{(M-N)(M-N-1)}{(M-2)(M-3)}.
+\label{eq:paired-variance}
+\end{equation}
+The variance of $g_a(d)-g_b(d)$ is Eq.~\eqref{eq:paired-variance} divided by
+$(E_d p_2)^2$. Shell-null envelopes and the open-window variance check use
+$2\,000$ of the paired fixed-count realisations.
+Equation~\eqref{eq:general-variance} is a variance for normalised graph-edge
+counts; it does not provide a variance for the nonlinear Brody fit of
+Section~2.3, whose paired null distribution is obtained by simulation.
+
+\subsection{Additional spatial summaries}
+
+For comparison, a toroidal annulus summary counts all directed pairs with
+$1\le d<3$ and divides by $N(N/M)\,8\pi$. The annulus contains 24 nonzero
+lattice displacement vectors; its fixed-count expectation is therefore
+$\frac{3}{\pi}\frac{M(N-1)}{N(M-1)}$, not exactly one. This summary uses all
+occupied reference points.
+
+Ripley's $K$ is estimated with the minus-sampling border correction. If
+$I_r$ contains the $n_r$ points at least distance $r$ from the window
+boundary, the estimator is
+\begin{equation}
+\widehat K_{\rm border}(r)=\frac{M}{N n_r}
+\sum_{i\in I_r}\sum_{j\ne i}\mathbf{1}\{d_{ij}\le r\}.
+\label{eq:border-k}
+\end{equation}
+$L(r)-r=\sqrt{\widehat K_{\rm border}(r)/\pi}-r$ is calculated at 18
+geometric bin centres between 1 and $W/3$ lattice units and directly at
+$\bar r$. A pointwise null envelope is based on $200$ fixed-count patterns;
+it is not a simultaneous significance envelope
+\citep{LOOSMORE-FORD-2006,MYLLYMAKI-2017}.
+
+For box width $\varepsilon\in\{2,4,8,16,32,64,128\}$, the window is cropped
+to complete boxes and $Z_2(\varepsilon)=\sum_k[M_k(\varepsilon)/M_{\varepsilon}]^2$
+is formed from box masses $M_k$ and retained mass $M_{\varepsilon}$. The fitted
+log--log slope is a finite-range summary. Separately, the pairwise correlation
+sum of \citet{GRASSBERGER-PROCACCIA-1983},
+\begin{equation}
+C(r)=\frac{2}{N(N-1)}\sum_{i<j}\mathbf{1}\{d_{ij}\le r\},
+\end{equation}
+is evaluated at 12 geometrically spaced open-boundary radii from 2 to $W/3$.
+Its log--log slope is reported without an edge correction. Because the window
+and fitted ranges are finite and box cropping changes the support, neither
+slope is interpreted as an asymptotic dimension.
+
+\subsection{Computational reproducibility}
+
+All quantities reported in Sections~3--4 are recomputable from the seeded
+scripts in the accompanying package; the package records the random seeds,
+simulation sizes and software versions. The random-labelling Monte Carlo
+values are conditional on the fixed-count null, the selected maps and window,
+and the chosen statistic; no correction is claimed for prior selection among
+alternative analyses. The exact variance of Section~2.6 holds under the null;
+outside the null it is used only descriptively. GitHub Copilot Chat for Visual
+Studio Code (GitHub, extension version 0.72.0) assisted with development of
+the analysis and plotting code; no generative image model was used to
+fabricate or alter the plotted data.
 
 %=====================================================================
 \section{Results}
@@ -350,33 +400,39 @@ $\log r$ over $r\in[2,105]$ px is reported separately.
 
 \subsection{Embedding dependence of the local spacing fit}
 
-The fitted Brody parameter is strongly embedding-dependent
-(Table~\ref{tab:local}). At the common window $316\times316$, row-major primes
-yield $\beta=2.153$ ($[2.086,2.224]$), the Ulam spiral yields $\beta=1.856$
-($[1.811,1.904]$), and Cantor pairing yields $\beta=1.413$
-($[1.387,1.440]$). The density-matched Bernoulli null yields
-$\beta=1.466\pm0.021$. The ordering is unchanged under all three boundary
-treatments (Table~\ref{tab:local}). Toroidal boundary conditions give
-$\beta=2.187$ ($[2.121,2.251]$) for row-major order, $1.890$
-($[1.848,1.935]$) for the Ulam spiral, and $1.423$ ($[1.398,1.449]$) for
-Cantor pairing. The interior-reference treatment gives $2.199$
-($[2.133,2.267]$), $1.894$ ($[1.851,1.941]$), and $1.429$
-($[1.402,1.455]$). Boundary effects therefore shift
-the fitted values by at most a few hundredths but do not affect the
-conclusions. As a distribution-free assessment, no null realisation among the
-$1\,000$ Bernoulli replicas approached the row-major value of $2.153$ (zero
-exceedances; a one-sided 95\% confidence bound on the exceedance probability
-is $3/1000\approx0.003$ by the rule of three).
-Figure~\ref{fig:embedding-robustness} compares the fitted values
-with the null ensemble, and Figure~\ref{fig:boundary-sensitivity} shows the
-boundary sensitivity explicitly.
+The open-boundary estimates are $2.153$, $1.856$, and $1.413$ for row-major,
+Ulam, and diagonal-sweep embeddings, respectively (Table~\ref{tab:local}).
+Their empirical-CDF discrepancies are $0.267$, $0.315$, and $0.234$; the
+largest tied-distance fractions are $0.320$, $0.594$, and $0.344$,
+respectively. The continuous family is therefore not a close distributional
+model for these discrete observations. The same fitting rule is nevertheless
+applied to each observed and simulated pattern, so its paired contrasts remain
+well-defined statistics under the specified random-labelling null.
+Their marginal fixed-count null means are all approximately $1.467$, with
+standard deviation approximately $0.020$. The observed pairwise differences
+are $0.297$, $0.739$, and $0.442$. None of the $4\,999$ paired null maxima
+exceeds even the smallest of these contrasts; the global and three
+maximum-statistic Monte Carlo values are therefore $1/5\,000=0.0002$
+(Table~\ref{tab:paired}). These values quantify disagreement with the
+specified complete random-labelling null, not a probability that the observed
+prime pattern arose randomly.
+
+The same ordering is obtained under toroidal and interior-reference distances
+(Table~\ref{tab:local} and Figure~\ref{fig:boundary-sensitivity}). The
+interior-reference counts are $8\,894$, $9\,041$, and $8\,918$, respectively.
+The resampling ranges in Table~\ref{tab:local} and
+Figure~\ref{fig:embedding-robustness} describe sensitivity to resampling the
+observed distance histogram and are not confidence intervals for a spatial
+process.
 
 \begin{table}[t]
   \centering
-  \caption{Fitted Brody parameter for the three embeddings under three boundary
-           treatments. Bootstrap 95\% confidence intervals in brackets (3000
-           resamples). Null rows give mean $\pm$ ensemble standard deviation
-           over 1000 realisations.}
+  \caption{Fitted Brody parameter by embedding and boundary treatment.
+           Brackets give descriptive 2.5th--97.5th percentiles from $2\,000$
+           resamples of the observed distance histogram, not spatial confidence
+           intervals. Null entries are mean $\pm$ standard deviation: $4\,999$
+           fixed-count realisations for open boundaries and $1\,000$ for each
+           other treatment.}
   \label{tab:local}
   \small
   \setlength{\tabcolsep}{4pt}
@@ -384,13 +440,34 @@ boundary sensitivity explicitly.
     \toprule
     Treatment & Row-major & Ulam & Cantor \\
     \midrule
-    Open (Euclidean) & $2.153\ [2.086,2.224]$ & $1.856\ [1.811,1.904]$ & $1.413\ [1.387,1.440]$ \\
-    Toroidal & $2.187\ [2.121,2.251]$ & $1.890\ [1.848,1.935]$ & $1.423\ [1.398,1.449]$ \\
-    Interior reference & $2.199\ [2.133,2.267]$ & $1.894\ [1.851,1.941]$ & $1.429\ [1.402,1.455]$ \\
+    Open & $2.153\ [2.082,2.224]$ & $1.856\ [1.817,1.898]$ & $1.413\ [1.389,1.440]$ \\
+    Toroidal & $2.187\ [2.125,2.253]$ & $1.890\ [1.856,1.927]$ & $1.423\ [1.399,1.450]$ \\
+    Interior reference & $2.201\ [2.136,2.269]$ & $1.895\ [1.859,1.934]$ & $1.427\ [1.400,1.453]$ \\
     \midrule
-    Bernoulli null (matched $\rho=0.0959$) & \multicolumn{3}{c}{$1.466\pm0.021$} \\
-    Toroidal Bernoulli null & \multicolumn{3}{c}{$1.489\pm0.022$} \\
-    Interior-reference Bernoulli null & \multicolumn{3}{c}{$1.489\pm0.020$} \\
+    Fixed-count null, open & \multicolumn{3}{c}{$1.467\pm0.020$} \\
+    Fixed-count null, toroidal & \multicolumn{3}{c}{$1.489\pm0.021$} \\
+    Fixed-count null, interior & \multicolumn{3}{c}{$1.489\pm0.022$} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \caption{Paired open-boundary Brody contrasts and an independent check of
+           Eq.~\eqref{eq:paired-variance} for the $d=\sqrt2$ shell. The
+           maximum-statistic values use $4\,999$ paired realisations; the
+           empirical shell standard deviations use the first $2\,000$. The
+           variance calculation uses $E_d=199\,712$ and the displayed edge
+           overlap $q_d$.}
+  \label{tab:paired}
+  \small
+  \begin{tabular}{@{}lrrrrr@{}}
+    \toprule
+    Contrast & $\Delta\hat\beta$ & $p_{\max}$ & $q_d$ & $\sigma_{\rm exact}$ & $\sigma_{\rm MC}$ \\
+    \midrule
+    Row-major -- Ulam & $0.297$ & $0.0002$ & $0$ & $0.0298$ & $0.0304$ \\
+    Row-major -- Cantor & $0.739$ & $0.0002$ & $316$ & $0.0298$ & $0.0299$ \\
+    Ulam -- Cantor & $0.442$ & $0.0002$ & $2$ & $0.0298$ & $0.0305$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -398,118 +475,63 @@ boundary sensitivity explicitly.
 \begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_embedding_robustness.pdf}
-  \caption{Embedding dependence of the fitted Brody parameter. (a) Fitted
-           values with bootstrap 95\% confidence intervals, the lattice
-           Bernoulli null band, and the continuous CSR reference
-           (Rayleigh, $\beta=1$). (b) Distribution of the null estimate over
-           1000 realisations with the three prime values marked.}
+  \caption{Embedding dependence of the fitted Brody parameter. (a) Observed
+           estimates and descriptive 2.5th--97.5th resampling percentiles,
+           with the open fixed-count null percentiles and continuous CSR
+           reference. (b) Observed pairwise differences and the marginal
+           2.5th--97.5th percentiles of the corresponding paired null
+           differences. The global maximum-statistic test is reported in
+           Table~\ref{tab:paired}. \plotAIDisclosure}
   \label{fig:embedding-robustness}
 \end{figure}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_boundary_sensitivity.pdf}
-  \caption{Boundary-condition sensitivity of the fitted Brody parameter.
-           Values under open (Euclidean), toroidal (periodic), and
-           interior-reference treatments, with bootstrap confidence intervals
-           and the matched Bernoulli null band.}
+  \caption{Boundary sensitivity of the fitted Brody parameter. Points and
+           bars are observed estimates and descriptive resampling percentiles;
+           each grey band is the 2.5th--97.5th percentile range of the
+           fixed-count null using the matching boundary treatment.
+           \plotAIDisclosure}
   \label{fig:boundary-sensitivity}
 \end{figure}
 
-\subsection{Controls: sparsity, density gradient, and thinning}
+\subsection{Mapped inhomogeneous control}
 
-The row-major excess is not a consequence of sparsity. The sparse-integer
-control yields $\beta=1.465\pm0.020$, and the inhomogeneous Bernoulli null
-calibrated to the prime-number-theorem density yields $\beta=1.450\pm0.021$;
-both are far below the row-major value of $2.153$ and close to the
-density-matched Bernoulli null. The smooth density gradient of the prime
-sequence therefore does not explain the elevated local spacing regularity of
-the row-major embedding.
-
-Density-thinning changes the absolute value of $\beta$ substantially
-(Figure~\ref{fig:density-thinning-control}). The thinned row-major primes give
-$\beta=1.155\pm0.066$, $1.289\pm0.052$, $1.468\pm0.041$, $1.706\pm0.032$, and
-$2.153$ (deterministic, no thinning) at $\rho=0.010$, $0.020$, $0.032$,
-$0.050$, $0.096$, against
-density-matched Bernoulli nulls of $1.030\pm0.063$, $1.091\pm0.043$,
-$1.155\pm0.035$, $1.248\pm0.028$, and $1.467\pm0.021$. The prime surface
-remains separated from the matched null at every tested density, including
-the lowest ($\\rho=0.010$), where the difference is $0.128\\pm0.007$
-($z\\approx18$ with the stated ensemble sizes).
-level itself grows with density and approaches the continuous CSR value as
-the density decreases ($0.945\pm0.140$, $0.991\pm0.094$, $1.026\pm0.062$ at
-$\rho=0.002$, $0.005$, $0.010$), consistently with the known lattice-CSR
-behaviour of binary fields on discrete lattices~\cite{CHIU-2013}; this is why
-the null is quoted empirically rather than by the continuous CSR value
-$\beta=1$.
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\textwidth]{fig_density_thinning_control.pdf}
-  \caption{Density dependence of the fitted Brody parameter for thinned
-           row-major primes (100 realisations per level, 95\% band) and
-           density-matched Bernoulli nulls (1000 realisations per level).
-           The continuous CSR reference $\beta=1$ is marked for comparison.}
-  \label{fig:density-thinning-control}
-\end{figure}
+The mapped inhomogeneous model gives mean $\pm$ standard deviation
+$1.450\pm0.022$, $1.441\pm0.021$, and $1.446\pm0.021$ for row-major, Ulam,
+and diagonal-sweep embeddings. In this model, the differences between the
+first and second and between the first and third means are $0.010$ and
+$0.004$, respectively, much smaller than the corresponding observed
+contrasts. Thus this particular independent-occupancy model with a smooth
+prime-number-theorem intensity does not reproduce the observed ordering and
+magnitude. Other inhomogeneous or interaction models are not excluded.
 
 \subsection{Exact-distance pair correlations}
 
-Distance-resolved pair correlations expose the arithmetic content of the
-local structure (Table~\ref{tab:g2}, Figure~\ref{fig:g2-distance}). In the
-row-major embedding, integer gaps map to horizontal offsets, so lattice
-distance $2$ corresponds to twin primes and lattice distance $4$ to cousin
-primes. The measured direction-resolved values are $g_2(r=2)=1.337\pm0.030$
-horizontally and $1.332\pm0.029$ vertically, and $g_2(r=4)=1.405\pm0.030$
-horizontally and $1.339\pm0.030$ vertically, against a null expectation of
-exactly $1$ in each direction. The horizontal value at $r=2$ equals
-$\pi_2(x)/(\pi(x)^2/x)$ evaluated at $x=99\,856$ and is in agreement with the
-Hardy--Littlewood twin-prime prediction $2C_2\approx1.3203$
-\cite{HARDY-LITTLEWOOD-1923}. The vertical values correspond to the prime gaps
-$632$ and $1264$, whose Hardy--Littlewood densities carry the same factor
-$2C_2$ (multiplied by $\prod_{p\mid g}(p-1)/(p-2)=78/77\approx1.013$ for the
-factor $79$ of the window side), consistent with the measured values.
+The normalised exact-shell counts show different local configurations across
+the three embeddings (Table~\ref{tab:g2} and Figure~\ref{fig:g2-distance}).
+For example, the Ulam shell at $d=\sqrt2$ has $g_a=2.058$, whereas the
+corresponding row-major and diagonal-sweep values are $0.001$ and $1.008$;
+at $d=2$ the Ulam value is $1.670$ and the diagonal-sweep value is $0.010$.
+The shell values are
+descriptive summaries of the same selected labels; they are not independent
+observations and no simultaneous test across the five shells is claimed.
 
-This identification is not merely qualitative. For every embedding and every
-lattice distance tested, the measured pair count was compared with the sum of
-the exact prime-pair counts $\pi_g(x)$ of the integer gap classes $g$ that
-the embedding maps to that lattice distance, where $\pi_g(x)$ is computed by
-sieve over the same window (Section S1.6). The measured-to-reconstructed
-ratios
-are $0.962$, $0.941$, $0.939$ (row-major, $r=2,\sqrt5,4$), $1.000$, $0.977$,
-$0.987$ (Ulam, $r=\sqrt2,2,4$), and $0.975$, $0.962$, $0.948$ (Cantor,
-$r=\sqrt2,\sqrt5,4$). The exact-distance pair statistics of all three
-embeddings are therefore quantitatively accounted for by the prime-pair
-counts of the gaps realised by each geometry. These exact counts are a
-reconstruction of the prime-pair data, not an independent empirical
-validation of the Hardy--Littlewood conjecture; the asymptotic
-Hardy--Littlewood densities were conjectured by Hardy and
-Littlewood~\cite{HARDY-LITTLEWOOD-1923}, and the modern perspective on small
-prime gaps is surveyed by Soundararajan~\cite{SOUNDARARAJAN-2007}.
-
-In the Ulam spiral, distance $\sqrt2$ is enhanced ($g_2=2.057\pm0.021$),
-because spiral diagonal neighbours carry small even gaps ($4,6,8,\dots$) whose
-exact prime-pair counts exceed the null level; distances $2$ and $4$ are
-enhanced to $1.670$ and $1.683$ through the corresponding gap classes. In the Cantor
-embedding, distance $\sqrt2$ is at the null level ($g_2=1.008\pm0.021$),
-because consecutive integers are diagonal neighbours only within the first
-$W$ diagonal blocks of the swept grid, while the long jumps at block
-boundaries carry large gaps; distance $2$ is almost completely suppressed
-($g_2=0.010$), because the offsets $(\pm2,0),(0,\pm2)$ correspond to odd gaps
-$2s+3$, which admit almost no prime pairs, and distance $4$ is enhanced
-($g_2=1.931\pm0.021$), in agreement with the exact pair counts of the gap
-classes $4s+10$ of the sweep. Each embedding thus translates a different set of arithmetic gap
-constraints into lattice distances, which is precisely why a single scalar
-spacing summary is embedding-dependent.
+For the row-major embedding, the normalised horizontal and vertical counts
+are $1.332$ and $1.337$ at distance 2, and $1.339$ and $1.405$ at distance 4;
+the direction-dependent differences reflect the periodic wrap of the
+horizontal toroidal shifts. The corresponding bounded twin- and cousin-prime
+counts are compared with the asymptotic Hardy--Littlewood constant in
+Appendix~\ref{app:supplementary}.
 
 \begin{table}[t]
   \centering
-  \caption{Exact-distance pair correlations $g_2(d)$ on the torus for the
-           three embeddings under the standard normalisation of
-           Eq.~\eqref{eq:g2exact}. Null expectation is exactly $1$ for every
-           distance; null standard deviations (2000 realisations) are
-           $\pm0.021$, $\pm0.021$, $\pm0.021$, $\pm0.015$, $\pm0.021$ at
-           $r=1,\sqrt2,2,\sqrt5,4$, respectively.}
+  \caption{Normalised toroidal shell counts $g_a(d)$ from
+           Eq.~\eqref{eq:g2exact}. The fixed-count null expectation is exactly
+           one. Null standard deviations from $2\,000$ paired realisations are
+           $0.021$, $0.021$, $0.021$, $0.015$, and $0.021$ for the displayed
+           shells, respectively.}
   \label{tab:g2}
   \small
   \setlength{\tabcolsep}{6pt}
@@ -517,8 +539,8 @@ spacing summary is embedding-dependent.
     \toprule
     Embedding & $r=1$ & $r=\sqrt2$ & $r=2$ & $r=\sqrt5$ & $r=4$ \\
     \midrule
-    Row-major & $0.673$ & $0.001$ & $1.334$ & $1.006$ & $1.372$ \\
-    Ulam & $0.001$ & $2.057$ & $1.670$ & $0.001$ & $1.683$ \\
+    Row-major & $0.673$ & $0.001$ & $1.335$ & $1.007$ & $1.372$ \\
+    Ulam & $0.001$ & $2.058$ & $1.670$ & $0.001$ & $1.683$ \\
     Cantor & $0.987$ & $1.008$ & $0.010$ & $0.884$ & $1.931$ \\
     \bottomrule
   \end{tabular}
@@ -527,387 +549,454 @@ spacing summary is embedding-dependent.
 \begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_g2_distance.pdf}
-  \caption{Exact-distance pair correlations. (a) $g_2$ at lattice distances
-           $r=1,\sqrt2,2,\sqrt5,4$ for the three embeddings with null 95\%
-           bands (expectation exactly 1). (b) Direction-resolved values at
-           $r=2$ and $r=4$ for the row-major embedding: the horizontal
-           directions measure twin ($r=2$) and cousin ($r=4$) prime excess
-           against the Hardy--Littlewood prediction $2C_2\approx1.3203$.}
+  \caption{(a) Normalised exact-shell counts for the three embeddings, with
+           pointwise 2.5th--97.5th percentiles of the fixed-count null.
+           (b) Row-major counts for single horizontal and vertical shifts;
+           the dotted line is the asymptotic Hardy--Littlewood constant.
+           \plotAIDisclosure}
   \label{fig:g2-distance}
 \end{figure}
 
-\subsection{Comparison with standard spatial diagnostics}
+\subsection{Validation and power of the paired procedure}
 
-A natural criticism of any specialised statistic is that it may add nothing to
-established spatial diagnostics. Table~\ref{tab:descriptors} therefore reports,
-for the three prime embeddings and the null, the Brody parameter alongside the
-Clark--Evans index, Ripley's $K$ function, the pair correlation annulus, and
-the two $D_2$ estimators. Three observations follow. First, among the local
-descriptors the Brody parameter has by far the largest dynamic range: it
-separates all three embeddings in both direction and magnitude; no null
-realisation among $1\,000$ exceeded $\beta=1.53$, whereas the row-major value
-is $2.153$. Second, descriptors computed from the same
-nearest-neighbour sample need not agree. The Clark--Evans index orders the
-embeddings as $\beta$ does but compresses the contrast ($1.223\,[1.214,1.231]$,
-$1.153\,[1.145,1.162]$, $1.107\,[1.097,1.116]$ against null
-$1.076\pm0.005$) and places the Cantor pattern
-\emph{above} the null, because it uses only the mean spacing whereas $\beta$
-responds to the full shape of the spacing distribution. Third, Ripley's $K$
-is informative only at short scales: $L(r)-r$ evaluated at the mean
-nearest-neighbour scale reproduces the embedding ordering ($-0.894$, $-0.241$,
-$-0.184$ against null $-0.139\pm0.020$), whereas the maximal deviation over
-$r\in[1,W/3]$ separates only the Cantor pattern ($9.29$ against null
-$8.93\pm0.11$). The annulus pair correlation $g_2$ over $1\le r<3$ px gives
-$1.043$, $0.896$, $0.864$ against $0.947\pm0.012$, a weaker and partially
-inverted signal that mixes the distance-resolved effects of
-Table~\ref{tab:g2}.
+For open-boundary $d=\sqrt2$ graphs, Eq.~\eqref{eq:general-variance} predicts
+contrast standard deviations of $0.0299$--$0.0300$; the corresponding values
+from $2\,000$ paired realisations are $0.0301$--$0.0306$
+(Table~\ref{tab:open-variance}). Unlike the toroidal example, the normalised
+degree-discrepancy terms are nonzero. The agreement checks the analytic
+variance for this finite setting, rather than proving a distributional limit.
 
-\begin{table}[t]
-  \centering
-  \caption{Descriptor comparison for prime embeddings and the matched-density
-           lattice Bernoulli null. Null columns give mean $\pm$ ensemble
-           standard deviation (1000 realisations for $\beta$, NNI, $D_2$; 100
-           for Ripley; 300 for the $g_2$ annulus). Bootstrap 95\% intervals
-           (2000 resamples) are given in brackets for the deterministic
-           Clark--Evans values. $L(r)-r$ is evaluated at
-           the mean nearest-neighbour scale; $\max|L-r|$ is taken over
-           $r\in[1,W/3]$ px; $D_2^{\rm box}$ is the box-counting slope over
-           $\varepsilon\in\{2,\dots,128\}$ px; $D_2^{\rm GP}$ is the
-           Grassberger--Procaccia pairwise slope over $r\in[2,105]$ px.}
-  \label{tab:descriptors}
-  \footnotesize
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{@{}lccccc@{}}
-    \toprule
-    Descriptor & Row-major & Ulam & Cantor & Bernoulli & Inhomog. \\
-    \midrule
-    Brody $\beta$ & $2.153$ & $1.856$ & $1.413$ & $1.466\pm0.021$ & $1.450\pm0.021$ \\
-    Clark--Evans $R$ & $1.223\ [1.214,1.231]$ & $1.153\ [1.145,1.162]$ & $1.107\ [1.097,1.116]$ & $1.076\pm0.005$ & $1.075\pm0.005$ \\
-    $L(r)-r$ at NN scale & $-0.894$ & $-0.241$ & $-0.184$ & $-0.139\pm0.020$ & --- \\
-    $\max|L(r)-r|$ & $8.97$ & $9.01$ & $9.29$ & $8.93\pm0.11$ & --- \\
-    $g_2$, annulus $[1,3)$ & $1.043$ & $0.896$ & $0.864$ & $0.947\pm0.012$ & --- \\
-    $D_2^{\rm box}$ & $1.910$ & $1.898$ & $1.885$ & $1.876\pm0.002$ & $1.876\pm0.002$ \\
-    $D_2^{\rm GP}$ & $1.993$ & $1.955$ & $2.000$ & $1.955\pm0.002$ & $1.948\pm0.003$ \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+Calibration under planted structure uses the toroidal $d=\sqrt2$ shell, whose
+two embedding graphs share no edges. At each enrichment strength
+$\theta\in\{0.5,1,2\}$, $400$ label sets of size $9\,580$ were generated by
+preferential selection: the weight of an unselected label was multiplied by
+$\exp(\theta)$ once for each already selected label whose integer difference
+from it lies in a designated gap set. Two alternatives were planted: the
+row-major shell gap classes $\{315,317\}$, which carry $99.4\%$ of that
+shell's edges, and the seven dominant Ulam shell classes
+$1246,1248,\ldots,1258$, which carry only $2.2\%$ of theirs. The experiment is
+a calibration of level and sensitivity under planted structure, not a
+balanced comparison of the two embeddings, and it is not claimed to show that
+the paired test dominates the marginal tests in general. With $2\,000$ null
+label sets and fixed thresholds at $\pm1.96$, the paired rejection rate at
+nominal $5\%$ is $0.046$ and the marginal rates are $0.055$ and $0.051$
+(Table~\ref{tab:power}); no empirical critical value is estimated from these
+null sets (Appendix~\ref{app:supplementary}). Under
+row-major planting, the paired contrast and the marginal row-major test reject
+at every strength, with mean standardised contrasts of $17.6$, $41.6$ and
+$105.7$, while the marginal Ulam test stays at $0.053$, $0.063$ and $0.208$.
+Under Ulam planting the contrast reverses sign, with mean standardised values
+of $-0.48$, $-3.30$ and $-61.44$, and its rejection rate rises from $0.103$
+to $0.995$; the marginal Ulam test responds earlier and equally or more
+strongly, so the pairing provides no consistent gain in power in this
+calibration. The sign of the paired contrast identifies the carrying embedding
+in every row-major realisation and in $0.683\pm0.023$, $0.785\pm0.021$ and
+$0.970\pm0.009$ of the Ulam realisations at $\theta=0.5$, $1.0$ and $2.0$
+(proportions and Monte Carlo standard errors). The differing growth rates
+reflect how concentrated the planted gap classes are in each shell, not an
+intrinsic difference between the embeddings.
+Figure~\ref{fig:power-calibration} displays the curves.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\textwidth]{fig_descriptor_benchmark.pdf}
-  \caption{Descriptor benchmark for the three prime embeddings and the
-           matched-density lattice Bernoulli null. (a) Fitted Brody parameter
-           with bootstrap confidence intervals and the null 95\% band.
-           (b) z-scores of the six descriptors relative to the null ensemble.
-           (c) Border-corrected $L(r)-r$ curves.}
-  \label{fig:descriptor-benchmark}
-\end{figure}
-
-\subsection{Multiscale estimators provide no additional discrimination}
-
-The multiscale picture is negative and is reported as such. The corrected
-box-counting slopes over $\varepsilon\in\{2,\dots,128\}$ px are $1.910$,
-$1.898$, $1.885$ for the three embeddings, against $1.876\pm0.002$ for the
-null: the excess mirrors the local ordering but is confined to the smallest
-boxes ($\varepsilon\le8$), while for $\varepsilon\ge8$ px all patterns give
-slopes near $2.13$, close to the two-dimensional value. The classical
-Grassberger--Procaccia pairwise correlation sum gives $D_2^{\rm GP}=1.993$,
-$1.955$, $2.000$ for the three embeddings, against $1.955\pm0.002$ for the
-null: there is no consistent embedding ordering, and the Ulam value coincides
-with the null. Consequently, no robust multiscale signature of the prime
-sequence is detected by either estimator at the scales tested, and the
-``correlation dimension'' is not invoked as a discriminating descriptor.
-Figure~\ref{fig:d2-validation} shows the two estimators directly; the
-finite-sample caution is exactly the one documented by
-Theiler~\cite{THEILER-1986} and by Islam and
-Sivakumar~\cite{ISLAM-SIVAKUMAR-2002}.
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\textwidth]{fig_d2_validation.pdf}
-  \caption{Multiscale validation. (a) Box-counting partition function
-           $\log Z_2$ against box size, with fitted slopes for the three
-           embeddings and the null mean. (b) Grassberger--Procaccia pairwise
-           slopes over $r\in[2,105]$ px for the three embeddings and the null;
-           all values lie close to $2$, and no embedding ordering is
-           reproduced.}
-  \label{fig:d2-validation}
+  \includegraphics[width=\textwidth]{fig_power_calibration.pdf}
+  \caption{Power calibration of the paired $d=\sqrt2$ edge-contrast procedure.
+           Each panel plants one embedding's dominant shell gap classes
+           (row-major $\{315,317\}$, left; Ulam $1246,\ldots,1258$, right) and
+           records rejection rates at nominal $5\%$ for the paired contrast and
+           the two marginal tests, with the $\theta=0$ level row shown at the
+           left of each panel. $2\,000$ null and $400$ alternative realisations
+           per strength. \plotAIDisclosure}
+  \label{fig:power-calibration}
 \end{figure}
 
 %=====================================================================
 \section{Discussion}
 %=====================================================================
 
-The audited results support a limited but robust conclusion. The fitted Brody
-parameter of the nearest-neighbour spacing distribution is strongly
-embedding-dependent: $2.153$, $1.856$, and $1.413$ for row-major, Ulam, and
-Cantor embeddings of the same $9\,580$ primes in the same window, against
-$1.466\pm0.021$ for the density-matched lattice Bernoulli null. The ordering
-survives all boundary treatments tested, and it is not reproduced by an
-inhomogeneous null with the prime-number-theorem density gradient. The
-sparse-integer control likewise fails to reproduce the row-major value.
+The paired construction separates two questions: how the same selected labels
+behave under different maps, and how large such contrasts are under a specified
+label-randomisation model. Using one simulated label set for every map
+preserves their dependence. The exact graph-contrast variance adds an
+analytical check that applies to both regular toroidal and irregular
+open-window graphs. When the graphs have equal size and degree structure,
+greater edge overlap decreases the variance; when the degree structures
+differ, the discrepancy term contributes additionally. This dependence is
+exact under the fixed-count null, and it provides a geometric explanation of
+why some embedding contrasts are intrinsically more variable than others.
 
-The relevance of this finding extends beyond prime-number visualisations.
-Spatial summaries such as nearest-neighbour fits, Ripley's $K$ and pair
-correlation functions are routinely applied to deterministic datasets that
-have been discretised onto lattices (rasterised fields, binary masks, coded
-apertures, cellular automata, and sequences visualised for exploratory
-analysis). The present results show that for such datasets the descriptor
-value is a joint property of the data, the embedding, and the null model, and
-that different embeddings of the same information can yield qualitatively
-different statistical characterisations. Reporting an embedding-dependent
-descriptor without specifying the embedding geometry therefore risks
-attributing to the data a structure that is in fact created by the
-representation.
+For the prime pattern, the three nearest-neighbour fits differ substantially
+relative to the paired null, the ordering survives the boundary treatments
+considered, and the mapped independent-occupancy model with the stated smooth
+intensity does not reproduce the observed contrasts. Neither comparison shows
+that the pattern would remain unusual under every plausible structured null.
+The exact-shell counts provide a local view: each embedding makes different
+integer-label pairs spatial neighbours, with periodic wrap contributing its
+own pairs. Because the continuous Brody family fits the tied lattice
+distances poorly, its parameter is reported only as a descriptive summary and
+its resampling ranges are not confidence intervals.
 
-The Cantor result is particularly informative in this respect. Had only the
-row-major embedding been examined, it would have been natural to conclude that
-the prime sequence has a strong and intrinsic 2D local-spacing signature. This
-conclusion is contradicted by the Cantor map. The observed short-range
-structure is a property of the pair (sequence, embedding), not of the sequence
-alone.
+These two strands address one methodological question. The paired simulation
+compares the fitted spacing summaries of Section~2.3, for which no closed form
+is available; Eq.~\eqref{eq:general-variance} supplies the exact null
+variability of the linear graph-count summaries, whose weights are fixed by
+the maps alone. Both describe how summaries of one labelled population change
+under alternative embeddings; Eq.~\eqref{eq:general-variance} is not a
+variance for the nonlinear Brody fit. The graph form is also the one with
+direct statistical practice outside arithmetic examples: two alternative
+neighbourhood graphs on one finite population arise whenever the same events
+are analysed under competing adjacency definitions, such as rook and queen
+contiguity for areal data, distance-band versus $k$-nearest-neighbour graphs
+for point events, or two regional partitions of a single study region. In
+such settings Eq.~\eqref{eq:general-variance} gives the exact null variance of
+the contrast between the two graph encodings without simulation, and the
+discrepancy terms identify whether the difference is driven by shared edges
+or by the degree structure.
 
-The exact-distance pair correlations give the clearest account of why. Each
-embedding translates a specific set of arithmetic gap constraints into
-lattice distances; the measured pair counts are quantitatively accounted for
-by the exact prime-pair counts of the gap classes realised by each
-embedding (Section S1.6), and for the row-major embedding the horizontal pair
-correlation at distance $2$ equals $1.337\pm0.030$, consistent with the
-asymptotic Hardy--Littlewood twin-prime benchmark $2C_2\approx1.3203$ at the
-finite window considered. The
-relationship between these distance-resolved effects and the scalar fit was
-tested directly by ablation: removal of all twin primes or of all cousin
-primes leaves the fitted parameter essentially unchanged ($2.153\to2.155$ and
-$2.149$), and removal of both reduces it to $2.090$, while the density-matched
-null moves comparably. The scalar Brody fit is therefore not a proxy for the
-$r=2$ or $r=4$ pair excesses alone; it aggregates the full short-range
-structure of the spacing distribution (Figure~\ref{fig:ablation},
-Section S1.7).
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.85\textwidth]{fig_ablation.pdf}
-  \caption{Ablation test: fitted Brody parameter after removal of all twin
-           primes, all cousin primes, or both, each compared with its
-           density-matched lattice Bernoulli null (mean and 95\% band over
-           $1\,000$ realisations). The excess over the null is preserved in
-           all cases.}
-  \label{fig:ablation}
-\end{figure}
-
-Several limitations should be kept explicit. First, the Brody family is used
-only as an empirical one-parameter fit; no claim of universality is made, and
-no claim is made about the fractal-determined Brody values discussed by Sakhr
-and Nieminen for random points on fractals~\cite{SAKHR-NIEMINEN-2005}.
-Second, only three deterministic embeddings are tested, so the observed
-ordering should not be read as exhaustive. Third, the null is the
-density-matched lattice Bernoulli field, whose fitted $\beta$ exceeds the
-continuous CSR value $\beta=1$ because of lattice discreteness; comparisons
-are therefore always made against the empirical lattice null rather than
-against the continuous Rayleigh law. Fourth, the multiscale estimators used
-here provide no additional discrimination; this negative result is stated
-explicitly so that the contribution of the paper is not overstated.
+The analysis has several limitations. The three embeddings and the primary
+window were selected for this comparison, and no general ordering across
+other maps or windows follows. The Brody family is only a quasi-likelihood
+descriptor and its fitted continuous CDF differs substantially from the
+observed tied-distance CDF; its distance-resampling ranges do not account for
+spatial dependence. The
+fixed-count null is exchangeable in the integer labels, whereas the prime
+sequence is deterministic and highly structured. The mapped inhomogeneous
+model addresses a smooth trend but retains independent occupancies. Finally,
+the multiscale slopes depend on their finite support and fitted ranges.
 
 %=====================================================================
 \section{Conclusion}
 %=====================================================================
 
-Two-dimensional binary prime patterns do not possess a unique local spatial
-signature independent of embedding. The fitted Brody parameter changes from
-$2.153$ for row-major order to $1.856$ for the Ulam spiral and $1.413$ for
-Cantor pairing, while a density-matched lattice Bernoulli null yields
-$1.466\pm0.021$. The elevated row-major value is shown by the sparse-integer
-control and by the inhomogeneous prime-number-theorem null not to be explained
-by sparsity or by the density gradient, and absolute values are shown by
-density-thinning to be density-dependent even when the prime signal remains
-separated from the null. Exact-distance pair correlations of the row-major
-embedding are consistent with the asymptotic Hardy--Littlewood twin-prime
-benchmark $2C_2\approx1.3203$ at distance $2$ in the finite window
-considered, and the pair counts of all three
-embeddings are quantitatively accounted for by the exact prime-pair counts of
-their realised gap classes. Multiscale estimators, by contrast,
-are found to provide no additional discrimination between embeddings at the
-scales tested. The
-appropriate conclusion is not that one descriptor is universally superior,
-but that 2D statistical characterisations of arithmetic sequences are
-observation-dependent: they depend on what embedding is used and on which
-scale-sensitive descriptor is applied.
+Spatial summaries of one fixed label set can change substantially under
+different bijective embeddings. A paired random-labelling comparison preserves
+the dependence induced by the shared labels, and an exact variance for
+normalised graph-count contrasts is determined by edge overlap and degree
+differences alone. In the example considered, all three observed Brody
+contrasts exceed the simulated maxima under the stated fixed-count null. The
+inference is conditional on that null, the selected maps and the finite
+window; it is not an asymptotic statement about primes, and no descriptor is
+claimed to be universally superior.
 
 %=====================================================================
-\section*{Acknowledgements}
-The open-source scientific Python ecosystem
-(NumPy~\cite{HARRIS-2020}, SciPy~\cite{VIRTANEN-2020},
-Matplotlib~\cite{HUNTER-2007}) enabled this
-computational study. The author declares no competing interests.
+\clearpage
+\appendix
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\section{Variance of a paired graph-count contrast}
+\label{app:variance}
 
-\section*{Data and code availability}
-The embedding constructors, estimators, and random seeds used in this study
-are available at
-\begin{center}
-\texttt{https://github.com/dawidkucharski/brody-2d-exclusion}
-\end{center}
-where the analysis scripts reproduce all reported values with the random
-seeds stated in each file.
+Let $G_a$ and $G_b$ be nonempty simple graphs on the same $M\ge4$ labels, with
+$e_a$ and $e_b$ edges. A set of $N$ labels is drawn uniformly without
+replacement. For $e=\{i,j\}$, let $Y_e=X_iX_j$ and assign the weight
+$w_e=\mathbf{1}\{e\in E_a\}/e_a-\mathbf{1}\{e\in E_b\}/e_b$. Then
+$g_a-g_b=p_2^{-1}\sum_e w_eY_e$, $\sum_e w_e=0$, and its expectation is zero.
 
-\section*{Supplementary Information}
+Let $S_e=\sum_e w_e^2$ and $S_v=\sum_v(\sum_{e\ni v}w_e)^2$, as in
+Eq.~\eqref{eq:graph-discrepancies}. For ordered pairs of distinct edges, the
+sum of $w_ew_f$ over pairs sharing a vertex is $S_v-2S_e$. Since
+$\sum_e w_e=0$, the corresponding sum over disjoint pairs is $S_e-S_v$.
+Their joint inclusion probabilities are $p_3$ and $p_4$; identical edges have
+inclusion probability $p_2$. Therefore
+\begin{align}
+\operatorname{Var}_0(g_a-g_b)
+&=p_2^{-2}\{S_ep_2+(S_v-2S_e)p_3+(S_e-S_v)p_4\} \\
+&=p_2^{-2}\{S_e(p_2-2p_3+p_4)+S_v(p_3-p_4)\},
+\end{align}
+which proves Eq.~\eqref{eq:general-variance}. The result applies to irregular
+graphs and unequal edge counts, but not unchanged to weighted pair estimators
+whose normalisation or edge weights depend on the realised labels.
 
-\subsection*{S1. Estimators and null ensembles}
+If both graphs are $m$-regular with $E=Mm/2$ edges and $q$ shared edges,
+$S_v=0$ and $S_e=2(E-q)/E^2$. Multiplication by $(Ep_2)^2$ gives
+Eq.~\eqref{eq:paired-variance}. Exhaustive enumeration on $4\times4$ graphs
+was used to check irregular graphs with unequal edge counts at several
+occupancies, as well as two regular shells for $N=3$. The simulated toroidal
+check appears in Table~\ref{tab:paired}; an open-boundary check with
+nonzero $S_v$ is shown in Table~\ref{tab:open-variance}.
 
-\textbf{S1.1 Brody fitting.}
-The Brody parameter is fitted by maximum likelihood on unit-mean
-nearest-neighbour spacings, with $3\,000$ bootstrap resamples for the
-deterministic patterns. Null distributions use $1\,000$ independent
-realisations per null model; ensemble quantiles are reported directly, so no
-bootstrap is needed for the nulls. Because nearest-neighbour spacings of a
-point pattern are correlated, the bootstrap intervals of the deterministic
-patterns are understood as descriptive; inferential statements in the main
-text rely on the empirical null ensembles (e.g., no null realisation among
-$1\,000$ exceeded $\beta=1.53$).
-
-\textbf{S1.2 Boundary treatments.}
-The toroidal nearest-neighbour distance uses the nine periodic images of the
-window and excludes self-pairs. The interior-reference treatment retains only
-reference points at least $5$ px from the boundary, with Euclidean distances
-to all occupied cells. All three treatments are applied identically to prime
-patterns and nulls; the interior-reference Bernoulli null yields
-$\beta=1.489\pm0.020$ ($1\,000$ realisations).
-
-\textbf{S1.3 Exact-distance pair correlations.}
-Equation~\eqref{eq:g2exact} is evaluated by cyclic cross-correlation on the
-torus, with the inner sum counting each unordered pair exactly once. The
-shift representatives are $(1,0),(0,1)$ for $r=1$; $(1,1),(1,-1)$ for
-$r=\sqrt2$; $(2,0),(0,2)$ for $r=2$; $(1,2),(1,-2),(2,1),(2,-1)$ for
-$r=\sqrt5$; and $(4,0),(0,4)$ for $r=4$; with $m_d=4,4,4,8,4$,
-respectively. For the lattice Bernoulli null the expectation is exactly $1$
-for every distance; over $2\,000$ realisations the estimated means and
-standard deviations are $0.9999\pm0.021$, $0.9994\pm0.021$,
-$1.0002\pm0.021$, $0.9992\pm0.015$, $1.0000\pm0.021$ at
-$r=1,\sqrt2,2,\sqrt5,4$, respectively. The direction-resolved statistic used
-in Section 3.3 is the single-shift count normalised by $N\rho$, with null
-expectation $1$ and null standard deviation $\pm0.030$ per direction.
-
-\textbf{S1.4 Ripley's $K$ and $D_2$ estimators.}
-Ripley's $K$ uses the isotropic border correction (fraction of the circle
-circumference inside the window, 64 angular samples) on 18 log-spaced radii
-$r\in[1,W/3]$ px; deterministic surfaces use 18 bins and null realisations use
-the same grid. The box-counting partition function is normalised by the total
-mass of the cropped region at each box size; slopes are reported over
-$\varepsilon\in\{2,\dots,128\}$ px together with the subrange
-$\varepsilon\ge8$ px. The Grassberger--Procaccia pairwise correlation sum is
-computed exactly via KD-tree pair counting over $r\in[2,105]$ px. Standard
-implementations of the distance-based diagnostics are available in the spatstat
-software~\cite{BADDELEY-TURNER-2005}.
-
-\textbf{S1.5 Inhomogeneous null calibration.}
-The inhomogeneous Bernoulli null occupies cell $n=2$ with probability $1$
-(reflecting the prime population, which contains $2$), leaves cell $n=1$
-unoccupied, and occupies each cell $n\ge3$ with probability $p(n)=c/\ln n$,
-where the calibration constant
-$c=9\,579/\sum_{n=3}^{99856}1/\ln n\approx0.9962$ is chosen so that the
-expected number of occupied cells equals the prime count $9\,580$ exactly.
-The probability is bounded by $p(n)\le\min(1,c/\ln n)\approx0.907$ at $n=3$,
-so no truncation is active.
-
-\textbf{S1.6 Gap classes and exact prime-pair counts.}
-For each embedding and each shift class of Section S1.3, the multiset of
-integer gaps realised by that shift was enumerated over all cells of the
-window, and the expected pair count was computed as
-$\sum_g m_g\,\pi_g(x)/(x-g)$, where $m_g$ is the multiplicity of gap $g$ and
-$\pi_g(x)$ is the exact number of prime pairs with difference $g$ below
-$x=99\,856$, obtained by sieve. Table~\ref{tab:hl} lists the measured pair
-counts and the reconstructions. Ratios near unity show that the
-exact-distance pair statistics of the prime patterns are a direct
-consequence of the prime-pair counts of the gap classes realised by each
-embedding, with the largest deviations confined to wrap cells at the window
-boundary (e.g., row-major $r=1$, ratio $0.869$). It is emphasised that these
-counts are exact reconstructions of the prime-pair data and do not constitute
-an independent empirical validation of the Hardy--Littlewood conjecture; the
-asymptotic Hardy--Littlewood densities~\cite{HARDY-LITTLEWOOD-1923}, with the
-twin-prime constant $2C_2$, are used in the main text only as the large-$x$
-background against which the horizontal $r=2$ excess is interpreted.
-
-\begin{table}[h]
+\begin{table}[htbp]
   \centering
-  \caption{Measured exact-distance pair counts versus exact sieve-based
-           gap-class pair counts for the gap classes realised by each
-           embedding. $\pi_g(x)$ denotes the exact number of prime pairs of
-           difference $g$ below $x=99\,856$ (sieve).}
-  \label{tab:hl}
-  \footnotesize
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{@{}lccccccccc@{}}
+  \caption{Open-boundary $d=\sqrt2$ graph-contrast validation. Each graph has
+           $198\,450$ edges. $q$ is the shared-edge count, $S_v$ is the degree
+           discrepancy from Eq.~\eqref{eq:graph-discrepancies}, and the last
+           two columns are the exact and simulated standard deviations of the
+           normalised count difference. The simulation uses $2\,000$ paired
+           fixed-count realisations.}
+  \label{tab:open-variance}
+  \small
+  \begin{tabular}{@{}lrrrr@{}}
     \toprule
-    & \multicolumn{3}{c}{Row-major} & \multicolumn{3}{c}{Ulam} & \multicolumn{3}{c}{Cantor} \\
-    \cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
-    Distance & meas. & pred. & ratio & meas. & pred. & ratio & meas. & pred. & ratio \\
+    Contrast & $q$ & $10^7S_v$ & $\sigma_{\rm exact}$ & $\sigma_{\rm MC}$ \\
     \midrule
-    $r=1$ & $1\,237$ & $1\,423$ & $0.869$ & $2$ & $1$ & --- & $1\,814$ & $1\,898$ & $0.956$ \\
-    $r=\sqrt2$ & $1$ & $1$ & $1.000$ & $3\,782$ & $3\,783$ & $1.000$ & $1\,852$ & $1\,900$ & $0.975$ \\
-    $r=2$ & $2\,453$ & $2\,549$ & $0.962$ & $3\,069$ & $3\,141$ & $0.977$ & $19$ & $28$ & $0.679$ \\
-    $r=\sqrt5$ & $3\,700$ & $3\,934$ & $0.941$ & $5$ & $1$ & --- & $3\,250$ & $3\,378$ & $0.962$ \\
-    $r=4$ & $2\,522$ & $2\,686$ & $0.939$ & $3\,093$ & $3\,133$ & $0.987$ & $3\,550$ & $3\,743$ & $0.948$ \\
+    Row-major -- Ulam & $0$ & $1.913$ & $0.0299$ & $0.0306$ \\
+    Row-major -- Cantor & $0$ & $2.349$ & $0.0300$ & $0.0301$ \\
+    Ulam -- Cantor & $2$ & $2.366$ & $0.0300$ & $0.0305$ \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\textbf{S1.7 Twin/cousin ablation.}
-All twin primes (the larger member of each pair $(p,p+2)$, $p\le99\,856$) were
-removed from the prime set and the row-major fit was recomputed; the same was
-done for cousin pairs $(p,p+4)$ and for both families simultaneously, each
-time with a density-matched Bernoulli null. The fitted values are $2.155$,
-$2.149$, and $2.090$, against nulls $1.408\pm0.022$, $1.407\pm0.023$, and
-$1.350\pm0.024$; the excess over the null is preserved in all cases
-($\Delta\beta=0.747$, $0.742$, $0.741$). The scalar fit is therefore
-insensitive to the twin and cousin pair excesses and aggregates the full
-short-range spacing structure.
-
-\subsection*{S2. Finite-size behaviour}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\section{Finite-size behaviour}
 
 The fitted Brody parameter was recomputed for row-major prime embeddings in
 square windows $W^2$ with $W=31,54,100,173,316,547,1000$, each with a
-matched lattice Bernoulli null ($1\,000$ realisations for $W\le316$, $200$
-for larger windows). Table~\ref{tab:finite} lists $\beta_{\rm prime}$,
-$\beta_{\rm null}$, and $\Delta\beta=\beta_{\rm prime}-\beta_{\rm null}$.
-The excess $\Delta\beta$ is positive at all sizes except $W=54$, where it is
-zero within uncertainty (a small-sample fluctuation of the $421$-prime
-pattern), and it is non-monotonic; no convergence or
-asymptotic persistence is claimed. Figure~\ref{fig:finite-size} shows the
-series.
+fixed-count random-label null ($1\,000$ realisations for $W\le316$, $200$
+for larger windows). Table~\ref{tab:finite} lists the observed fit, the null
+mean and standard deviation, and their difference. The difference is
+non-monotonic and is negative at $W=54$. These selected finite windows do not
+establish convergence, an asymptotic trend, or a cause for that negative value.
+Figure~\ref{fig:finite-size} displays the null spread separately from the
+observed differences.
 
-\begin{table}[h]
+\begin{table}[htbp]
   \centering
-  \caption{Finite-size series of the fitted Brody parameter for row-major
-           primes and matched lattice Bernoulli nulls. Bootstrap 95\%
-           confidence intervals in brackets.}
+  \caption{Finite-window row-major fits and fixed-count nulls. Null entries
+           are mean $\pm$ standard deviation; $\Delta\beta$ subtracts the
+           null mean from the observed fit.}
   \label{tab:finite}
   \small
   \setlength{\tabcolsep}{4pt}
-  \begin{tabular}{@{}cccccc@{}}
+  \begin{tabular}{@{}ccccc@{}}
     \toprule
     $W$ & primes & $\beta_{\rm prime}$ & $\beta_{\rm null}$ & $\Delta\beta$ \\
     \midrule
-    $31$ & $162$ & $2.197\ [1.627,3.755]$ & $1.695\pm0.198$ & $+0.502$ \\
-    $54$ & $421$ & $1.590\ [1.410,1.812]$ & $1.621\pm0.113$ & $-0.030$ \\
-    $100$ & $1\,229$ & $1.966\ [1.844,2.098]$ & $1.552\pm0.063$ & $+0.414$ \\
-    $173$ & $3\,241$ & $2.011\ [1.930,2.101]$ & $1.507\pm0.036$ & $+0.504$ \\
-    $316$ & $9\,580$ & $2.153\ [2.084,2.223]$ & $1.466\pm0.021$ & $+0.687$ \\
-    $547$ & $25\,936$ & $1.688\ [1.663,1.715]$ & $1.431\pm0.012$ & $+0.257$ \\
-    $1000$ & $78\,498$ & $1.750\ [1.733,1.767]$ & $1.399\pm0.007$ & $+0.351$ \\
+    $31$ & $162$ & $2.197$ & $1.685\pm0.185$ & $+0.512$ \\
+    $54$ & $421$ & $1.590$ & $1.616\pm0.108$ & $-0.025$ \\
+    $100$ & $1\,229$ & $1.966$ & $1.554\pm0.060$ & $+0.412$ \\
+    $173$ & $3\,241$ & $2.011$ & $1.509\pm0.034$ & $+0.502$ \\
+    $316$ & $9\,580$ & $2.153$ & $1.467\pm0.021$ & $+0.686$ \\
+    $547$ & $25\,936$ & $1.688$ & $1.432\pm0.013$ & $+0.256$ \\
+    $1000$ & $78\,498$ & $1.750$ & $1.399\pm0.007$ & $+0.350$ \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.85\textwidth]{fig_finite_size.pdf}
-  \caption{Finite-size excess $\Delta\beta=\beta_{\rm prime}-\beta_{\rm null}$
-           for row-major embeddings with matched nulls at each window size.
-           Error bars are 95\% intervals combining the bootstrap confidence
-           interval of $\beta_{\rm prime}$ with the null ensemble spread.}
+  \caption{Finite-window differences between observed row-major fits and
+           fixed-count null means. Grey bars give the null 2.5th--97.5th
+           percentile range centred on its mean; they are not confidence
+           intervals for the deterministic prime-pattern estimates.
+           \plotAIDisclosure}
   \label{fig:finite-size}
 \end{figure}
 
-\bibliographystyle{elsarticle-num}
+\clearpage
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\section{Supplementary descriptor and sensitivity analyses}
+\label{app:supplementary}
+
+The supplementary analyses compare the fitted parameter with standard spatial
+diagnostics and examine density thinning, bounded pair removal, and the
+calibration of the paired procedure.
+
+\subsection{Descriptor comparison}
+
+Table~\ref{tab:descriptors} compares the fitted parameter with the
+Clark--Evans index, border-corrected $L(r)-r$, the toroidal annulus summary,
+and two finite-scale slopes. The Clark--Evans index orders the three patterns
+in the same direction as $\hat\beta$, but the diagonal-sweep value is above
+its null mean even though its fitted $\beta$ is below the null mean. The
+corrected maximum $|L(r)-r|$ is largest for the Ulam pattern in this window.
+These differences illustrate that the summaries measure different features;
+they do not establish comparative statistical power. The standardised
+differences in Figure~\ref{fig:descriptor-benchmark} are descriptive ratios
+to null standard deviations, not adjusted significance tests.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Descriptor comparison with the fixed-count null. Null entries are
+           mean $\pm$ standard deviation over $4\,999$ realisations for
+           $\hat\beta$ and $R$, and $200$ for the remaining summaries. The
+           maximum of $|L(r)-r|$ is taken over the 18 stated radii. Box and
+           pairwise entries are finite-range slopes, not asymptotic dimensions.}
+  \label{tab:descriptors}
+  \footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    Descriptor & Row-major & Ulam & Cantor & Fixed-count null \\
+    \midrule
+    Brody $\hat\beta$ & $2.153$ & $1.856$ & $1.413$ & $1.467\pm0.020$ \\
+    CDF discrepancy $D_{\rm fit}$ & $0.267$ & $0.315$ & $0.234$ & --- \\
+    Clark--Evans $R$ & $1.223$ & $1.153$ & $1.107$ & $1.076\pm0.005$ \\
+    $L(\bar r)-\bar r$ & $-1.057$ & $-0.241$ & $-0.197$ & $-0.143\pm0.019$ \\
+    $\max|L(r)-r|$ & $1.422$ & $4.944$ & $1.653$ & $0.449\pm0.206$ \\
+    Annulus $[1,3)$ & $1.081$ & $0.914$ & $0.867$ & $0.956\pm0.009$ \\
+    Box slope & $1.910$ & $1.898$ & $1.885$ & $1.876\pm0.0014$ \\
+    Pairwise slope & $1.993$ & $1.955$ & $2.000$ & $1.955\pm0.003$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fig_descriptor_benchmark.pdf}
+  \caption{(a) Descriptive differences from the fixed-count null mean divided
+           by its standard deviation for each summary; the colour scale is
+           truncated at $\pm36$ for legibility and the displayed values are
+           not truncated.
+           (b) Border-corrected
+           $L(r)-r$ curves and pointwise 2.5th--97.5th null percentiles.
+           These bands are not simultaneous envelopes
+           \citep{LOOSMORE-FORD-2006,MYLLYMAKI-2017}. \plotAIDisclosure}
+  \label{fig:descriptor-benchmark}
+\end{figure}
+
+\subsection{Finite-scale summaries}
+
+The box slopes are $1.910$, $1.898$, and $1.885$, compared with a null mean
+of $1.876$. The pairwise slopes are $1.993$, $1.955$, and $2.000$, compared
+with $1.955\pm0.003$ under the null. Thus the row-major and diagonal-sweep
+pairwise slopes differ from the null mean, while the Ulam value is close to
+it; the two summaries do not reproduce the same embedding ordering. The three
+patterns are not indistinguishable from the null.
+
+The support also changes with box size. For example, the row-major pattern
+retains all $9\,580$ occupied cells at $\varepsilon=2$ but only $6\,415$ at
+$\varepsilon=128$. The pairwise slope is uncorrected for the finite open
+window. These finite-range summaries are therefore not evidence of an
+asymptotic dimension; finite-sample limitations of dimension estimators were
+also analysed by \citet{THEILER-1986}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fig_d2_validation.pdf}
+  \caption{Finite-scale summaries. (a) Box partition functions and the mean
+           null curve; the cropped support changes with box size.
+           (b) Pairwise slopes over the stated radius range and the null
+           2.5th--97.5th percentile range. \plotAIDisclosure}
+  \label{fig:d2-validation}
+\end{figure}
+
+\subsection{Density thinning}
+
+Thinning changes the observed row-major fit substantially
+(Figure~\ref{fig:density-thinning-control}). At target densities $0.010$,
+$0.020$, $0.032$, and $0.050$, the means over thinning masks are $1.133$,
+$1.295$, $1.468$, and $1.704$, against Bernoulli means $1.032$, $1.092$,
+$1.157$, and $1.247$. At the lowest density, $223$ of $500$ thinned patterns
+exceed the empirical 95th percentile of the matched Bernoulli ensemble; the
+two ensembles therefore overlap appreciably. These results describe the
+behaviour of repeated masks of one deterministic prime pattern, not $500$
+independent prime datasets.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fig_density_thinning_control.pdf}
+  \caption{Density sensitivity of the row-major fit. Points and bars are the
+           mean and 2.5th--97.5th percentiles over $500$ thinning masks; the
+           last point is the unthinned pattern and has no thinning interval.
+           The grey band gives 2.5th--97.5th percentiles of $1\,000$ independent
+           Bernoulli patterns at each target density. Lines connect the tested
+           levels for display. \plotAIDisclosure}
+  \label{fig:density-thinning-control}
+\end{figure}
+
+\subsection{Twin- and cousin-pair ablation}
+
+As a sensitivity analysis, the larger member of each bounded twin-prime pair
+was removed from the row-major set, then the procedure was repeated for
+cousin-prime pairs and their union. The fitted values are $2.155$, $2.149$,
+and $2.090$, respectively, compared with $2.153$ before removal
+(Figure~\ref{fig:ablation}). The corresponding fixed-count null distributions
+change with occupancy. These specific removals show that the fitted value is
+not determined solely by the retained pairs at gaps 2 or 4; they do not prove
+insensitivity to all pair correlations or identify a unique cause of the fit.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.85\textwidth]{fig_ablation.pdf}
+  \caption{Row-major fits after removal of the larger member of each bounded
+           twin-prime pair, cousin-prime pair, or their union. Grey bands are
+           2.5th--97.5th percentiles from $1\,000$ fixed-count patterns with
+           the corresponding remaining occupancy. \plotAIDisclosure}
+  \label{fig:ablation}
+\end{figure}
+
+\subsection{Hardy--Littlewood benchmark}
+
+The horizontal toroidal counts at distances 2 and 4 are $1\,224$ and
+$1\,231$ pairs. A sieve within the stated integer range gives $1\,223$
+twin-prime pairs and $1\,215$ cousin-prime pairs; the counts differ because
+horizontal toroidal shifts wrap within rows. The horizontal distance-2 value
+is numerically close to the asymptotic Hardy--Littlewood constant
+$2C_2\approx1.3203$ \citep{HARDY-LITTLEWOOD-1923}, but it is not identical to
+a normalised bounded twin-prime count, and this finite-window comparison is
+neither a test nor a proof of the conjecture.
+
+\subsection{Power-calibration rates}
+
+Table~\ref{tab:power} lists the rejection rates plotted in
+Figure~\ref{fig:power-calibration}. The thresholds are fixed at $\pm1.96$
+(nominal $5\%$, two-sided); no empirical critical value is estimated from the
+null realisations. The paired standardisation uses the exact null standard
+deviation of Eq.~\eqref{eq:general-variance} ($0.02982$), and the marginal
+standardisations use the null ensemble's standard deviations ($0.02108$
+each), so the $\theta=0$ row is a check of the standardisation at the fixed
+threshold. An independent null ensemble with a second seed ($20261102$,
+$2\,000$ label sets) gave paired, marginal row-major and marginal Ulam levels
+of $0.049$, $0.049$ and $0.046$. Each alternative row uses $400$ label sets
+drawn by preferential selection: at each of the $9\,580$ sequential draws, an
+unselected label $v$ is drawn with probability proportional to
+$\exp(\theta k_v)$, where $k_v$ is the number of already selected labels
+whose integer difference from $v$ lies in the planted gap set; the weights
+are updated after every draw, sampling is performed through a Fenwick tree
+over the unselected labels, and the selection order is not additionally
+randomised. The sign-identification rates quoted in Section~3.4 are the
+proportions of realisations in which the paired contrast has the sign
+corresponding to the planted embedding.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Rejection rates of the paired contrast and the two marginal tests
+           at nominal $5\%$, for the planted alternatives of
+           Section~3.4. The $\theta=0$ row is the level estimate. Thresholds
+           are fixed at $\pm1.96$; no empirical critical value is estimated.}
+  \label{tab:power}
+  \small
+  \begin{tabular}{@{}lccccc@{}}
+    \toprule
+    Planted gap set & $\theta$ & Paired & Marginal row-major & Marginal Ulam \\
+    \midrule
+    Fixed-count null & $0$ & $0.046$ & $0.055$ & $0.051$ \\
+    \midrule
+    Row-major $\{315,317\}$ & $0.5$ & $1.000$ & $1.000$ & $0.053$ \\
+    Row-major $\{315,317\}$ & $1.0$ & $1.000$ & $1.000$ & $0.063$ \\
+    Row-major $\{315,317\}$ & $2.0$ & $1.000$ & $1.000$ & $0.208$ \\
+    \midrule
+    Ulam $\{1246,\ldots,1258\}$ & $0.5$ & $0.103$ & $0.075$ & $0.125$ \\
+    Ulam $\{1246,\ldots,1258\}$ & $1.0$ & $0.738$ & $0.653$ & $0.738$ \\
+    Ulam $\{1246,\ldots,1258\}$ & $2.0$ & $0.995$ & $1.000$ & $0.988$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\clearpage
+\section*{Data and code availability}
+The input consists of primes generated from the stated upper bound. The
+analysis scripts, parameter settings, random seeds, generated numerical
+results, and figure-building code are included in the accompanying
+reproducibility package. The package will be deposited in a public repository
+with a persistent DOI upon acceptance.
+
+\section*{Acknowledgements}
+NumPy \citep{HARRIS-2020} and SciPy \citep{VIRTANEN-2020} were used for the
+computations. Figures were prepared using Matplotlib \citep{HUNTER-2007}.
+
+\section*{Declaration of competing interests}
+The author declares no competing interests.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+GitHub Copilot Chat 0.72.0 was used to assist with the derivation, analysis
+and plotting code, and manuscript revision. The author is responsible for
+reviewing and verifying the final content.
+
+\bibliographystyle{elsarticle-harv}
 \bibliography{aurora_refs}
 
 \end{document}

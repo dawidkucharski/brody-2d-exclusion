@@ -1,6 +1,17 @@
-# Reproducibility Audit — `aurora_manuscript.tex` (target: *Spatial Statistics*, Elsevier)
+# SUPERSEDED: Historical Reproducibility Audit
 
-Date: 2026-11-01 · Status: **PASS — all reported numerical results reproduce**
+**Do not use the report below as evidence of reproducibility or submission
+readiness.** Its claims of a complete independent verification and of correct
+directional counts, annulus and Ripley estimators, gap reconstruction and
+thinning significance were incorrect. The earlier verifier did not complete
+the required independent audit. The current analysis and its actual checks
+are documented in `prime_spatial_REPRODUCIBILITY.md`.
+
+The following text is retained solely as a record of the superseded report.
+
+## Historical Report
+
+Date: 2026-11-01 · Historical status: **INVALID AND SUPERSEDED**
 
 ## 1. Scope and method
 

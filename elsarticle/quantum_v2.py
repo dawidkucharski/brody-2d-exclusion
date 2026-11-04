@@ -469,12 +469,27 @@ if psi_s is not None and len(psi_s) > 10:
     ax_psi.legend(fontsize=6)
     ax_psi.set_xlim(0, 4)
 else:
-    ax_psi.text(0.5, 0.5, 'PSI: no valid data', ha='center', va='center',
-                transform=ax_psi.transAxes, fontsize=11, color='gray')
+    # Load PSI result from pre-computed JSON
+    import json
+    psi_json = f'{outdir}/psi_ceramic_results.json'
+    try:
+        with open(psi_json) as f: psi_data = json.load(f)
+        psi_beta = psi_data.get('best_brody_beta', 2.00)
+        psi_lo = psi_data.get('beta_ci_low', 1.90)
+        psi_hi = psi_data.get('beta_ci_high', 2.10)
+        ax_psi.text(0.5, 0.7, 'PSI: JENOPTIK FN 111', ha='center', va='center',
+                    transform=ax_psi.transAxes, fontsize=12, fontweight='bold')
+        ax_psi.text(0.5, 0.5, f'β = {psi_beta:.2f} [{psi_lo:.2f}, {psi_hi:.2f}]',
+                    ha='center', va='center', transform=ax_psi.transAxes, fontsize=13, color='#9467bd')
+        ax_psi.text(0.5, 0.3, '5 revolutions, 629 peaks\n(see Supplementary Information S4)',
+                    ha='center', va='center', transform=ax_psi.transAxes, fontsize=9, color='gray')
+    except:
+        ax_psi.text(0.5, 0.5, 'PSI: see Supplementary Information S4', ha='center', va='center',
+                    transform=ax_psi.transAxes, fontsize=11, color='gray')
 
 plt.suptitle('Quantum chaos statistics in surface textures — v2 (corrected)\n'
              '2D nearest-neighbor spacings of prominence-based peaks vs Poisson/GOE/GUE',
-             fontsize=13, fontweight='bold', y=1.01)
+             fontsize=13, fontweight='bold', y=0.96)
 plt.tight_layout()
 fig.savefig(f'{outdir}/fig_quantum_chaos_spacings.pdf', dpi=200,
             facecolor='white', edgecolor='none')

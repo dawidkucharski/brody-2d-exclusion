@@ -1,9 +1,9 @@
 %% 
 %% Brody spacing statistics of surface textures
 %% Dawid Kucharski — Poznan University of Technology
-%% Target: Physical Review Letters / Physica A
+%% Target: arXiv preprint
 %%
-\documentclass[final,3p,times,twocolumn]{elsarticle}
+\documentclass[final,1p,times]{elsarticle}
 
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -63,10 +63,12 @@ of short-range exclusion in 2D spatial point processes.
 \begin{keyword}
 Brody distribution \sep spatial point processes \sep exclusion physics \sep
 surface metrology \sep random matrix theory \sep prime numbers \sep
-pair correlation function \sep interferometric profilometry
+interferometric profilometry
 \end{keyword}
 
 \end{frontmatter}
+
+\noindent{\small This is a preprint submitted to a peer-reviewed journal. The most up-to-date version is available at \href{https://arxiv.org/abs/2606.16393}{arXiv:2606.16393}.}
 
 %=====================================================================
 \section{Introduction}
@@ -614,7 +616,7 @@ confirm that factors beyond the manufacturing process alone
 (material, surface preparation history, measurement scale) influence
 $\beta$.
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_unified_beta_landscape.pdf}
   \caption{Brody exponent $\beta$ across all 58 analysable surfaces.
@@ -624,7 +626,7 @@ $\beta$.
            The earlier bar chart for 21 prominence-based surfaces
            (Fig.~S2) provides an alternative visualisation.}
   \label{fig:beta-landscape}
-\end{figure*}
+\end{figure}
 
 
 \begin{table}[htbp]
@@ -860,7 +862,7 @@ similar NN spacing distributions because the Brody exponent is
 sensitive only to the effective exclusion strength, not to its
 microscopic origin.
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_exclusion_physics.pdf}
   \caption{Exclusion physics: the Brody exponent $\beta$ as
@@ -877,7 +879,7 @@ microscopic origin.
            Right: $\beta$ across synthetic reference processes
            and real-data domains.}
   \label{fig:exclusion}
-\end{figure*}
+\end{figure}
 
 
 \subsection{Pair correlation function $g_2(r)$}
@@ -915,7 +917,7 @@ to avoid noise-dominated contributions)
 lies between the Poisson and Ginibre limits, with a reduced but
 detectable dip at small $r$.
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_unified_pair_correlation.pdf}
   \caption{Pair correlation function $g_2(r)$ across domains.
@@ -932,7 +934,7 @@ detectable dip at small $r$.
            absolute $\beta$ values are density-dependent;
            cross-domain comparison requires density matching.}
   \label{fig:unified-g2}
-\end{figure*}
+\end{figure}
 
 %=====================================================================
 \subsection{Complementary descriptors for binary patterns}
@@ -1019,7 +1021,7 @@ both the 1D sequence statistics and the 2D embedding geometry; claims
 about ``prime point processes'' must therefore specify the embedding.
 Figure~\ref{fig:embedding-robustness} summarises these results.
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_embedding_robustness.pdf}
   \caption{Embedding dependence of the Brody exponent for 2D primes
@@ -1033,7 +1035,7 @@ Figure~\ref{fig:embedding-robustness} summarises these results.
            arithmetic sequences reflects both sequence structure and
            embedding geometry.}
   \label{fig:embedding-robustness}
-\end{figure*}
+\end{figure}
 
 \textbf{Sparse-integer control: sparsity versus arithmetic structure.}
 To test whether the elevated $\beta$ for row-major primes
@@ -1057,7 +1059,7 @@ models use the appropriate binary CSR reference.
 Figure~\ref{fig:density-thinning-control} presents the density-thinning
 and sparse-integer control results.
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_density_thinning_control.pdf}
   \caption{Density-thinning and sparse-integer controls.
@@ -1074,7 +1076,7 @@ and sparse-integer control results.
            therefore a genuine arithmetic effect, not a sparsity
            artefact.}
   \label{fig:density-thinning-control}
-\end{figure*}
+\end{figure}
 
 \subsection{Peak-detection sensitivity}
 
@@ -1095,7 +1097,7 @@ plausible robustness but do not fully characterise the
 threshold-dependence of $\beta$ for arbitrary surface textures.
 Figure~\ref{fig:sensitivity} provides the complete sensitivity profile.
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{fig_sensitivity_analysis.pdf}
   \caption{Peak-detection sensitivity analysis on a synthetic surface
@@ -1107,7 +1109,7 @@ Figure~\ref{fig:sensitivity} provides the complete sensitivity profile.
            throughout this work (dashed line) lies within the stable
            plateau.}
   \label{fig:sensitivity}
-\end{figure*}
+\end{figure}
 
 %---------------------------------------------------------------------
 \subsection{Proof-of-concept: interferometric profilometry}
@@ -1536,7 +1538,7 @@ with empirical correction factor $1.24 \pm 0.15$.
 Table~S1: Brody exponent $\beta$ for all 58 analysable surfaces
 (21 prominence-based + 37 watershed-recovered), ordered by decreasing $\beta$.
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
   \centering
   \caption{Complete $\beta$ values for all 58 manufactured surfaces.
            $^{\dagger}$$n_{\text{NNS}}<30$: CI width $>1.5$, estimate indicative only.
@@ -1607,92 +1609,95 @@ Table~S1: Brody exponent $\beta$ for all 58 analysable surfaces
     Ti6Al4V & Gr & 98 & 96 & -0.20 & [-0.31, -0.05] \\
     \bottomrule
   \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection*{S2. Supplementary figures}
 
-\begin{figure*}[H]
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_multifractal.pdf}
-  \caption{Fig.~S1: Multifractal $D_q$ spectra and $f(\alpha)$ singularity
+  \caption{ Multifractal $D_q$ spectra and $f(\alpha)$ singularity
            spectrum for the binary prime surface and matched Bernoulli null.}
   \label{fig:S1}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_d2_scaling.pdf}
-  \caption{Fig.~S2: Correlation dimension $D_2$ scaling for six arithmetic
+  \caption{ Correlation dimension $D_2$ scaling for six arithmetic
            sequences at $N=10^5$, compared with matched-density Bernoulli
            null models.}
   \label{fig:S2}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_dq_spectra.pdf}
-  \caption{Fig.~S3: Generalised $D_q$ spectra for representative
+  \caption{ Generalised $D_q$ spectra for representative
            manufactured surfaces.}
   \label{fig:S3}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_forest_plot.pdf}
-  \caption{Fig.~S4: Forest plot of $\Delta D_2$ for all arithmetic
+  \caption{ Forest plot of $\Delta D_2$ for all arithmetic
            sequences with Benjamini--Hochberg-corrected significance.}
   \label{fig:S4}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_psd_scaleup.pdf}
-  \caption{Fig.~S5: Power spectral density of the binary prime gap
+  \caption{ Power spectral density of the binary prime gap
            surface across scales $N \in [10^3, 10^7]$.}
   \label{fig:S5}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_convergence.pdf}
-  \caption{Fig.~S6: Convergence of $\Delta D_2(N)$ for the binary
+  \caption{ Convergence of $\Delta D_2(N)$ for the binary
            prime surface and M\"obius $\mu^-$ across
            $N \in [10^4, 10^7]$.}
   \label{fig:S6}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_physical_vs_math.pdf}
-  \caption{Fig.~S7: Comparison of physical (FV) and mathematical
+  \caption{ Comparison of physical (FV) and mathematical
            (arithmetic) surface descriptors.}
   \label{fig:S7}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_quantum_chaos_spacings.pdf}
-  \caption{Fig.~S8: Brody exponent $\beta$ for 21 prominence-based
+  \caption{ Brody exponent $\beta$ for 21 prominence-based
            manufactured surfaces with $n_{\text{NNS}}$ indicated.}
   \label{fig:S8}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_banach_descriptors.pdf}
-  \caption{Fig.~S9: Banach-space descriptor fingerprints for six
+  \caption{ Banach-space descriptor fingerprints for six
            arithmetic sequences at $N=10^5$.}
   \label{fig:S9}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{fig_prime_convergence_aic.pdf}
-  \caption{Fig.~S10: AIC-based model selection for the Brody
+  \caption{ AIC-based model selection for the Brody
            distribution across $N \in [10^3, 10^7]$ for the binary
            prime embedding.}
   \label{fig:S10}
-\end{figure*}
+\end{figure}
 
 \subsection*{S4. $\beta(N)$ convergence data}
 

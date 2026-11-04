@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""
-audit_v4_verify.py — independent, from-scratch verification of every numerical
-claim in the revised manuscript. Self-contained implementations (no imports
-from audit_v2/v2b/v3 or benchmark_descriptors). Produces a PASS/FAIL report
-against the manuscript's reported values.
-"""
+"""Superseded verifier retained for historical reference; its PASS claims are invalid."""
+if __name__ == '__main__':
+    raise SystemExit('Superseded: use test_prime_spatial_analysis.py and the current pipeline.')
+
 import json
 import numpy as np
 from scipy import optimize, spatial

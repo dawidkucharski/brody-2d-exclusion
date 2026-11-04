@@ -392,5 +392,61 @@ class PowerCalibrationTests(unittest.TestCase):
         self.assertEqual(reported, expected)
 
 
+class SeismicApplicationTests(unittest.TestCase):
+    def setUp(self):
+        path = Path(__file__).resolve().parent / 'seismic_application.json'
+        if not path.exists():
+            self.skipTest('seismic_application.json not generated')
+        self.data = json.loads(path.read_text())
+
+    def test_nested_graphs_and_exact_variance(self):
+        graphs = self.data['graphs']
+        self.assertTrue(graphs['nested'])
+        self.assertEqual(graphs['shared_edges'], graphs['rook_edges'])
+        variance = self.data['variance']
+        self.assertAlmostEqual(variance['exact'], variance['recomputed_from_terms'], places=12)
+        self.assertAlmostEqual(variance['sigma'], np.sqrt(variance['exact']), places=12)
+
+    def test_null_statistics_from_stored_contrasts(self):
+        contrasts = np.asarray(self.data['null']['contrasts'])
+        null = self.data['null']
+        self.assertEqual(len(contrasts), self.data['config']['null_realisations'])
+        self.assertAlmostEqual(null['mean'], float(np.mean(contrasts)), places=10)
+        self.assertAlmostEqual(null['sd'], float(np.std(contrasts, ddof=1)), places=10)
+        observed = self.data['counts']['observed_difference']
+        exceedances = int(np.count_nonzero(np.abs(contrasts) >= abs(observed)))
+        self.assertEqual(null['exceedances'], exceedances)
+        self.assertAlmostEqual(null['monte_carlo_value'],
+                               (exceedances + 1) / (len(contrasts) + 1), places=10)
+        self.assertAlmostEqual(null['sd'], self.data['variance']['sigma'], delta=0.001)
+
+    def test_manuscript_seismic_table(self):
+        manuscript = (Path(__file__).resolve().parent / 'aurora_manuscript.tex').read_text()
+        label_pos = manuscript.index('\\label{tab:seismic}')
+        start = manuscript.rfind('\\begin{table}', 0, label_pos)
+        end = manuscript.index('\\end{table}', label_pos) + len('\\end{table}')
+        block = manuscript[start:end]
+
+        def row_values(name):
+            row = next(line for line in block.splitlines() if name in line and '&' in line)
+            return [float(re.findall(r'[-0-9.]+', cell.replace('\\,', ''))[-1])
+                    for cell in row.replace('\\\\', '').split('&')[1:]]
+
+        counts = self.data['counts']
+        self.assertEqual([round_decimal(counts['rook_normalised'], 3),
+                          round_decimal(counts['queen_normalised'], 3)],
+                         row_values('Normalised count'))
+        self.assertEqual([float(counts['rook']), float(counts['queen'])],
+                         row_values('Occupied edges'))
+        difference_row = next(line for line in block.splitlines() if 'Difference $g' in line)
+        difference_cells = [cell for cell in difference_row.replace('\\\\', '').split('&')][1:]
+        self.assertEqual(round_decimal(counts['observed_difference'], 4),
+                         round_decimal(float(re.findall(r'[-0-9.]+', difference_cells[0])[-1]), 4))
+        monte_row = next(line for line in block.splitlines() if 'Monte Carlo value' in line)
+        monte_cells = [cell for cell in monte_row.replace('\\', '').split('&')][1:]
+        self.assertEqual(round_decimal(self.data['null']['monte_carlo_value'], 4),
+                         round_decimal(float(re.findall(r'[-0-9.]+', monte_cells[0])[-1]), 4))
+
+
 if __name__ == '__main__':
     unittest.main()

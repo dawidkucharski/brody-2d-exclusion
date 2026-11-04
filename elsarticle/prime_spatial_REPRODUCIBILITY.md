@@ -26,6 +26,8 @@ From the directory containing the package:
 python -m unittest -v test_prime_spatial_analysis
 python prime_spatial_analysis.py
 python power_calibration.py
+python power_level_check.py
+python seismic_application.py
 python build_prime_figures.py
 latexmk -pdf -interaction=nonstopmode -halt-on-error aurora_manuscript.tex
 ```
@@ -40,6 +42,16 @@ sample. `power_level_check.py` repeats the null phase with a second seed
 estimates do not reuse the calibration's null ensemble. Both files are checked
 by `test_manuscript_power_table_if_present` and
 `test_independent_level_check_if_present`.
+
+`seismic_application.py` implements the Section-4 application: it rasterises
+the cached U.S. Geological Survey ANSS catalogue (`seismic_events_ca.csv.gz`,
+magnitude $\ge2.5$, California region, 2000--2026; 37,590 events) onto a
+$96\times96$ cell grid, builds the nested rook and queen adjacency graphs,
+computes the exact null variance of Eq. (5), and runs 1,999 paired fixed-count
+realisations. It writes `seismic_application.json` and
+`fig_seismic_application.pdf`. If the cached catalogue is missing, the script
+refetches it in yearly windows from the USGS FDSN endpoint and caches it. The
+results are checked by the `SeismicApplicationTests` class.
 
 The full analysis took approximately 11 minutes on the machine used for this
 revision; the power calibration takes of the order of an hour at the default
@@ -81,7 +93,7 @@ The earlier `audit_v4_verify.py`, `REPRODUCIBILITY_AUDIT.md` and
 `REVISION_LOG.md` contained incorrect verification claims and are superseded;
 they must not be used as evidence that the earlier manuscript passed.
 
-All nine manuscript figures are vector PDF files. The descriptor benchmark,
+All ten manuscript figures are vector PDF files. The descriptor benchmark,
 finite-scale, thinning and ablation analyses are collected in the manuscript's
 supplementary appendix together with the power-calibration rates. The
 package is released as version 2.0.0 in the GitHub repository

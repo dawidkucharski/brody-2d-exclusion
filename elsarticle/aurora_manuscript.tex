@@ -49,8 +49,10 @@ when both graphs are regular. The formula is verified by exhaustive
 enumeration on small graphs and by paired simulation. The procedure is
 illustrated with three bijective embeddings of the primes not exceeding
 $99\,856$, whose nearest-neighbour summaries differ substantially under the
-fixed-count null. All conclusions are conditional on the stated null models
-and finite windows; no asymptotic claim about the primes is made.
+fixed-count null, and with an open-data application in which the same
+seismic-event cells are compared under rook and queen adjacency. All
+conclusions are conditional on the stated null models and finite windows; no
+asymptotic claim about the primes is made.
 \end{abstract}
 
 \begin{keyword}
@@ -149,7 +151,10 @@ vertex-degree-discrepancy term. The expression is exact, non-negative in its
 components, and reduces to the regular toroidal case used for lattice shells.
 The formula and a paired simulation procedure are illustrated with three
 embeddings of the same finite prime set; the prime example demonstrates the
-procedure rather than providing its justification.
+procedure rather than providing its justification. A further illustration
+(Section~4) applies the formula to seismic-event cells under two nested
+adjacency graphs on one cell population, the applied setting the method is
+intended for.
 
 The methodological contribution is an exact finite-population variance for the
 difference of two normalised graph-edge counts under uniform fixed-count
@@ -383,7 +388,7 @@ slope is interpreted as an asymptotic dimension.
 
 \subsection{Computational reproducibility}
 
-All quantities reported in Sections~3--4 are recomputable from the seeded
+All quantities reported in Sections~3--5 are recomputable from the seeded
 scripts in the accompanying package; the package records the random seeds,
 simulation sizes and software versions. The random-labelling Monte Carlo
 values are conditional on the fixed-count null, the selected maps and window,
@@ -611,6 +616,82 @@ Figure~\ref{fig:power-calibration} displays the curves.
 \end{figure}
 
 %=====================================================================
+\section{Application: seismic-event cells under two adjacency graphs}
+%=====================================================================
+
+The graph form of the method is exercised on a conventional open dataset. The
+Advanced National Seismic System Comprehensive Catalogue of the
+U.S.~Geological Survey \citep{USGS-ANSS-COMCAT} supplies $37\,590$ earthquake
+epicentres with magnitude at least $2.5$ in the California region
+($124.5^\circ$--$114^\circ$~W, $32^\circ$--$42^\circ$~N) for 2000--2026. The
+epicentres are rasterised onto a $96\times96$ cell grid, so the finite
+population consists of $M=9\,216$ cells and the label set consists of the
+$2\,920$ cells containing at least one epicentre. Two alternative
+neighbourhood graphs are defined on this one population: rook adjacency
+(cells sharing an edge; $18\,240$ edges) and queen adjacency (rook plus
+diagonal cells; $27\,265$ edges). The rook edge set is a subset of the queen
+edge set, so the graphs are nested, open-window and irregular.
+
+The normalised occupied-edge counts are $2.020$ (rook) and $1.970$ (queen)
+(Table~\ref{tab:seismic}). Their difference of $+0.0503$ equals $5.47$
+standard deviations, where the exact standard deviation $\sigma=0.0092$ comes
+from Eq.~\eqref{eq:general-variance}. The $1\,999$ paired fixed-count
+realisations give a Monte Carlo standard deviation of $0.0092$ and no
+realisation whose contrast exceeds the observed one in absolute value, so the
+Monte Carlo value is $0.0005$. Because the graphs are nested, the
+edge-discrepancy term carries $99.7\%$ of the exact null variance and the
+degree-discrepancy term the remaining $0.3\%$. The positive contrast means
+that the occupied cells are relatively more connected through shared edges
+than through corner contacts, consistent with elongate clusters along the
+roughly north--south trending fault system. The comparison illustrates how
+the adjacency definition changes the normalised clustering summary of one
+population; it is not presented as a seismological hypothesis test. The raster
+resolution is $0.11^\circ\times0.10^\circ$, and catalogue completeness varies
+in space and time, so the cell set is a descriptive discretisation.
+
+\begin{table}[t]
+  \centering
+  \caption{Seismic-event cells under rook and queen adjacency. Normalised
+           counts divide occupied edges by the fixed-count expectation
+           $e\,p_2$; the exact standard deviation of their difference follows
+           Eq.~\eqref{eq:general-variance} and the Monte Carlo null uses
+           $1\,999$ paired realisations.}
+  \label{tab:seismic}
+  \small
+  \setlength{\tabcolsep}{5pt}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    Quantity & Rook & Queen \\
+    \midrule
+    Population cells & \multicolumn{2}{c}{$9\,216$ ($96\times96$ grid)} \\
+    Occupied cells & \multicolumn{2}{c}{$2\,920$ (of $37\,590$ epicentres)} \\
+    Graph edges & $18\,240$ & $27\,265$ \\
+    Shared edges & \multicolumn{2}{c}{$18\,240$ (nested)} \\
+    Occupied edges & $3\,698$ & $5\,390$ \\
+    Expected occupied edges & $1\,831$ & $2\,737$ \\
+    Normalised count $g$ & $2.020$ & $1.970$ \\
+    \midrule
+    Difference $g_{\rm rook}-g_{\rm queen}$ & \multicolumn{2}{c}{$+0.0503$} \\
+    Exact $\sigma$ / Monte Carlo $\sigma$ & \multicolumn{2}{c}{$0.0092$ / $0.0092$} \\
+    Monte Carlo value ($1\,999$ paired) & \multicolumn{2}{c}{$0.0005$} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig_seismic_application.pdf}
+  \caption{Seismic-event cells under two adjacency graphs. (a) The $2\,920$
+           occupied cells (magnitude $\ge2.5$ epicentres, 2000--2026) on the
+           $96\times96$ grid over the California region. (b) Paired
+           fixed-count null contrasts of the normalised rook--queen count
+           difference, with the exact null density of
+           Eq.~\eqref{eq:general-variance} and the observed contrast.
+           \plotAIDisclosure}
+  \label{fig:seismic-application}
+\end{figure}
+
+%=====================================================================
 \section{Discussion}
 %=====================================================================
 
@@ -651,7 +732,9 @@ for point events, or two regional partitions of a single study region. In
 such settings Eq.~\eqref{eq:general-variance} gives the exact null variance of
 the contrast between the two graph encodings without simulation, and the
 discrepancy terms identify whether the difference is driven by shared edges
-or by the degree structure.
+or by the degree structure. Section~4 applies the construction to
+seismic-event cells under two nested adjacency graphs, where the
+shared-edge term dominates by construction.
 
 The analysis has several limitations. The three embeddings and the primary
 window were selected for this comparison, and no general ordering across
@@ -676,7 +759,10 @@ differences alone. In the example considered, all three observed Brody
 contrasts exceed the simulated maxima under the stated fixed-count null. The
 inference is conditional on that null, the selected maps and the finite
 window; it is not an asymptotic statement about primes, and no descriptor is
-claimed to be universally superior.
+claimed to be universally superior. The seismic-cell application shows the
+exact variance at work on a conventional open dataset, where two adjacency
+definitions of one cell population give materially different normalised
+clustering summaries.
 
 %=====================================================================
 \clearpage
@@ -978,11 +1064,12 @@ corresponding to the planted embedding.
 
 \clearpage
 \section*{Data and code availability}
-The input consists of primes generated from the stated upper bound. The
-analysis scripts, parameter settings, random seeds, generated numerical
-results, and figure-building code are included in the accompanying
-reproducibility package, which is released as version 2.0.0 in the GitHub
-repository \url{https://github.com/dawidkucharski/brody-2d-exclusion} and
+The inputs are the prime set generated from the stated upper bound and the
+cached U.S.~Geological Survey seismic catalogue, which is refetchable with
+the accompanying seismic application script. The analysis scripts, parameter
+settings, random seeds, generated numerical results and figure-building code
+are included in the accompanying reproducibility package, released as version
+2.0.0 at \url{https://github.com/dawidkucharski/brody-2d-exclusion} and
 archived on Zenodo \citep{KUCHARSKI-2026-CODE}. The version DOI is
 \url{https://doi.org/10.5281/zenodo.23940935} and the concept DOI is
 \url{https://doi.org/10.5281/zenodo.23940934}.

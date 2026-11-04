@@ -107,7 +107,7 @@ they must not be used as evidence that the earlier manuscript passed.
 All ten manuscript figures are vector PDF files. The descriptor benchmark,
 finite-scale, thinning and ablation analyses are collected in the manuscript's
 supplementary appendix together with the power-calibration rates. The
-The package is released as version 2.1.0 in the GitHub repository
+The package is released as version 2.2.0 in the GitHub repository
 https://github.com/dawidkucharski/brody-2d-exclusion and archived on Zenodo
-with DOI 10.5281/zenodo.23941310 (concept DOI 10.5281/zenodo.23940934). The
+with DOI 10.5281/zenodo.23941876 (concept DOI 10.5281/zenodo.23940934). The
 repository was brought up to date with this revision on 2026-11-04.

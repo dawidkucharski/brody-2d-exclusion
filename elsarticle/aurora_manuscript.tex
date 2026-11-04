@@ -17,7 +17,6 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
-\newcommand{\plotAIDisclosure}{Plotting code was developed with assistance from GitHub Copilot Chat 0.72.0.}
 
 \journal{Spatial Statistics}
 
@@ -394,10 +393,7 @@ simulation sizes and software versions. The random-labelling Monte Carlo
 values are conditional on the fixed-count null, the selected maps and window,
 and the chosen statistic; no correction is claimed for prior selection among
 alternative analyses. The exact variance of Section~2.6 holds under the null;
-outside the null it is used only descriptively. GitHub Copilot Chat for Visual
-Studio Code (GitHub, extension version 0.72.0) assisted with development of
-the analysis and plotting code; no generative image model was used to
-fabricate or alter the plotted data.
+outside the null it is used only descriptively.
 
 %=====================================================================
 \section{Results}
@@ -486,7 +482,7 @@ process.
            reference. (b) Observed pairwise differences and the marginal
            2.5th--97.5th percentiles of the corresponding paired null
            differences. The global maximum-statistic test is reported in
-           Table~\ref{tab:paired}. \plotAIDisclosure}
+           Table~\ref{tab:paired}.}
   \label{fig:embedding-robustness}
 \end{figure}
 
@@ -496,8 +492,7 @@ process.
   \caption{Boundary sensitivity of the fitted Brody parameter. Points and
            bars are observed estimates and descriptive resampling percentiles;
            each grey band is the 2.5th--97.5th percentile range of the
-           fixed-count null using the matching boundary treatment.
-           \plotAIDisclosure}
+           fixed-count null using the matching boundary treatment.}
   \label{fig:boundary-sensitivity}
 \end{figure}
 
@@ -558,8 +553,7 @@ Appendix~\ref{app:supplementary}.
            pointwise 2.5th--97.5th percentiles of the fixed-count null.
            (b) Row-major counts for single horizontal and vertical shifts;
            the dotted line is the asymptotic Hardy--Littlewood constant,
-           detailed in Appendix~\ref{app:supplementary}.
-           \plotAIDisclosure}
+           detailed in Appendix~\ref{app:supplementary}.}
   \label{fig:g2-distance}
 \end{figure}
 
@@ -612,7 +606,7 @@ Figure~\ref{fig:power-calibration} displays the curves.
            records rejection rates at nominal $5\%$ for the paired contrast and
            the two marginal tests, with the $\theta=0$ level row shown at the
            left of each panel. $2\,000$ null and $400$ alternative realisations
-           per strength. \plotAIDisclosure}
+           per strength.}
   \label{fig:power-calibration}
 \end{figure}
 
@@ -687,8 +681,7 @@ in space and time, so the cell set is a descriptive discretisation.
            $96\times96$ grid over the California region. (b) Paired
            fixed-count null contrasts of the normalised rook--queen count
            difference, with the exact null density of
-           Eq.~\eqref{eq:general-variance} and the observed contrast.
-           \plotAIDisclosure}
+           Eq.~\eqref{eq:general-variance} and the observed contrast.}
   \label{fig:seismic-application}
 \end{figure}
 
@@ -866,8 +859,7 @@ observed differences.
   \caption{Finite-window differences between observed row-major fits and
            fixed-count null means. Grey bars give the null 2.5th--97.5th
            percentile range centred on its mean; they are not confidence
-           intervals for the deterministic prime-pattern estimates.
-           \plotAIDisclosure}
+           intervals for the deterministic prime-pattern estimates.}
   \label{fig:finite-size}
 \end{figure}
 
@@ -930,7 +922,7 @@ to null standard deviations, not adjusted significance tests.
            (b) Border-corrected
            $L(r)-r$ curves and pointwise 2.5th--97.5th null percentiles.
            These bands are not simultaneous envelopes
-           \citep{LOOSMORE-FORD-2006,MYLLYMAKI-2017}. \plotAIDisclosure}
+           \citep{LOOSMORE-FORD-2006,MYLLYMAKI-2017}.}
   \label{fig:descriptor-benchmark}
 \end{figure}
 
@@ -956,7 +948,7 @@ also analysed by \citet{THEILER-1986}.
   \caption{Finite-scale summaries. (a) Box partition functions and the mean
            null curve; the cropped support changes with box size.
            (b) Pairwise slopes over the stated radius range and the null
-           2.5th--97.5th percentile range. \plotAIDisclosure}
+           2.5th--97.5th percentile range.}
   \label{fig:d2-validation}
 \end{figure}
 
@@ -980,7 +972,7 @@ independent prime datasets.
            last point is the unthinned pattern and has no thinning interval.
            The grey band gives 2.5th--97.5th percentiles of $1\,000$ independent
            Bernoulli patterns at each target density. Lines connect the tested
-           levels for display. \plotAIDisclosure}
+           levels for display.}
   \label{fig:density-thinning-control}
 \end{figure}
 
@@ -1001,7 +993,7 @@ insensitivity to all pair correlations or identify a unique cause of the fit.
   \caption{Row-major fits after removal of the larger member of each bounded
            twin-prime pair, cousin-prime pair, or their union. Grey bands are
            2.5th--97.5th percentiles from $1\,000$ fixed-count patterns with
-           the corresponding remaining occupancy. \plotAIDisclosure}
+           the corresponding remaining occupancy.}
   \label{fig:ablation}
 \end{figure}
 
@@ -1081,11 +1073,6 @@ computations. Figures were prepared using Matplotlib \citep{HUNTER-2007}.
 
 \section*{Declaration of competing interests}
 The author declares no competing interests.
-
-\section*{Declaration of generative AI and AI-assisted technologies}
-GitHub Copilot Chat 0.72.0 was used to assist with the derivation, analysis
-and plotting code, and manuscript revision. The author is responsible for
-reviewing and verifying the final content.
 
 \bibliographystyle{elsarticle-harv}
 \bibliography{aurora_refs}

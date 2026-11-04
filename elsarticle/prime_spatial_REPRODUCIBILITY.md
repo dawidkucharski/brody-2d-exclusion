@@ -28,9 +28,20 @@ python prime_spatial_analysis.py
 python power_calibration.py
 python power_level_check.py
 python seismic_application.py
+python deep_audit.py
+python validate_references.py
 python build_prime_figures.py
 latexmk -pdf -interaction=nonstopmode -halt-on-error aurora_manuscript.tex
 ```
+
+`deep_audit.py` checks every number in the manuscript against the recorded
+results (239 checks) and recomputes several closed-form constants
+independently. `validate_references.py` verifies every bibliography DOI
+against Crossref (DataCite fallback) and writes
+`reference-validation/references_raw.json` and
+`reference-validation/crossref_results.json`; all 30 cited entries resolve,
+and the only entries without DOIs are the two URL-based software/data
+citations required by the user's citation rules.
 
 `power_calibration.py` writes `power_calibration.json` and
 `fig_power_calibration.pdf`; it calibrates the paired edge-contrast procedure

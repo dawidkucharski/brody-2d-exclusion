@@ -1,0 +1,371 @@
+{
+  "BRODY-1981": {
+    "type": "article",
+    "fields": {
+      "author": "T. A. Brody and J. Flores and J. B. French and P. A. Mello and A. Pandey and S. S. M. Wong",
+      "title": "Random-matrix physics: spectrum and strength fluctuations",
+      "journal": "Rev. Mod. Phys.",
+      "volume": "53",
+      "year": "1981",
+      "pages": "385--479",
+      "doi": "10.1103/RevModPhys.53.385"
+    }
+  },
+  "ULAM-SPIRAL-1963": {
+    "type": "article",
+    "fields": {
+      "author": "M. Stein and S. M. Ulam",
+      "title": "An observation on the distribution of primes",
+      "journal": "Amer. Math. Monthly",
+      "volume": "74",
+      "year": "1967",
+      "pages": "43--44",
+      "doi": "10.2307/2314055"
+    }
+  },
+  "GRASSBERGER-PROCACCIA-1983": {
+    "type": "article",
+    "fields": {
+      "author": "P. Grassberger and I. Procaccia",
+      "title": "Characterization of strange attractors",
+      "journal": "Phys. Rev. Lett.",
+      "volume": "50",
+      "year": "1983",
+      "pages": "346--349",
+      "doi": "10.1103/PhysRevLett.50.346"
+    }
+  },
+  "THEILER-1986": {
+    "type": "article",
+    "fields": {
+      "author": "J. Theiler",
+      "title": "Statistical precision of dimension estimators",
+      "journal": "Phys. Rev. A",
+      "volume": "41",
+      "year": "1990",
+      "pages": "3038--3051",
+      "doi": "10.1103/physreva.41.3038"
+    }
+  },
+  "HARRIS-2020": {
+    "type": "article",
+    "fields": {
+      "author": "C. R. Harris and others",
+      "title": "Array programming with {NumPy}",
+      "journal": "Nature",
+      "volume": "585",
+      "year": "2020",
+      "pages": "357--362",
+      "doi": "10.1038/s41586-020-2649-2"
+    }
+  },
+  "VIRTANEN-2020": {
+    "type": "article",
+    "fields": {
+      "author": "P. Virtanen and others",
+      "title": "{SciPy} 1.0: fundamental algorithms for scientific computing in {Python}",
+      "journal": "Nat. Methods",
+      "volume": "17",
+      "year": "2020",
+      "pages": "261--272",
+      "doi": "10.1038/s41592-019-0686-2"
+    }
+  },
+  "HUNTER-2007": {
+    "type": "article",
+    "fields": {
+      "author": "J. D. Hunter",
+      "title": "{Matplotlib}: a {2D} graphics environment",
+      "journal": "Comput. Sci. Eng.",
+      "volume": "9",
+      "year": "2007",
+      "pages": "90--95",
+      "doi": "10.1109/MCSE.2007.55"
+    }
+  },
+  "SAKHR-NIEMINEN-2005": {
+    "type": "article",
+    "fields": {
+      "author": "J. Sakhr and J. M. Nieminen",
+      "title": "Poisson-to-{W}igner crossover transition in the nearest-neighbor statistics of random points on fractals",
+      "journal": "Physical Review E",
+      "volume": "72",
+      "pages": "045204",
+      "year": "2005",
+      "doi": "10.1103/PhysRevE.72.045204"
+    }
+  },
+  "WOLF-2014": {
+    "type": "article",
+    "fields": {
+      "author": "M. Wolf",
+      "title": "Nearest-neighbor-spacing distribution of prime numbers and quantum chaos",
+      "journal": "Physical Review E",
+      "volume": "89",
+      "number": "2",
+      "pages": "022922",
+      "year": "2014",
+      "doi": "10.1103/PhysRevE.89.022922"
+    }
+  },
+  "HARDY-LITTLEWOOD-1923": {
+    "type": "article",
+    "fields": {
+      "author": "G. H. Hardy and J. E. Littlewood",
+      "title": "Some problems of {`}Partitio numerorum'; {III}: on the expression of a number as a sum of primes",
+      "journal": "Acta Mathematica",
+      "volume": "44",
+      "pages": "1--70",
+      "year": "1923",
+      "doi": "10.1007/BF02403921"
+    }
+  },
+  "RIPLEY-1981": {
+    "type": "book",
+    "fields": {
+      "author": "B. D. Ripley",
+      "title": "Spatial Statistics",
+      "publisher": "Wiley",
+      "year": "1981",
+      "doi": "10.1002/0471725218"
+    }
+  },
+  "CLARK-EVANS-1954": {
+    "type": "article",
+    "fields": {
+      "author": "P. J. Clark and F. C. Evans",
+      "title": "Distance to nearest neighbor as a measure of spatial relationships in populations",
+      "journal": "Ecology",
+      "volume": "35",
+      "number": "4",
+      "pages": "445--453",
+      "year": "1954",
+      "doi": "10.2307/1931034"
+    }
+  },
+  "JARA-VERA-SANCHEZ-AVILA-2021": {
+    "type": "article",
+    "fields": {
+      "author": "V. Jara-Vera and C. S{\\'a}nchez-{\\'A}vila",
+      "title": "Distribution of adjacent prime numbers in the {U}lam spiral",
+      "journal": "Engineering Computations",
+      "volume": "38",
+      "number": "4",
+      "pages": "1633--1651",
+      "year": "2021",
+      "doi": "10.1108/EC-09-2019-0402"
+    }
+  },
+  "TORQUATO-ZHANG-DECOURCY-2019": {
+    "type": "article",
+    "fields": {
+      "author": "S. Torquato and G. Zhang and M. {de Courcy-Ireland}",
+      "title": "Hidden multiscale order in the primes",
+      "journal": "Journal of Physics A: Mathematical and Theoretical",
+      "volume": "52",
+      "number": "13",
+      "pages": "135002",
+      "year": "2019",
+      "doi": "10.1088/1751-8121/ab0588"
+    }
+  },
+  "FEND-REDENBACH-2025": {
+    "type": "article",
+    "fields": {
+      "author": "C. Fend and C. Redenbach",
+      "title": "Goodness-of-fit tests for spatial point processes: a review",
+      "journal": "Statistics Surveys",
+      "volume": "19",
+      "year": "2025",
+      "doi": "10.1214/25-SS153"
+    }
+  },
+  "BESAG-DIGGLE-1977": {
+    "type": "article",
+    "fields": {
+      "author": "J. Besag and P. J. Diggle",
+      "title": "Simple {M}onte {C}arlo tests for spatial pattern",
+      "journal": "Applied Statistics",
+      "volume": "26",
+      "number": "3",
+      "pages": "327--333",
+      "year": "1977",
+      "doi": "10.2307/2346974"
+    }
+  },
+  "FRIEDMAN-RAFSKY-1979": {
+    "type": "article",
+    "fields": {
+      "author": "J. H. Friedman and L. C. Rafsky",
+      "title": "Multivariate generalizations of the {W}ald-{W}olfowitz and {S}mirnov two-sample tests",
+      "journal": "The Annals of Statistics",
+      "volume": "7",
+      "number": "4",
+      "pages": "697--717",
+      "year": "1979",
+      "doi": "10.1214/aos/1176344722"
+    }
+  },
+  "MORAN-1948": {
+    "type": "article",
+    "fields": {
+      "author": "P. A. P. Moran",
+      "title": "The interpretation of statistical maps",
+      "journal": "Journal of the Royal Statistical Society, Series B",
+      "volume": "10",
+      "number": "2",
+      "pages": "243--251",
+      "year": "1948",
+      "doi": "10.1111/j.2517-6161.1948.tb00012.x"
+    }
+  },
+  "HENZE-1988": {
+    "type": "article",
+    "fields": {
+      "author": "N. Henze",
+      "title": "A multivariate two-sample test based on the number of nearest neighbor type coincidences",
+      "journal": "The Annals of Statistics",
+      "volume": "16",
+      "number": "2",
+      "pages": "772--783",
+      "year": "1988",
+      "doi": "10.1214/aos/1176350835"
+    }
+  },
+  "SCHILLING-1986": {
+    "type": "article",
+    "fields": {
+      "author": "M. F. Schilling",
+      "title": "Multivariate two-sample tests based on nearest neighbors",
+      "journal": "Journal of the American Statistical Association",
+      "volume": "81",
+      "number": "395",
+      "pages": "799--806",
+      "year": "1986",
+      "doi": "10.1080/01621459.1986.10478337"
+    }
+  },
+  "MAA-PEARL-BARTOSZYNSKI-1996": {
+    "type": "article",
+    "fields": {
+      "author": "J.-F. Maa and D. K. Pearl and R. Bartoszy{\\'n}ski",
+      "title": "Reducing multidimensional two-sample data to one-dimensional interpoint comparisons",
+      "journal": "The Annals of Statistics",
+      "volume": "24",
+      "number": "3",
+      "pages": "1069--1074",
+      "year": "1996",
+      "doi": "10.1214/aos/1032526956"
+    }
+  },
+  "CHEN-FRIEDMAN-2017": {
+    "type": "article",
+    "fields": {
+      "author": "H. Chen and J. H. Friedman",
+      "title": "A new graph-based two-sample test for multivariate and object data",
+      "journal": "Journal of the American Statistical Association",
+      "volume": "112",
+      "number": "517",
+      "pages": "397--409",
+      "year": "2017",
+      "doi": "10.1080/01621459.2016.1147356"
+    }
+  },
+  "HORVITZ-THOMPSON-1952": {
+    "type": "article",
+    "fields": {
+      "author": "D. G. Horvitz and D. J. Thompson",
+      "title": "A generalization of sampling without replacement from a finite universe",
+      "journal": "Journal of the American Statistical Association",
+      "volume": "47",
+      "number": "260",
+      "pages": "663--685",
+      "year": "1952",
+      "doi": "10.1080/01621459.1952.10483446"
+    }
+  },
+  "RIPLEY-1977-MODELLING": {
+    "type": "article",
+    "fields": {
+      "author": "B. D. Ripley",
+      "title": "Modelling spatial patterns",
+      "journal": "Journal of the Royal Statistical Society, Series B",
+      "volume": "39",
+      "number": "2",
+      "pages": "172--192",
+      "year": "1977",
+      "doi": "10.1111/j.2517-6161.1977.tb01615.x"
+    }
+  },
+  "CUZICK-EDWARDS-1990": {
+    "type": "article",
+    "fields": {
+      "author": "J. Cuzick and R. Edwards",
+      "title": "Spatial clustering for inhomogeneous populations",
+      "journal": "Journal of the Royal Statistical Society, Series B",
+      "volume": "52",
+      "number": "1",
+      "pages": "73--96",
+      "year": "1990",
+      "doi": "10.1111/j.2517-6161.1990.tb01773.x"
+    }
+  },
+  "LOOSMORE-FORD-2006": {
+    "type": "article",
+    "fields": {
+      "author": "N. B. Loosmore and E. D. Ford",
+      "title": "Statistical inference using the {G} or {K} point pattern spatial statistics",
+      "journal": "Ecology",
+      "volume": "87",
+      "number": "8",
+      "pages": "1925--1931",
+      "year": "2006",
+      "doi": "10.1890/0012-9658(2006)87[1925:SIUTGO]2.0.CO;2"
+    }
+  },
+  "MYLLYMAKI-2017": {
+    "type": "article",
+    "fields": {
+      "title": "Global envelope tests for spatial processes",
+      "journal": "Journal of the Royal Statistical Society, Series B",
+      "volume": "79",
+      "number": "2",
+      "pages": "381--404",
+      "year": "2017",
+      "doi": "10.1111/rssb.12172"
+    }
+  },
+  "GOREAUD-PELISSIER-2003": {
+    "type": "article",
+    "fields": {
+      "author": "F. Goreaud and R. P{\\'e}lissier",
+      "title": "Avoiding misinterpretation of biotic interactions with the intertype {K}12-function: population independence vs.\\ random labelling hypotheses",
+      "journal": "Journal of Vegetation Science",
+      "volume": "14",
+      "number": "5",
+      "pages": "681--692",
+      "year": "2003",
+      "doi": "10.1111/j.1654-1103.2003.tb02200.x"
+    }
+  },
+  "KUCHARSKI-2026-CODE": {
+    "type": "misc",
+    "fields": {
+      "author": "D. Kucharski",
+      "title": "Prime spatial analysis: paired spatial statistics under alternative embeddings---code, data and figures (version 2.1.0)",
+      "year": "2026",
+      "howpublished": "\\url{https://zenodo.org/doi/10.5281/zenodo.23941310}",
+      "note": "GitHub repository \\url{https://github.com/dawidkucharski/brody-2d-exclusion}; archived 2026-11-04; concept DOI 10.5281/zenodo.23940934"
+    }
+  },
+  "USGS-ANSS-COMCAT": {
+    "type": "misc",
+    "fields": {
+      "author": "{U.S. Geological Survey}",
+      "title": "Advanced National Seismic System ({ANSS}) Comprehensive Catalog",
+      "year": "2017",
+      "howpublished": "\\url{https://earthquake.usgs.gov/fdsnws/event/1/}",
+      "note": "DOI 10.5066/F7MS3QZH; accessed 2026-11-04"
+    }
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "BRODY-1981": {
+    "key": "BRODY-1981",
+    "doi": "10.1103/RevModPhys.53.385",
+    "title": "Random-matrix physics: spectrum and strength fluctuations",
+    "year": "1981",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Random-matrix physics: spectrum and strength fluctuations",
+    "registered_year": 1981,
+    "registered_journal": "Reviews of Modern Physics"
+  },
+  "ULAM-SPIRAL-1963": {
+    "key": "ULAM-SPIRAL-1963",
+    "doi": "10.2307/2314055",
+    "title": "An observation on the distribution of primes",
+    "year": "1967",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "An Observation on the Distribution of Primes",
+    "registered_year": 1967,
+    "registered_journal": "The American Mathematical Monthly"
+  },
+  "GRASSBERGER-PROCACCIA-1983": {
+    "key": "GRASSBERGER-PROCACCIA-1983",
+    "doi": "10.1103/PhysRevLett.50.346",
+    "title": "Characterization of strange attractors",
+    "year": "1983",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Characterization of Strange Attractors",
+    "registered_year": 1983,
+    "registered_journal": "Physical Review Letters"
+  },
+  "THEILER-1986": {
+    "key": "THEILER-1986",
+    "doi": "10.1103/physreva.41.3038",
+    "title": "Statistical precision of dimension estimators",
+    "year": "1990",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Statistical precision of dimension estimators",
+    "registered_year": 1990,
+    "registered_journal": "Physical Review A"
+  },
+  "HARRIS-2020": {
+    "key": "HARRIS-2020",
+    "doi": "10.1038/s41586-020-2649-2",
+    "title": "Array programming with NumPy",
+    "year": "2020",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Array programming with NumPy",
+    "registered_year": 2020,
+    "registered_journal": "Nature"
+  },
+  "VIRTANEN-2020": {
+    "key": "VIRTANEN-2020",
+    "doi": "10.1038/s41592-019-0686-2",
+    "title": "SciPy 1.0: fundamental algorithms for scientific computing in Python",
+    "year": "2020",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "SciPy 1.0: fundamental algorithms for scientific computing in Python",
+    "registered_year": 2020,
+    "registered_journal": "Nature Methods"
+  },
+  "HUNTER-2007": {
+    "key": "HUNTER-2007",
+    "doi": "10.1109/MCSE.2007.55",
+    "title": "Matplotlib: a 2D graphics environment",
+    "year": "2007",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Matplotlib: A 2D Graphics Environment",
+    "registered_year": 2007,
+    "registered_journal": "Computing in Science &amp; Engineering"
+  },
+  "SAKHR-NIEMINEN-2005": {
+    "key": "SAKHR-NIEMINEN-2005",
+    "doi": "10.1103/PhysRevE.72.045204",
+    "title": "Poisson-to-Wigner crossover transition in the nearest-neighbor statistics of random points on fractals",
+    "year": "2005",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Poisson-to-Wigner crossover transition in the nearest-neighbor statistics of random points on fractals",
+    "registered_year": 2005,
+    "registered_journal": "Physical Review E"
+  },
+  "WOLF-2014": {
+    "key": "WOLF-2014",
+    "doi": "10.1103/PhysRevE.89.022922",
+    "title": "Nearest-neighbor-spacing distribution of prime numbers and quantum chaos",
+    "year": "2014",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Nearest-neighbor-spacing distribution of prime numbers and quantum chaos",
+    "registered_year": 2014,
+    "registered_journal": "Physical Review E"
+  },
+  "HARDY-LITTLEWOOD-1923": {
+    "key": "HARDY-LITTLEWOOD-1923",
+    "doi": "10.1007/BF02403921",
+    "title": "Some problems of `Partitio numerorum'; III: on the expression of a number as a sum of primes",
+    "year": "1923",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Some problems of ‘Partitio numerorum’; III: On the expression of a number as a sum of primes",
+    "registered_year": 1923,
+    "registered_journal": "Acta Mathematica"
+  },
+  "RIPLEY-1981": {
+    "key": "RIPLEY-1981",
+    "doi": "10.1002/0471725218",
+    "title": "Spatial Statistics",
+    "year": "1981",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Spatial Statistics",
+    "registered_year": 1981,
+    "registered_journal": "Wiley Series in Probability and Statistics"
+  },
+  "CLARK-EVANS-1954": {
+    "key": "CLARK-EVANS-1954",
+    "doi": "10.2307/1931034",
+    "title": "Distance to nearest neighbor as a measure of spatial relationships in populations",
+    "year": "1954",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Distance to Nearest Neighbor as a Measure of Spatial Relationships in Populations",
+    "registered_year": 1954,
+    "registered_journal": "Ecology"
+  },
+  "JARA-VERA-SANCHEZ-AVILA-2021": {
+    "key": "JARA-VERA-SANCHEZ-AVILA-2021",
+    "doi": "10.1108/EC-09-2019-0402",
+    "title": "Distribution of adjacent prime numbers in the Ulam spiral",
+    "year": "2021",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Distribution of adjacent prime numbers in the Ulam spiral",
+    "registered_year": 2020,
+    "registered_journal": "Engineering Computations"
+  },
+  "TORQUATO-ZHANG-DECOURCY-2019": {
+    "key": "TORQUATO-ZHANG-DECOURCY-2019",
+    "doi": "10.1088/1751-8121/ab0588",
+    "title": "Hidden multiscale order in the primes",
+    "year": "2019",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Hidden multiscale order in the primes",
+    "registered_year": 2019,
+    "registered_journal": "Journal of Physics A: Mathematical and Theoretical"
+  },
+  "FEND-REDENBACH-2025": {
+    "key": "FEND-REDENBACH-2025",
+    "doi": "10.1214/25-SS153",
+    "title": "Goodness-of-fit tests for spatial point processes: a review",
+    "year": "2025",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Goodness-of-fit tests for spatial point processes: A review",
+    "registered_year": 2025,
+    "registered_journal": "Statistics Surveys"
+  },
+  "BESAG-DIGGLE-1977": {
+    "key": "BESAG-DIGGLE-1977",
+    "doi": "10.2307/2346974",
+    "title": "Simple Monte Carlo tests for spatial pattern",
+    "year": "1977",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Simple Monte Carlo Tests for Spatial Pattern",
+    "registered_year": 1977,
+    "registered_journal": "Applied Statistics"
+  },
+  "FRIEDMAN-RAFSKY-1979": {
+    "key": "FRIEDMAN-RAFSKY-1979",
+    "doi": "10.1214/aos/1176344722",
+    "title": "Multivariate generalizations of the Wald-Wolfowitz and Smirnov two-sample tests",
+    "year": "1979",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Multivariate Generalizations of the Wald-Wolfowitz and Smirnov Two-Sample Tests",
+    "registered_year": 1979,
+    "registered_journal": "The Annals of Statistics"
+  },
+  "MORAN-1948": {
+    "key": "MORAN-1948",
+    "doi": "10.1111/j.2517-6161.1948.tb00012.x",
+    "title": "The interpretation of statistical maps",
+    "year": "1948",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "The Interpretation of Statistical Maps",
+    "registered_year": 1948,
+    "registered_journal": "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+  },
+  "HENZE-1988": {
+    "key": "HENZE-1988",
+    "doi": "10.1214/aos/1176350835",
+    "title": "A multivariate two-sample test based on the number of nearest neighbor type coincidences",
+    "year": "1988",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "A Multivariate Two-Sample Test Based on the Number of Nearest Neighbor Type Coincidences",
+    "registered_year": 1988,
+    "registered_journal": "The Annals of Statistics"
+  },
+  "SCHILLING-1986": {
+    "key": "SCHILLING-1986",
+    "doi": "10.1080/01621459.1986.10478337",
+    "title": "Multivariate two-sample tests based on nearest neighbors",
+    "year": "1986",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Multivariate Two-Sample Tests Based on Nearest Neighbors",
+    "registered_year": 1986,
+    "registered_journal": "Journal of the American Statistical Association"
+  },
+  "MAA-PEARL-BARTOSZYNSKI-1996": {
+    "key": "MAA-PEARL-BARTOSZYNSKI-1996",
+    "doi": "10.1214/aos/1032526956",
+    "title": "Reducing multidimensional two-sample data to one-dimensional interpoint comparisons",
+    "year": "1996",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Reducing multidimensional two-sample data to one-dimensional interpoint comparisons",
+    "registered_year": 1996,
+    "registered_journal": "The Annals of Statistics"
+  },
+  "CHEN-FRIEDMAN-2017": {
+    "key": "CHEN-FRIEDMAN-2017",
+    "doi": "10.1080/01621459.2016.1147356",
+    "title": "A new graph-based two-sample test for multivariate and object data",
+    "year": "2017",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "A New Graph-Based Two-Sample Test for Multivariate and Object Data",
+    "registered_year": 2017,
+    "registered_journal": "Journal of the American Statistical Association"
+  },
+  "HORVITZ-THOMPSON-1952": {
+    "key": "HORVITZ-THOMPSON-1952",
+    "doi": "10.1080/01621459.1952.10483446",
+    "title": "A generalization of sampling without replacement from a finite universe",
+    "year": "1952",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "A Generalization of Sampling Without Replacement from a Finite Universe",
+    "registered_year": 1952,
+    "registered_journal": "Journal of the American Statistical Association"
+  },
+  "RIPLEY-1977-MODELLING": {
+    "key": "RIPLEY-1977-MODELLING",
+    "doi": "10.1111/j.2517-6161.1977.tb01615.x",
+    "title": "Modelling spatial patterns",
+    "year": "1977",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Modelling Spatial Patterns",
+    "registered_year": 1977,
+    "registered_journal": "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+  },
+  "CUZICK-EDWARDS-1990": {
+    "key": "CUZICK-EDWARDS-1990",
+    "doi": "10.1111/j.2517-6161.1990.tb01773.x",
+    "title": "Spatial clustering for inhomogeneous populations",
+    "year": "1990",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Spatial Clustering for Inhomogeneous Populations",
+    "registered_year": 1990,
+    "registered_journal": "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+  },
+  "LOOSMORE-FORD-2006": {
+    "key": "LOOSMORE-FORD-2006",
+    "doi": "10.1890/0012-9658(2006)87[1925:SIUTGO]2.0.CO;2",
+    "title": "Statistical inference using the G or K point pattern spatial statistics",
+    "year": "2006",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "STATISTICAL INFERENCE USING THE<i>G</i>OR<i>K</i>POINT PATTERN SPATIAL STATISTICS",
+    "registered_year": 2006,
+    "registered_journal": "Ecology"
+  },
+  "MYLLYMAKI-2017": {
+    "key": "MYLLYMAKI-2017",
+    "doi": "10.1111/rssb.12172",
+    "title": "Global envelope tests for spatial processes",
+    "year": "2017",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Global Envelope Tests for Spatial Processes",
+    "registered_year": 2016,
+    "registered_journal": "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+  },
+  "GOREAUD-PELISSIER-2003": {
+    "key": "GOREAUD-PELISSIER-2003",
+    "doi": "10.1111/j.1654-1103.2003.tb02200.x",
+    "title": "Avoiding misinterpretation of biotic interactions with the intertype K12-function: population independence vs.\\ random labelling hypotheses",
+    "year": "2003",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Avoiding misinterpretation of biotic interactions with the intertype<i>K<sub>12</sub></i>‐function: population independence vs. random labelling hypotheses",
+    "registered_year": 2003,
+    "registered_journal": "Journal of Vegetation Science"
+  },
+  "KUCHARSKI-2026-CODE": {
+    "status": "NO_DOI",
+    "howpublished": "\\url{https://zenodo.org/doi/10.5281/zenodo.23941310}",
+    "title": "Prime spatial analysis: paired spatial statistics under alternative embeddings---code, data and figures (version 2.1.0)",
+    "year": "2026"
+  },
+  "USGS-ANSS-COMCAT": {
+    "status": "NO_DOI",
+    "howpublished": "\\url{https://earthquake.usgs.gov/fdsnws/event/1/}",
+    "title": "Advanced National Seismic System (ANSS) Comprehensive Catalog",
+    "year": "2017"
+  }
+}

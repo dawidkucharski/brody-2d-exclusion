@@ -212,8 +212,8 @@ def run(args):
     map_axis.set_ylim(BBOX['minlatitude'], BBOX['maxlatitude'])
     map_axis.set_xlabel('Longitude (deg)')
     map_axis.set_ylabel('Latitude (deg)')
-    map_axis.set_title(f'(a) Occupied cells (at least one $M\\geq{MIN_MAG}$ epicentre, 2000--2025): '
-                       f'{occupied}/{population} cells')
+    map_axis.set_title(f'(a) Occupied cells (at least one $M\\geq{MIN_MAG}$ epicentre, 2000--2025; '
+                       f'query end 1 January 2026): {occupied}/{population} cells')
     histogram_axis = axes[1]
     sigma = float(np.sqrt(variance))
     span = max(5 * sigma, abs(observed) + sigma)

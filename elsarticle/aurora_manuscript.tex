@@ -653,7 +653,10 @@ model. This is a descriptive property of the chosen rasterisation and
 adjacency definitions, rather than evidence of a particular fault-alignment
 mechanism. The comparison illustrates how
 the adjacency definition changes the normalised clustering summary of one
-population; it is not presented as a seismological hypothesis test. The raster
+population; it is not presented as a seismological hypothesis test. The
+fixed-count reference is used here to demonstrate the finite-population
+variance calculation; it is not intended to represent the spatially
+heterogeneous seismicity process. The raster
 resolution is $0.11^\circ\times0.10^\circ$, and catalogue completeness varies
 in space and time, so the cell set is a descriptive discretisation.
 
@@ -690,8 +693,8 @@ in space and time, so the cell set is a descriptive discretisation.
   \centering
   \includegraphics[width=\textwidth]{fig_seismic_application.pdf}
   \caption{Seismic-event cells under two adjacency graphs. (a) The $2\,920$
-           occupied cells (at least one magnitude $\ge2.5$ epicentre, query
-           period 1~January~2000 to 1~January~2026) on the
+           occupied cells (at least one magnitude $\ge2.5$ epicentre,
+           2000--2025, query end 1~January~2026) on the
            $96\times96$ grid over the California region. (b) Paired
            fixed-count null contrasts of the normalised rook--queen count
            difference, with the exact null density of
@@ -740,7 +743,11 @@ for point events, or two regional partitions of a single study region. In
 such settings Eq.~\eqref{eq:general-variance} gives the exact null variance of
 the contrast between the two graph encodings without simulation, and the
 discrepancy terms identify whether the difference is driven by shared edges
-or by the degree structure. Section~4 applies the construction to
+or by the degree structure. The practical advantage of the expression is not
+the replacement of permutation inference in general, but the availability of
+an exact null variance for a paired graph-count contrast, including irregular
+graphs with unequal edge sets, without estimating that variance from repeated
+randomisation. Section~4 applies the construction to
 seismic-event cells under two nested adjacency graphs, where the
 shared-edge term dominates by construction.
 

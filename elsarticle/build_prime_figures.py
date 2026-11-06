@@ -14,7 +14,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent
 NAMES = ('row_major', 'ulam', 'cantor')
-LABELS = {'row_major': 'Row-major', 'ulam': 'Ulam', 'cantor': 'Cantor'}
+LABELS = {'row_major': 'Row-major', 'ulam': 'Ulam', 'cantor': 'Diagonal sweep'}
 COLOURS = {'row_major': '#24658a', 'ulam': '#b25c38', 'cantor': '#39805b'}
 plt.rcParams.update({'font.size': 9, 'axes.titlesize': 10, 'axes.labelsize': 9,
                      'legend.fontsize': 8, 'pdf.fonttype': 42, 'ps.fonttype': 42,
@@ -50,7 +50,7 @@ def build_figures(data):
     beta = np.asarray(fixed['beta_values'])
     differences = (beta[:, 0] - beta[:, 1], beta[:, 0] - beta[:, 2], beta[:, 1] - beta[:, 2])
     keys = ('row_major__ulam', 'row_major__cantor', 'ulam__cantor')
-    tick_labels = ('Row-major − Ulam', 'Row-major − Cantor', 'Ulam − Cantor')
+    tick_labels = ('Row-major − Ulam', 'Row-major − diagonal sweep', 'Ulam − diagonal sweep')
     for index, (sample, key) in enumerate(zip(differences, keys)):
         lower, upper = np.quantile(sample, [0.025, 0.975])
         axis.plot([lower, upper], [index, index], color='0.35', linewidth=4,

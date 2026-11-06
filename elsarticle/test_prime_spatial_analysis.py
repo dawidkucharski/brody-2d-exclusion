@@ -249,7 +249,7 @@ class PrimeSpatialAnalysisTests(unittest.TestCase):
                 close(numbers(cell), [fit['beta'], *fit['resampling_interval']])
 
         shells = ('r1', 'rsqrt2', 'r2', 'rsqrt5', 'r4')
-        for heading, name in (('Row-major', 'row_major'), ('Ulam', 'ulam'), ('Cantor', 'cantor')):
+        for heading, name in (('Row-major', 'row_major'), ('Ulam', 'ulam'), ('Diagonal sweep', 'cantor')):
             cells = table_row('tab:g2', heading)
             close([numbers(cell)[0] for cell in cells],
                   [patterns[name]['shells'][shell] for shell in shells])
@@ -277,8 +277,8 @@ class PrimeSpatialAnalysisTests(unittest.TestCase):
               [patterns[name]['brody_diagnostics']['cdf_supremum'] for name in names])
 
         comparisons = (('Row-major -- Ulam', 'row_major__ulam', 0, 1),
-                       ('Row-major -- Cantor', 'row_major__cantor', 0, 2),
-                       ('Ulam -- Cantor', 'ulam__cantor', 1, 2))
+                       ('Row-major -- diagonal sweep', 'row_major__cantor', 0, 2),
+                       ('Ulam -- diagonal sweep', 'ulam__cantor', 1, 2))
         simulated_shells = np.asarray(fixed['paired_sqrt2_shell_values'])
         for heading, key, first, second in comparisons:
             row = [numbers(cell)[0] for cell in table_row('tab:paired', heading)]

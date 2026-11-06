@@ -120,7 +120,11 @@ by \citet{HENZE-1988}, \citet{SCHILLING-1986},
 the finite-population inclusion probabilities of
 \citet{HORVITZ-THOMPSON-1952}. The paired graph-count variance derived below
 is a specific finite-population consequence of this random-labelling
-framework, rather than a new general theory of graph permutation tests.
+framework, rather than a new general theory of graph permutation tests. The
+result provides a direct analytical standardisation of paired graph-based
+spatial contrasts, avoiding repeated permutation solely to estimate their null
+variance, while retaining the dependence induced by analysing the same
+labelled population under alternative neighbourhood definitions.
 
 For unit-mean nearest-neighbour spacings under complete spatial randomness in
 two dimensions, the analytic Rayleigh law,
@@ -197,7 +201,7 @@ This procedure is a bijection of $\{1,\dots,99\,856\}$ onto
 $\{0,\dots,315\}^2$ (verified computationally).
 \end{definition}
 
-\begin{definition}[Finite Cantor-style diagonal sweep]
+\begin{definition}[Finite diagonal sweep]
 For $s=0,1,\dots,2W-2$, the cells $(x,y)$ with $x+y=s$ are visited in
 increasing order of $y$, where $y$ runs from $y_0=\max(0,s-W+1)$ to
 $y_1=\min(s,W-1)$ and $x=s-y$; the $n$-th visited cell receives the integer
@@ -312,8 +316,8 @@ S_e=\frac{1}{e_a}+\frac{1}{e_b}-\frac{2q}{e_ae_b},\qquad
 S_v=\sum_{v=1}^{M}\left(\frac{d_a(v)}{e_a}-\frac{d_b(v)}{e_b}\right)^2.
 \label{eq:graph-discrepancies}
 \end{equation}
-Under uniform fixed-count sampling, the difference of the normalised counts
-has expectation zero under the null and exact null variance
+Under uniform fixed-count sampling with $2\le N\le M$, the difference of the
+normalised counts has expectation zero under the null and exact null variance
 \begin{equation}
 \operatorname{Var}_0(g_a-g_b)=
 \frac{S_e(p_2-2p_3+p_4)+S_v(p_3-p_4)}{p_2^2}.
@@ -441,7 +445,7 @@ process.
   \setlength{\tabcolsep}{4pt}
   \begin{tabular}{@{}lccc@{}}
     \toprule
-    Treatment & Row-major & Ulam & Cantor \\
+    Treatment & Row-major & Ulam & Diagonal sweep \\
     \midrule
     Open & $2.153\ [2.082,2.224]$ & $1.856\ [1.817,1.898]$ & $1.413\ [1.389,1.440]$ \\
     Toroidal & $2.187\ [2.125,2.253]$ & $1.890\ [1.856,1.927]$ & $1.423\ [1.399,1.450]$ \\
@@ -469,8 +473,8 @@ process.
     Contrast & $\Delta\hat\beta$ & $p_{\max}$ & $q_d$ & $\sigma_{\rm exact}$ & $\sigma_{\rm MC}$ \\
     \midrule
     Row-major -- Ulam & $0.297$ & $0.0002$ & $0$ & $0.0298$ & $0.0304$ \\
-    Row-major -- Cantor & $0.739$ & $0.0002$ & $316$ & $0.0298$ & $0.0299$ \\
-    Ulam -- Cantor & $0.442$ & $0.0002$ & $2$ & $0.0298$ & $0.0305$ \\
+    Row-major -- diagonal sweep & $0.739$ & $0.0002$ & $316$ & $0.0298$ & $0.0299$ \\
+    Ulam -- diagonal sweep & $0.442$ & $0.0002$ & $2$ & $0.0298$ & $0.0305$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -525,7 +529,7 @@ are $1.332$ and $1.337$ at distance 2, and $1.339$ and $1.405$ at distance 4;
 the direction-dependent differences reflect the periodic wrap of the
 horizontal toroidal shifts. The corresponding bounded twin- and cousin-prime
 counts are compared with the asymptotic Hardy--Littlewood constant in
-Appendix~\ref{app:supplementary}.
+\ref{app:supplementary}.
 
 \begin{table}[t]
   \centering
@@ -543,7 +547,7 @@ Appendix~\ref{app:supplementary}.
     \midrule
     Row-major & $0.673$ & $0.001$ & $1.335$ & $1.007$ & $1.372$ \\
     Ulam & $0.001$ & $2.058$ & $1.670$ & $0.001$ & $1.683$ \\
-    Cantor & $0.987$ & $1.008$ & $0.010$ & $0.884$ & $1.931$ \\
+    Diagonal sweep & $0.987$ & $1.008$ & $0.010$ & $0.884$ & $1.931$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -555,7 +559,7 @@ Appendix~\ref{app:supplementary}.
            pointwise 2.5th--97.5th percentiles of the fixed-count null.
            (b) Row-major counts for single horizontal and vertical shifts;
            the dotted line is the asymptotic Hardy--Littlewood constant,
-           detailed in Appendix~\ref{app:supplementary}.}
+           detailed in \ref{app:supplementary}.}
   \label{fig:g2-distance}
 \end{figure}
 
@@ -583,7 +587,7 @@ the paired test dominates the marginal tests in general. With $2\,000$ null
 label sets and fixed thresholds at $\pm1.96$, the paired rejection rate at
 nominal $5\%$ is $0.046$ and the marginal rates are $0.055$ and $0.051$
 (Table~\ref{tab:power}); no empirical critical value is estimated from these
-null sets (Appendix~\ref{app:supplementary}). Under
+null sets (\ref{app:supplementary}). Under
 row-major planting, the paired contrast and the marginal row-major test reject
 at every strength, with mean standardised contrasts of $17.6$, $41.6$ and
 $105.7$, while the marginal Ulam test stays at $0.053$, $0.063$ and $0.208$.
@@ -620,27 +624,34 @@ The graph form of the method is exercised on a conventional open dataset. The
 Advanced National Seismic System Comprehensive Catalogue of the
 U.S.~Geological Survey \citep{USGS-ANSS-COMCAT} supplies $37\,590$ earthquake
 epicentres with magnitude at least $2.5$ in the California region
-($124.5^\circ$--$114^\circ$~W, $32^\circ$--$42^\circ$~N) for 2000--2026. The
+($124.5^\circ$--$114^\circ$~W, $32^\circ$--$42^\circ$~N) for the query period
+1~January~2000 to 1~January~2026; the catalogue was accessed on
+4~November~2026. The
 epicentres are rasterised onto a $96\times96$ cell grid, so the finite
 population consists of $M=9\,216$ cells and the label set consists of the
 $2\,920$ cells containing at least one epicentre. Two alternative
 neighbourhood graphs are defined on this one population: rook adjacency
-(cells sharing an edge; $18\,240$ edges) and queen adjacency (rook plus
-diagonal cells; $27\,265$ edges). The rook edge set is a subset of the queen
-edge set, so the graphs are nested, open-window and irregular.
+(cells sharing an edge; $18\,240$ edges) and queen adjacency (rook plus both
+diagonal orientations; $36\,290$ edges). The rook edge set is a subset of the
+queen edge set, so the graphs are nested, open-window and irregular. The
+comparison is topological on the raster grid: it uses only cell adjacency,
+not physical distances between cell centres, so the latitude--longitude cells
+are not treated as equal-area or exactly square.
 
-The normalised occupied-edge counts are $2.020$ (rook) and $1.970$ (queen)
-(Table~\ref{tab:seismic}). Their difference of $+0.0503$ equals $5.47$
-standard deviations, where the exact standard deviation $\sigma=0.0092$ comes
+The normalised occupied-edge counts are $2.020$ (rook) and $1.968$ (queen)
+(Table~\ref{tab:seismic}). Their difference of $+0.0523$ equals $4.63$
+standard deviations, where the exact standard deviation $\sigma=0.0113$ comes
 from Eq.~\eqref{eq:general-variance}. The $1\,999$ paired fixed-count
-realisations give a Monte Carlo standard deviation of $0.0092$ and no
+realisations give a Monte Carlo standard deviation of $0.0115$ and no
 realisation whose contrast exceeds the observed one in absolute value, so the
 Monte Carlo value is $0.0005$. Because the graphs are nested, the
-edge-discrepancy term carries $99.7\%$ of the exact null variance and the
-degree-discrepancy term the remaining $0.3\%$. The positive contrast means
-that the occupied cells are relatively more connected through shared edges
-than through corner contacts, consistent with elongate clusters along the
-roughly north--south trending fault system. The comparison illustrates how
+edge-discrepancy term carries $99.5\%$ of the exact null variance and the
+degree-discrepancy term the remaining $0.5\%$. The positive contrast
+indicates a higher normalised occupancy of edge-sharing than of
+diagonal-inclusive neighbourhoods under the stated fixed-count reference
+model. This is a descriptive property of the chosen rasterisation and
+adjacency definitions, rather than evidence of a particular fault-alignment
+mechanism. The comparison illustrates how
 the adjacency definition changes the normalised clustering summary of one
 population; it is not presented as a seismological hypothesis test. The raster
 resolution is $0.11^\circ\times0.10^\circ$, and catalogue completeness varies
@@ -662,14 +673,14 @@ in space and time, so the cell set is a descriptive discretisation.
     \midrule
     Population cells & \multicolumn{2}{c}{$9\,216$ ($96\times96$ grid)} \\
     Occupied cells & \multicolumn{2}{c}{$2\,920$ (of $37\,590$ epicentres)} \\
-    Graph edges & $18\,240$ & $27\,265$ \\
+    Graph edges & $18\,240$ & $36\,290$ \\
     Shared edges & \multicolumn{2}{c}{$18\,240$ (nested)} \\
-    Occupied edges & $3\,698$ & $5\,390$ \\
-    Expected occupied edges & $1\,831$ & $2\,736$ \\
-    Normalised count $g$ & $2.020$ & $1.970$ \\
+    Occupied edges & $3\,698$ & $7\,167$ \\
+    Expected occupied edges & $1\,831$ & $3\,642$ \\
+    Normalised count $g$ & $2.020$ & $1.968$ \\
     \midrule
-    Difference $g_{\rm rook}-g_{\rm queen}$ & \multicolumn{2}{c}{$+0.0503$} \\
-    Exact $\sigma$ / Monte Carlo $\sigma$ & \multicolumn{2}{c}{$0.0092$ / $0.0092$} \\
+    Difference $g_{\rm rook}-g_{\rm queen}$ & \multicolumn{2}{c}{$+0.0523$} \\
+    Exact $\sigma$ / Monte Carlo $\sigma$ & \multicolumn{2}{c}{$0.0113$ / $0.0115$} \\
     Monte Carlo value ($1\,999$ paired) & \multicolumn{2}{c}{$0.0005$} \\
     \bottomrule
   \end{tabular}
@@ -679,7 +690,8 @@ in space and time, so the cell set is a descriptive discretisation.
   \centering
   \includegraphics[width=\textwidth]{fig_seismic_application.pdf}
   \caption{Seismic-event cells under two adjacency graphs. (a) The $2\,920$
-           occupied cells (magnitude $\ge2.5$ epicentres, 2000--2026) on the
+           occupied cells (at least one magnitude $\ge2.5$ epicentre, query
+           period 1~January~2000 to 1~January~2026) on the
            $96\times96$ grid over the California region. (b) Paired
            fixed-count null contrasts of the normalised rook--queen count
            difference, with the exact null density of
@@ -812,8 +824,8 @@ nonzero $S_v$ is shown in Table~\ref{tab:open-variance}.
     Contrast & $q$ & $10^7S_v$ & $\sigma_{\rm exact}$ & $\sigma_{\rm MC}$ \\
     \midrule
     Row-major -- Ulam & $0$ & $1.913$ & $0.0299$ & $0.0306$ \\
-    Row-major -- Cantor & $0$ & $2.349$ & $0.0300$ & $0.0301$ \\
-    Ulam -- Cantor & $2$ & $2.366$ & $0.0300$ & $0.0305$ \\
+    Row-major -- diagonal sweep & $0$ & $2.349$ & $0.0300$ & $0.0301$ \\
+    Ulam -- diagonal sweep & $2$ & $2.366$ & $0.0300$ & $0.0305$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -900,7 +912,7 @@ to null standard deviations, not adjusted significance tests.
   \setlength{\tabcolsep}{3pt}
   \begin{tabular}{@{}lcccc@{}}
     \toprule
-    Descriptor & Row-major & Ulam & Cantor & Fixed-count null \\
+    Descriptor & Row-major & Ulam & Diagonal sweep & Fixed-count null \\
     \midrule
     Brody $\hat\beta$ & $2.153$ & $1.856$ & $1.413$ & $1.467\pm0.020$ \\
     CDF discrepancy $D_{\rm fit}$ & $0.267$ & $0.315$ & $0.234$ & --- \\

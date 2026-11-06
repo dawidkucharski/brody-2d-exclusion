@@ -103,6 +103,12 @@ def build_grid(width, latitudes, longitudes):
 def build_neighbourhood_graphs(width):
     """Return encoded edge arrays for the open-window rook and queen graphs.
 
+    Rook edges join cells sharing a side; queen edges additionally join cells
+    touching at a corner (both diagonal orientations), so the queen graph is
+    the rook graph plus the two diagonal-neighbour graphs. Each undirected
+    pair is generated exactly once by construction (the four offsets are
+    pairwise non-inverse, so no pair occurs twice).
+
     Labels are cell indices 1..M with cell (column, row) -> column + row * width + 1.
     Edges are encoded as u * (M + 1) + v with u < v.
     """
@@ -116,8 +122,6 @@ def build_neighbourhood_graphs(width):
                 if not (0 <= other_column < width and 0 <= other_row < width):
                     continue
                 other = other_column + other_row * width + 1
-                if other <= label:
-                    continue
                 queen.append(min(label, other) * (population + 1) + max(label, other))
                 if delta_column == 0 or delta_row == 0:
                     rook.append(min(label, other) * (population + 1) + max(label, other))
@@ -208,7 +212,7 @@ def run(args):
     map_axis.set_ylim(BBOX['minlatitude'], BBOX['maxlatitude'])
     map_axis.set_xlabel('Longitude (deg)')
     map_axis.set_ylabel('Latitude (deg)')
-    map_axis.set_title(f'(a) Cells with $\\geq1$ epicentre ($M\\geq{MIN_MAG}$, 2000--2026): '
+    map_axis.set_title(f'(a) Occupied cells (at least one $M\\geq{MIN_MAG}$ epicentre, 2000--2025): '
                        f'{occupied}/{population} cells')
     histogram_axis = axes[1]
     sigma = float(np.sqrt(variance))

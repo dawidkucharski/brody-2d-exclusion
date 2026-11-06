@@ -58,8 +58,11 @@ by `test_manuscript_power_table_if_present` and
 
 `seismic_application.py` implements the Section-4 application: it rasterises
 the cached U.S. Geological Survey ANSS catalogue (`seismic_events_ca.csv.gz`,
-magnitude $\ge2.5$, California region, 2000--2026; 37,590 events) onto a
-$96\times96$ cell grid, builds the nested rook and queen adjacency graphs,
+magnitude $\ge2.5$, California region, query period 1 January 2000 to
+1 January 2026; 37,590 events) onto a
+$96\times96$ cell grid, builds the nested rook and queen adjacency graphs
+(the queen graph contains the rook graph plus both diagonal orientations,
+$18\,240$ and $36\,290$ edges respectively),
 computes the exact null variance of Eq. (5), and runs 1,999 paired fixed-count
 realisations. It writes `seismic_application.json` and
 `fig_seismic_application.pdf`. If the cached catalogue is missing, the script

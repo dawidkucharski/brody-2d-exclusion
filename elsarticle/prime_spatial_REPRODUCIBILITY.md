@@ -40,10 +40,10 @@ independently. `validate_references.py` verifies every bibliography entry
 against Crossref (DataCite fallback) — DOI resolution plus title, author,
 year, volume and page matching — and writes
 `reference-validation/references_raw.json` and
-`reference-validation/crossref_results.json`. All 30 cited entries pass every
-field check; the only entries without DOIs are the two URL-based software/data
-citations required by the user's citation rules (each carries its URL, DOI
-where available, and accessed date).
+`reference-validation/crossref_results.json`. All 35 cited entries pass every
+field check; the only entries without DOIs are the two URL-based
+software/data citations and the Cliff and Ord (1981) book (each carries its
+URL, DOI where available, and accessed date).
 
 `power_calibration.py` writes `power_calibration.json` and
 `fig_power_calibration.pdf`; it calibrates the paired edge-contrast procedure

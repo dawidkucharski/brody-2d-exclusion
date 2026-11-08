@@ -43,8 +43,10 @@ labels requires inference that respects the dependence induced by the shared
 labels. A paired random-labelling procedure is developed in which every
 simulated label set is mapped through each candidate embedding, so that
 contrasts are formed within realisations. For counts of occupied edges on
-finite simple graphs, an exact finite-population variance is derived for the
-difference between two normalised counts under uniform fixed-count sampling.
+finite simple graphs, the classical finite-population moments of weighted
+join counts are evaluated explicitly for the difference between two
+normalised counts under uniform fixed-count sampling, giving an exact
+variance.
 The variance depends on the two graphs only through two discrepancies: an
 inverse-size-weighted measure of shared and unshared edges, and the squared
 difference of their normalised degree sequences; a simpler expression obtains
@@ -147,16 +149,22 @@ randomisation null date at least to the join-count results of Moran and the
 general-graph treatment of Friedman and Rafsky. Comparing the same labelled
 set across two embeddings, however, couples two such statistics through one
 shared realisation, and the two graphs involved may have different, irregular
-edge sets. A closed form for the variance of the difference between two
-normalised counts in this paired setting does not appear to have been
-recorded. The established results provide moments for individual join counts
+edge sets. The exact moments of individual weighted join counts under random
+labelling are classical (\citet{CLIFF-ORD-1981}; \citet{SOKAL-ODEN-1978}), and
+the covariance of two statistics of this class follows from the same
+finite-population second-moment expansion (\citet{DANIELS-1944};
+\citet{HOEFFDING-1948}). What does not appear to have been recorded is the
+resulting closed form for the difference between two separately normalised
+counts on the same labelled population, in the two-discrepancy representation
+used here. The established results provide moments for individual join counts
 or graph-based two-sample statistics; the expression derived here instead
 gives the variance of the difference between two separately normalised graph
 counts evaluated on the same fixed-count labelled population, and it
 accommodates unequal edge counts, irregular graphs and non-identical degree
 sequences through two discrepancy terms.
 
-This paper provides that missing finite-population piece. For two simple
+This paper records that paired two-graph form and develops the paired
+inference built on it. For two simple
 graphs on a common vertex set, the randomisation variance of the normalised
 count difference is expressed through an edge-overlap term and a
 vertex-degree-discrepancy term. The expression is exact, non-negative in its
@@ -755,7 +763,9 @@ or by the degree structure. The practical advantage of the expression is not
 the replacement of permutation inference in general, but the availability of
 an exact null variance for a paired graph-count contrast, including irregular
 graphs with unequal edge sets, without estimating that variance from repeated
-randomisation. Section~4 applies the construction to
+randomisation. The underlying second-moment computation is classical
+(\citet{CLIFF-ORD-1981}; \citet{DANIELS-1944}); the contribution here is the
+paired two-graph form and the inference built on it. Section~4 applies the construction to
 seismic-event cells under two nested adjacency graphs, where the
 shared-edge term dominates by construction.
 
@@ -812,7 +822,13 @@ inclusion probability $p_2$. Therefore
 &=p_2^{-2}\{S_ep_2+(S_v-2S_e)p_3+(S_e-S_v)p_4\} \\
 &=p_2^{-2}\{S_e(p_2-2p_3+p_4)+S_v(p_3-p_4)\},
 \end{align}
-which proves Eq.~\eqref{eq:general-variance}. The result applies to irregular
+which proves Eq.~\eqref{eq:general-variance}. This is the standard
+second-moment expansion of a weighted sum of pair indicators under sampling
+without replacement; evaluated at the contrast weights, whose sum vanishes,
+it reduces to the two discrepancies. The same expansion underlies the general
+join-count moments of \citet{CLIFF-ORD-1981}, the permutation-statistic
+variances of \citet{DANIELS-1944} and the randomisation moments reviewed by
+\citet{SEN-1976}. The result applies to irregular
 graphs and unequal edge counts, but not unchanged to weighted pair estimators
 whose normalisation or edge weights depend on the realised labels.
 

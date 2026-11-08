@@ -67,17 +67,26 @@ def check_authors(bib_author_field, registered_authors):
     bib_names = [canonical_surname(name) for name in bib_authors(bib_author_field)
                  if name.strip().lower() not in ('others', 'et al.')]
     registered = []
+    registered_combined = []
     for author in registered_authors or []:
         family = author.get('family') or ''
         given = author.get('given') or author.get('name') or ''
         registered.append(canonical_surname(family if family else given))
+        # Fallback for legacy registry records with mis-tokenised names
+        # (surname stored inside the given field).
+        registered_combined.append(canonical_surname(f'{given} {family}'))
     matched = 0
     for surname_value in bib_names:
-        if surname_value and any(surname_value and
-                                 (surname_value == candidate or
-                                  surname_value.startswith(candidate) or
-                                  candidate.startswith(surname_value))
-                                 for candidate in registered):
+        if not surname_value:
+            continue
+        primary = any(surname_value and
+                      (surname_value == candidate or
+                       surname_value.startswith(candidate) or
+                       candidate.startswith(surname_value))
+                      for candidate in registered)
+        fallback = any(surname_value and surname_value in combined
+                       for combined in registered_combined)
+        if primary or fallback:
             matched += 1
     return matched, len(bib_names), len(registered)
 

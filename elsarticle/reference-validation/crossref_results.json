@@ -1498,5 +1498,135 @@
     "howpublished": "\\url{https://earthquake.usgs.gov/fdsnws/event/1/}",
     "title": "Advanced National Seismic System (ANSS) Comprehensive Catalog",
     "year": "2017"
+  },
+  "CLIFF-ORD-1981": {
+    "status": "NO_DOI",
+    "howpublished": "",
+    "title": "Spatial Processes: Models \\& Applications",
+    "year": "1981"
+  },
+  "SOKAL-ODEN-1978": {
+    "key": "SOKAL-ODEN-1978",
+    "doi": "10.1111/j.1095-8312.1978.tb00013.x",
+    "title": "Spatial autocorrelation in biology. 1. Methodology",
+    "year": "1978",
+    "volume": "10",
+    "pages": "199--228",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Spatial autocorrelation in biology: 1. Methodology",
+    "registered_year": 1978,
+    "registered_journal": "Biological Journal of the Linnean Society",
+    "registered_volume": "10",
+    "registered_page": "199-228",
+    "registered_authors": [
+      {
+        "family": "SOKAL",
+        "given": "ROBERT R."
+      },
+      {
+        "family": "ODEN",
+        "given": "NEAL L."
+      }
+    ],
+    "title_match": 1.0,
+    "author_match": {
+      "matched": 2,
+      "in_bib": 2,
+      "registered": 2
+    },
+    "year_match": true,
+    "volume_match": true,
+    "pages_match": true
+  },
+  "DANIELS-1944": {
+    "key": "DANIELS-1944",
+    "doi": "10.1093/biomet/33.2.129",
+    "title": "The relation between measures of correlation in the universe of sample permutations",
+    "year": "1944",
+    "volume": "33",
+    "pages": "129--135",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "THE RELATION BETWEEN MEASURES OF CORRELATION IN THE UNIVERSE OF SAMPLE PERMUTATIONS",
+    "registered_year": 1944,
+    "registered_journal": "Biometrika",
+    "registered_volume": "33",
+    "registered_page": "129-135",
+    "registered_authors": [
+      {
+        "family": "Wool",
+        "given": "H. E. DANIELS"
+      }
+    ],
+    "title_match": 1.0,
+    "author_match": {
+      "matched": 1,
+      "in_bib": 1,
+      "registered": 1
+    },
+    "year_match": true,
+    "volume_match": true,
+    "pages_match": true
+  },
+  "HOEFFDING-1948": {
+    "key": "HOEFFDING-1948",
+    "doi": "10.1214/aoms/1177730196",
+    "title": "A class of statistics with asymptotically normal distribution",
+    "year": "1948",
+    "volume": "19",
+    "pages": "293--325",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "A Class of Statistics with Asymptotically Normal Distribution",
+    "registered_year": 1948,
+    "registered_journal": "The Annals of Mathematical Statistics",
+    "registered_volume": "19",
+    "registered_page": "293-325",
+    "registered_authors": [
+      {
+        "family": "Hoeffding",
+        "given": "Wassily"
+      }
+    ],
+    "title_match": 1.0,
+    "author_match": {
+      "matched": 1,
+      "in_bib": 1,
+      "registered": 1
+    },
+    "year_match": true,
+    "volume_match": true,
+    "pages_match": true
+  },
+  "SEN-1976": {
+    "key": "SEN-1976",
+    "doi": "10.1111/j.1538-4632.1976.tb01066.x",
+    "title": "Large sample-size distribution of statistics used in testing for spatial correlation",
+    "year": "1976",
+    "volume": "8",
+    "pages": "175--184",
+    "status": "OK",
+    "registry": "crossref",
+    "registered_title": "Large Sample‐Size Distribution of Statistics Used In Testing for Spatial Correlation",
+    "registered_year": 1976,
+    "registered_journal": "Geographical Analysis",
+    "registered_volume": "8",
+    "registered_page": "175-184",
+    "registered_authors": [
+      {
+        "family": "Sen",
+        "given": "Ashish"
+      }
+    ],
+    "title_match": 1.0,
+    "author_match": {
+      "matched": 1,
+      "in_bib": 1,
+      "registered": 1
+    },
+    "year_match": true,
+    "volume_match": true,
+    "pages_match": true
   }
 }

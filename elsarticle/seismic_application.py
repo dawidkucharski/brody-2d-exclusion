@@ -212,8 +212,7 @@ def run(args):
     map_axis.set_ylim(BBOX['minlatitude'], BBOX['maxlatitude'])
     map_axis.set_xlabel('Longitude (deg)')
     map_axis.set_ylabel('Latitude (deg)')
-    map_axis.set_title(f'(a) Occupied cells (at least one $M\\geq{MIN_MAG}$ epicentre, 2000--2025; '
-                       f'query end 1 January 2026): {occupied}/{population} cells')
+    map_axis.set_title('(a) Occupied cells')
     histogram_axis = axes[1]
     sigma = float(np.sqrt(variance))
     span = max(5 * sigma, abs(observed) + sigma)
@@ -227,7 +226,7 @@ def run(args):
                            label=f'Observed {observed:+.4f}')
     histogram_axis.set_xlabel('Normalised count difference (rook $-$ queen)')
     histogram_axis.set_ylabel('Density')
-    histogram_axis.set_title('(b) Paired fixed-count null contrasts')
+    histogram_axis.set_title('(b) Paired null contrasts')
     histogram_axis.legend(frameon=False, fontsize=8)
     figure.savefig(ROOT / args.figure, bbox_inches='tight', facecolor='white')
     plt.close(figure)

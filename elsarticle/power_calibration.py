@@ -16,6 +16,7 @@ each embedding's count alone against its own null distribution.
 
 import argparse
 import json
+import math
 import time
 from pathlib import Path
 
@@ -173,18 +174,45 @@ def run(args):
         json.dump(output, stream, indent=2, allow_nan=False)
         stream.write('\n')
 
+    build_figure(output, args)
+    print(f'Wrote {args.output} and {args.figure} in {(time.monotonic() - started) / 60:.2f} minutes',
+          flush=True)
+
+
+def monte_carlo_standard_error(rate, realisations):
+    """Normal-approximation standard error of a rejection-rate estimate."""
+    clipped = min(max(float(rate), 0.0), 1.0)
+    return math.sqrt(clipped * (1.0 - clipped) / realisations)
+
+
+def build_figure(output, args):
+    """Draw the calibration curves with +-1.96 Monte Carlo standard errors."""
     figure, axes = plt.subplots(1, 2, figsize=(10.5, 4), sharey=True, layout='constrained')
     x_values = [0.0] + list(args.theta)
+    null_n = output['config']['null_realisations']
+    alt_n = output['config']['alternative_realisations']
     rows = {}
-    for item in alternative:
+    for item in output['alternative']:
         rows.setdefault(item['owner'], []).append(item)
     for axis, owner in zip(axes, ('row_major', 'ulam')):
-        paired = [level_paired] + [item['power_paired'] for item in rows[owner]]
-        marginal_row = [level_row] + [item['power_marginal_row'] for item in rows[owner]]
-        marginal_ulam = [level_ulam] + [item['power_marginal_ulam'] for item in rows[owner]]
-        axis.plot(x_values, paired, 'o-', color='#24658a', label='Paired contrast')
-        axis.plot(x_values, marginal_row, 's--', color='#b25c38', label='Marginal row-major')
-        axis.plot(x_values, marginal_ulam, '^:', color='#39805b', label='Marginal Ulam')
+        paired = [output['null']['paired_level']] + [item['power_paired'] for item in rows[owner]]
+        marginal_row = [output['null']['marginal_row_level']] + [item['power_marginal_row'] for item in rows[owner]]
+        marginal_ulam = [output['null']['marginal_ulam_level']] + [item['power_marginal_ulam'] for item in rows[owner]]
+        paired_se = [monte_carlo_standard_error(paired[0], null_n)] + [
+            monte_carlo_standard_error(rate, alt_n) for rate in paired[1:]]
+        row_se = [monte_carlo_standard_error(marginal_row[0], null_n)] + [
+            monte_carlo_standard_error(rate, alt_n) for rate in marginal_row[1:]]
+        ulam_se = [monte_carlo_standard_error(marginal_ulam[0], null_n)] + [
+            monte_carlo_standard_error(rate, alt_n) for rate in marginal_ulam[1:]]
+        axis.errorbar(x_values, paired, yerr=1.96 * np.asarray(paired_se),
+                      fmt='o-', color='#24658a', capsize=3, markersize=5,
+                      label='Paired contrast')
+        axis.errorbar(x_values, marginal_row, yerr=1.96 * np.asarray(row_se),
+                      fmt='s--', color='#b25c38', capsize=3, markersize=5,
+                      label='Marginal row-major')
+        axis.errorbar(x_values, marginal_ulam, yerr=1.96 * np.asarray(ulam_se),
+                      fmt='^:', color='#39805b', capsize=3, markersize=5,
+                      label='Marginal Ulam')
         axis.axhline(0.05, color='0.4', linestyle=':', linewidth=1, label='Nominal 5%')
         axis.set_xlabel(r'Enrichment strength $\theta$')
         axis.set_title(f"Planted gaps {GAP_SETS[owner]}, owner {owner}")
@@ -192,8 +220,6 @@ def run(args):
     axes[1].legend(frameon=False, loc='center right')
     figure.savefig(ROOT / args.figure, bbox_inches='tight', facecolor='white')
     plt.close(figure)
-    print(f'Wrote {args.output} and {args.figure} in {(time.monotonic() - started) / 60:.2f} minutes',
-          flush=True)
 
 
 def main():
@@ -204,7 +230,15 @@ def main():
     parser.add_argument('--theta', type=float, nargs='+', default=[0.5, 1.0, 2.0])
     parser.add_argument('--output', default='power_calibration.json')
     parser.add_argument('--figure', default='fig_power_calibration.pdf')
+    parser.add_argument('--figure-only', action='store_true',
+                        help='rebuild the figure from the stored JSON without rerunning')
     args = parser.parse_args()
+    if args.figure_only:
+        with (ROOT / args.output).open('r', encoding='utf-8') as stream:
+            stored = json.load(stream)
+        build_figure(stored, args)
+        print(f'Wrote {args.figure} from {args.output}', flush=True)
+        return
     run(args)
 
 

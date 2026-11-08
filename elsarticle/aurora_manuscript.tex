@@ -147,7 +147,12 @@ set across two embeddings, however, couples two such statistics through one
 shared realisation, and the two graphs involved may have different, irregular
 edge sets. A closed form for the variance of the difference between two
 normalised counts in this paired setting does not appear to have been
-recorded.
+recorded. The established results provide moments for individual join counts
+or graph-based two-sample statistics; the expression derived here instead
+gives the variance of the difference between two separately normalised graph
+counts evaluated on the same fixed-count labelled population, and it
+accommodates unequal edge counts, irregular graphs and non-identical degree
+sequences through two discrepancy terms.
 
 This paper provides that missing finite-population piece. For two simple
 graphs on a common vertex set, the randomisation variance of the normalised
@@ -612,7 +617,8 @@ Figure~\ref{fig:power-calibration} displays the curves.
            records rejection rates at nominal $5\%$ for the paired contrast and
            the two marginal tests, with the $\theta=0$ level row shown at the
            left of each panel. $2\,000$ null and $400$ alternative realisations
-           per strength.}
+           per strength; vertical bars give $\pm1.96$ approximate Monte Carlo
+           standard errors $\sqrt{\hat p(1-\hat p)/n}$.}
   \label{fig:power-calibration}
 \end{figure}
 
@@ -1047,7 +1053,10 @@ $\exp(\theta k_v)$, where $k_v$ is the number of already selected labels
 whose integer difference from $v$ lies in the planted gap set; the weights
 are updated after every draw, sampling is performed through a Fenwick tree
 over the unselected labels, and the selection order is not additionally
-randomised. The sign-identification rates quoted in Section~3.4 are the
+randomised. The procedure thus defines a deliberately constructed, sequential
+interaction-based alternative used only to calibrate rejection behaviour; it
+is not proposed as a spatial point-process model. The sign-identification
+rates quoted in Section~3.4 are the
 proportions of realisations in which the paired contrast has the sign
 corresponding to the planted embedding.
 
@@ -1056,7 +1065,14 @@ corresponding to the planted embedding.
   \caption{Rejection rates of the paired contrast and the two marginal tests
            at nominal $5\%$, for the planted alternatives of
            Section~3.4. The $\theta=0$ row is the level estimate. Thresholds
-           are fixed at $\pm1.96$; no empirical critical value is estimated.}
+           are fixed at $\pm1.96$; no empirical critical value is estimated.
+           Each alternative rate uses $400$ realisations, so its approximate
+           Monte Carlo standard error is $\sqrt{\hat p(1-\hat p)/400}$ (at
+           most $0.025$); Figure~\ref{fig:power-calibration} displays
+           $\pm1.96$ of these errors as vertical bars. An independent null
+           ensemble with a second seed ($20261102$, $2\,000$ label sets) gave
+           paired, marginal row-major and marginal Ulam levels of $0.049$,
+           $0.049$ and $0.046$.}
   \label{tab:power}
   \small
   \begin{tabular}{@{}lccccc@{}}
@@ -1084,8 +1100,9 @@ the accompanying seismic application script. The analysis scripts, parameter
 settings, random seeds, generated numerical results and figure-building code
 are included in the accompanying reproducibility package, released at
 \url{https://github.com/dawidkucharski/brody-2d-exclusion} and archived on
-Zenodo under the concept DOI \url{https://doi.org/10.5281/zenodo.23940934},
-which resolves to the latest release \citep{KUCHARSKI-2026-CODE}.
+Zenodo as version 2.4.1 (DOI: \url{https://doi.org/10.5281/zenodo.24012387};
+concept DOI: \url{https://doi.org/10.5281/zenodo.23940934})
+\citep{KUCHARSKI-2026-CODE}.
 
 \section*{Acknowledgements}
 NumPy \citep{HARRIS-2020} and SciPy \citep{VIRTANEN-2020} were used for the

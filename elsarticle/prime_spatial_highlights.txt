@@ -1,5 +1,5 @@
-- Paired random labelling compares alternative spatial embeddings.
-- An exact finite-population variance covers irregular graph contrasts.
-- Edge overlap and degree differences determine contrast variability.
-- Open seismic data exercise the method on real spatial cells.
-- Lattice ties limit the accuracy of continuous Brody fits.
+- Exact null variance for paired contrasts of normalised graph-edge counts.
+- Covers irregular nested graphs with unequal edge sets and degrees.
+- Paired random labelling preserves dependence between embeddings.
+- Rook and queen adjacency compared for 2,920 seismic-event cells.
+- Prime-pattern application with 4,999 paired Monte Carlo tests.

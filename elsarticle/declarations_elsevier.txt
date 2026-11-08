@@ -1,0 +1,21 @@
+STATEMENTS FOR THE ELSEVIER DECLARATIONS TOOL (declarations.elsevier.com)
+Manuscript: Paired spatial statistics under alternative embeddings:
+exact graph-count variance and a prime-pattern application
+Author: Dawid Kucharski
+
+1) COMPETING INTERESTS
+Select: "I have nothing to declare."
+Corresponding text: "The author declares no competing interests."
+
+2) FUNDING
+"This research did not receive any specific grant from funding agencies in
+the public, commercial, or not-for-profit sectors."
+
+3) GENERATIVE AI
+Title: "Declaration of generative AI and AI-assisted technologies in the
+manuscript preparation process."
+Statement: "During the preparation of this work the author used an
+AI-assisted tool (GitHub Copilot) to assist with drafting the manuscript and
+developing the analysis code. After using this tool, the author reviewed and
+edited the content as needed and takes full responsibility for the content of
+the publication."

@@ -11,36 +11,52 @@ Please consider the manuscript ``Paired spatial statistics under alternative
 embeddings: exact graph-count variance and a prime-pattern application'' for
 publication in \emph{Spatial Statistics}.
 
-The paper addresses comparison of spatial summaries when the same selected
-labels are mapped to different locations. A paired random-labelling procedure
-is described, and an exact finite-population variance is derived for a
-contrast of normalised edge counts on two simple graphs. The expression
-incorporates graph overlap and differences in vertex degrees, covering
-irregular open-window graphs as well as a simpler regular-toroidal case.
-The derivation is checked by exhaustive small-graph enumeration and paired
-simulations. A power-calibration study under planted gap-class enrichment,
-with fixed Gaussian thresholds and an independent second-seed level check,
-confirms that the paired procedure retains its nominal level and attributes
-the planted structure to the embedding that carries it.
+The paper develops paired inference for comparing spatial summaries when one
+fixed set of labels is mapped to locations in different ways. The central
+result is an exact finite-population variance for the difference between two
+normalised graph-edge counts under uniform fixed-count random labelling,
+expressed through an edge-overlap discrepancy and a degree-sequence
+discrepancy. Unlike established join-count and graph-based two-sample
+moments, which treat individual counts, the expression covers the paired
+difference of two separately normalised counts on the same labelled
+population, including irregular open-window graphs with unequal edge sets and
+non-identical degree sequences; the regular toroidal case follows as a
+special case. The derivation is verified by exhaustive enumeration on small
+graphs and by paired simulation, and the complete analysis is reproducible
+from a single archived release (GitHub repository
+\url{https://github.com/dawidkucharski/brody-2d-exclusion}; Zenodo version
+2.4.1, DOI \url{https://doi.org/10.5281/zenodo.24012387}, concept DOI
+\url{https://doi.org/10.5281/zenodo.23940934}), with every number in the
+manuscript checked against the recorded results by an automated 239-item
+audit.
 
-The method is illustrated using three embeddings of the same finite prime set
-and is additionally applied to an open seismic dataset: earthquake epicentres
-rasterised onto cells over California are compared under rook and queen
-adjacency on the same cell population, with the exact null variance and a
-paired Monte Carlo test. Nearest-neighbour fits and established spatial
-summaries are compared with
-fixed-count and mapped inhomogeneous nulls. The manuscript also reports the
-substantial discrepancies between the continuous Brody fit and the tied
-lattice-distance distributions, and limits its conclusions to the specified
-models and finite windows.
+Two applications demonstrate the method. First, three bijective embeddings of
+the same finite prime set are compared under a paired fixed-count null, with
+$4\,999$ paired realisations and a global maximum-statistic Monte Carlo value
+of $0.0002$; the nonlinear Brody descriptor is reported descriptively and is
+kept distinct from the exact graph-count result. A power-calibration study
+under planted gap-class enrichment, with fixed thresholds, Monte Carlo
+standard-error bars and an independent second-seed level check, shows that
+the paired procedure retains its nominal level and attributes planted
+structure to the correct embedding. Second, an open-data application
+rasterises $37\,590$ USGS earthquake epicentres onto a $96\times96$ cell grid
+and compares rook with full queen adjacency on the same cell population; the
+normalised contrast is $+0.0523$ with exact standard deviation $0.0113$ and
+Monte Carlo value $0.0005$, and the interpretation is limited to the chosen
+rasterisation and the stated reference model.
 
-The source code, numerical results and instructions needed to reproduce the
-analysis and figures are supplied with the manuscript.
+The manuscript includes the required declarations: no competing interests, a
+funding statement (no specific grant), a CRediT authorship statement, a data
+and code availability section, and a declaration of generative AI and
+AI-assisted technologies in the manuscript preparation process. The work has
+not been published previously and is not under consideration elsewhere. The
+author approves the submission and takes responsibility for the content.
 
-Thank you for considering the work.
+Thank you for considering this work for \emph{Spatial Statistics}.
 
 \closing{Sincerely,}
 Dawid Kucharski\\
+Institute of Mathematics\\
 Poznan University of Technology\\
 Poznan, Poland\\
 \href{mailto:dawid.kucharski@put.poznan.pl}{dawid.kucharski@put.poznan.pl}

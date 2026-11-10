@@ -83,58 +83,24 @@
     "volume_match": true,
     "pages_match": true
   },
-  "GRASSBERGER-PROCACCIA-1983": {
-    "key": "GRASSBERGER-PROCACCIA-1983",
-    "doi": "10.1103/PhysRevLett.50.346",
-    "title": "Characterization of strange attractors",
-    "year": "1983",
-    "volume": "50",
-    "pages": "346--349",
+  "EPPERSON-2003": {
+    "key": "EPPERSON-2003",
+    "doi": "10.1016/S0040-5809(03)00023-6",
+    "title": "Covariances among join-count spatial autocorrelation measures",
+    "year": "2003",
+    "volume": "64",
+    "pages": "81--87",
     "status": "OK",
     "registry": "crossref",
-    "registered_title": "Characterization of Strange Attractors",
-    "registered_year": 1983,
-    "registered_journal": "Physical Review Letters",
-    "registered_volume": "50",
-    "registered_page": "346-349",
+    "registered_title": "Covariances among join-count spatial autocorrelation measures",
+    "registered_year": 2003,
+    "registered_journal": "Theoretical Population Biology",
+    "registered_volume": "64",
+    "registered_page": "81-87",
     "registered_authors": [
       {
-        "family": "Grassberger",
-        "given": "Peter"
-      },
-      {
-        "family": "Procaccia",
-        "given": "Itamar"
-      }
-    ],
-    "title_match": 1.0,
-    "author_match": {
-      "matched": 2,
-      "in_bib": 2,
-      "registered": 2
-    },
-    "year_match": true,
-    "volume_match": true,
-    "pages_match": true
-  },
-  "THEILER-1986": {
-    "key": "THEILER-1986",
-    "doi": "10.1103/physreva.41.3038",
-    "title": "Statistical precision of dimension estimators",
-    "year": "1990",
-    "volume": "41",
-    "pages": "3038--3051",
-    "status": "OK",
-    "registry": "crossref",
-    "registered_title": "Statistical precision of dimension estimators",
-    "registered_year": 1990,
-    "registered_journal": "Physical Review A",
-    "registered_volume": "41",
-    "registered_page": "3038-3051",
-    "registered_authors": [
-      {
-        "family": "Theiler",
-        "given": "James"
+        "family": "Epperson",
+        "given": "Bryan K."
       }
     ],
     "title_match": 1.0,

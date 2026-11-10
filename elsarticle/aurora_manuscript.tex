@@ -26,7 +26,7 @@
 
 \begin{frontmatter}
 
-\title{Paired spatial statistics under alternative embeddings: exact graph-count variance and a prime-pattern application}
+\title{Exact randomisation variance for paired spatial graph-count contrasts}
 
 \author[put]{Dawid Kucharski\corref{cor1}}
 \ead{dawid.kucharski@put.poznan.pl}
@@ -153,10 +153,12 @@ edge sets. The exact moments of individual weighted join counts under random
 labelling are classical (\citet{CLIFF-ORD-1981}; \citet{SOKAL-ODEN-1978}), and
 the covariance of two statistics of this class follows from the same
 finite-population second-moment expansion (\citet{DANIELS-1944};
-\citet{HOEFFDING-1948}). What does not appear to have been recorded is the
-resulting closed form for the difference between two separately normalised
-counts on the same labelled population, in the two-discrepancy representation
-used here. The established results provide moments for individual join counts
+\citet{HOEFFDING-1948}), and explicit covariances among the join counts of a
+single lattice were recorded by \citet{EPPERSON-2003}, whose framework
+concerns one population on one weight matrix. What does not appear to have
+been recorded is the resulting closed form for the difference between two
+separately normalised counts on the same labelled population, in the
+two-discrepancy representation used here. The established results provide moments for individual join counts
 or graph-based two-sample statistics; the expression derived here instead
 gives the variance of the difference between two separately normalised graph
 counts evaluated on the same fixed-count labelled population, and it
@@ -340,7 +342,20 @@ normalised counts has expectation zero under the null and exact null variance
 \end{equation}
 The derivation is given in \ref{app:variance}. Unlike a periodic
 regular graph, an open-window graph can have a nonzero degree-discrepancy
-term $S_v$.
+term $S_v$. Equation~\eqref{eq:general-variance} supplies exact first and
+second moments of the contrast under the fixed-count null, not its
+finite-sample distribution: standardising an observed contrast by the exact
+standard deviation is a moment-based normal approximation, whereas the Monte
+Carlo values reported below are permutation inferences whose only error is
+simulation error; the approximation is checked empirically in Section~3.4.
+The same expression can be obtained by expanding
+$\operatorname{Var}(g_a-g_b)=\operatorname{Var}(g_a)+\operatorname{Var}(g_b)-2\operatorname{Cov}(g_a,g_b)$
+through the weighted join-count variance and covariance expressions of
+\citet{CLIFF-ORD-1981}, and the covariances among the join counts of a single
+lattice recorded by \citet{EPPERSON-2003}. The two-discrepancy form stated
+here assembles that expansion directly, which is what makes the geometric
+interpretation of $S_e$ and $S_v$, and the regular and nested reductions
+below, immediate.
 
 \begin{remark}[Absorption property]\label{rem:absorption}
 Under the null, the variance in Eq.~\eqref{eq:general-variance} depends on the
@@ -392,19 +407,6 @@ geometric bin centres between 1 and $W/3$ lattice units and directly at
 $\bar r$. A pointwise null envelope is based on $200$ fixed-count patterns;
 it is not a simultaneous significance envelope
 \citep{LOOSMORE-FORD-2006,MYLLYMAKI-2017}.
-
-For box width $\varepsilon\in\{2,4,8,16,32,64,128\}$, the window is cropped
-to complete boxes and $Z_2(\varepsilon)=\sum_k[M_k(\varepsilon)/M_{\varepsilon}]^2$
-is formed from box masses $M_k$ and retained mass $M_{\varepsilon}$. The fitted
-log--log slope is a finite-range summary. Separately, the pairwise correlation
-sum of \citet{GRASSBERGER-PROCACCIA-1983},
-\begin{equation}
-C(r)=\frac{2}{N(N-1)}\sum_{i<j}\mathbf{1}\{d_{ij}\le r\},
-\end{equation}
-is evaluated at 12 geometrically spaced open-boundary radii from 2 to $W/3$.
-Its log--log slope is reported without an edge correction. Because the window
-and fitted ranges are finite and box cropping changes the support, neither
-slope is interpreted as an asymptotic dimension.
 
 \subsection{Computational reproducibility}
 
@@ -596,7 +598,8 @@ from it lies in a designated gap set. Two alternatives were planted: the
 row-major shell gap classes $\{315,317\}$, which carry $99.4\%$ of that
 shell's edges, and the seven dominant Ulam shell classes
 $1246,1248,\ldots,1258$, which carry only $2.2\%$ of theirs. The experiment is
-a calibration of level and sensitivity under planted structure, not a
+a limited calibration of level and sensitivity under planted structure for
+this one shell and these two alternatives, not a
 balanced comparison of the two embeddings, and it is not claimed to show that
 the paired test dominates the marginal tests in general. With $2\,000$ null
 label sets and fixed thresholds at $\pm1.96$, the paired rejection rate at
@@ -633,10 +636,11 @@ Figure~\ref{fig:power-calibration} displays the curves.
 \end{figure}
 
 %=====================================================================
-\section{Application: seismic-event cells under two adjacency graphs}
+\section{Numerical illustration: seismic-event cells under two adjacency graphs}
 %=====================================================================
 
-The graph form of the method is exercised on a conventional open dataset. The
+The graph form of the method is illustrated numerically on a conventional
+open dataset. The
 Advanced National Seismic System Comprehensive Catalogue of the
 U.S.~Geological Survey \citep{USGS-ANSS-COMCAT} supplies $37\,590$ earthquake
 epicentres with magnitude at least $2.5$ in the California region
@@ -652,7 +656,9 @@ diagonal orientations; $36\,290$ edges). The rook edge set is a subset of the
 queen edge set, so the graphs are nested, open-window and irregular. The
 comparison is topological on the raster grid: it uses only cell adjacency,
 not physical distances between cell centres, so the latitude--longitude cells
-are not treated as equal-area or exactly square.
+are not treated as equal-area or exactly square. This section is a numerical
+illustration of Eq.~\eqref{eq:general-variance}; it is not offered as an
+applied inference result about seismicity.
 
 The normalised occupied-edge counts are $2.020$ (rook) and $1.968$ (queen)
 (Table~\ref{tab:seismic}). Their difference of $+0.0523$ equals $4.63$
@@ -792,7 +798,7 @@ differences alone. In the example considered, all three observed Brody
 contrasts exceed the simulated maxima under the stated fixed-count null. The
 inference is conditional on that null, the selected maps and the finite
 window; it is not an asymptotic statement about primes, and no descriptor is
-claimed to be universally superior. The seismic-cell application shows the
+claimed to be universally superior. The seismic-cell illustration shows the
 exact variance at work on a conventional open dataset, where two adjacency
 definitions of one cell population give materially different normalised
 clustering summaries.
@@ -915,14 +921,14 @@ observed differences.
 \label{app:supplementary}
 
 The supplementary analyses compare the fitted parameter with standard spatial
-diagnostics and examine density thinning, bounded pair removal, and the
+diagnostics and examine density thinning and the
 calibration of the paired procedure.
 
 \subsection{Descriptor comparison}
 
 Table~\ref{tab:descriptors} compares the fitted parameter with the
-Clark--Evans index, border-corrected $L(r)-r$, the toroidal annulus summary,
-and two finite-scale slopes. The Clark--Evans index orders the three patterns
+Clark--Evans index, border-corrected $L(r)-r$ and the toroidal annulus
+summary. The Clark--Evans index orders the three patterns
 in the same direction as $\hat\beta$, but the diagonal-sweep value is above
 its null mean even though its fitted $\beta$ is below the null mean. The
 corrected maximum $|L(r)-r|$ is largest for the Ulam pattern in this window.
@@ -936,8 +942,7 @@ to null standard deviations, not adjusted significance tests.
   \caption{Descriptor comparison with the fixed-count null. Null entries are
            mean $\pm$ standard deviation over $4\,999$ realisations for
            $\hat\beta$ and $R$, and $200$ for the remaining summaries. The
-           maximum of $|L(r)-r|$ is taken over the 18 stated radii. Box and
-           pairwise entries are finite-range slopes, not asymptotic dimensions.}
+           maximum of $|L(r)-r|$ is taken over the 18 stated radii.}
   \label{tab:descriptors}
   \footnotesize
   \setlength{\tabcolsep}{3pt}
@@ -951,8 +956,6 @@ to null standard deviations, not adjusted significance tests.
     $L(\bar r)-\bar r$ & $-1.057$ & $-0.241$ & $-0.197$ & $-0.143\pm0.019$ \\
     $\max|L(r)-r|$ & $1.422$ & $4.944$ & $1.653$ & $0.449\pm0.206$ \\
     Annulus $[1,3)$ & $1.081$ & $0.914$ & $0.867$ & $0.956\pm0.009$ \\
-    Box slope & $1.910$ & $1.898$ & $1.885$ & $1.876\pm0.0014$ \\
-    Pairwise slope & $1.993$ & $1.955$ & $2.000$ & $1.955\pm0.003$ \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -969,32 +972,6 @@ to null standard deviations, not adjusted significance tests.
            These bands are not simultaneous envelopes
            \citep{LOOSMORE-FORD-2006,MYLLYMAKI-2017}.}
   \label{fig:descriptor-benchmark}
-\end{figure}
-
-\subsection{Finite-scale summaries}
-
-The box slopes are $1.910$, $1.898$, and $1.885$, compared with a null mean
-of $1.876$. The pairwise slopes are $1.993$, $1.955$, and $2.000$, compared
-with $1.955\pm0.003$ under the null. Thus the row-major and diagonal-sweep
-pairwise slopes differ from the null mean, while the Ulam value is close to
-it; the two summaries do not reproduce the same embedding ordering. The three
-patterns are not indistinguishable from the null.
-
-The support also changes with box size. For example, the row-major pattern
-retains all $9\,580$ occupied cells at $\varepsilon=2$ but only $6\,415$ at
-$\varepsilon=128$. The pairwise slope is uncorrected for the finite open
-window. These finite-range summaries are therefore not evidence of an
-asymptotic dimension; finite-sample limitations of dimension estimators were
-also analysed by \citet{THEILER-1986}.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{fig_d2_validation.pdf}
-  \caption{Finite-scale summaries. (a) Box partition functions and the mean
-           null curve; the cropped support changes with box size.
-           (b) Pairwise slopes over the stated radius range and the null
-           2.5th--97.5th percentile range.}
-  \label{fig:d2-validation}
 \end{figure}
 
 \subsection{Density thinning}
@@ -1019,27 +996,6 @@ independent prime datasets.
            Bernoulli patterns at each target density. Lines connect the tested
            levels for display.}
   \label{fig:density-thinning-control}
-\end{figure}
-
-\subsection{Twin- and cousin-pair ablation}
-
-As a sensitivity analysis, the larger member of each bounded twin-prime pair
-was removed from the row-major set, then the procedure was repeated for
-cousin-prime pairs and their union. The fitted values are $2.155$, $2.149$,
-and $2.090$, respectively, compared with $2.153$ before removal
-(Figure~\ref{fig:ablation}). The corresponding fixed-count null distributions
-change with occupancy. These specific removals show that the fitted value is
-not determined solely by the retained pairs at gaps 2 or 4; they do not prove
-insensitivity to all pair correlations or identify a unique cause of the fit.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.85\textwidth]{fig_ablation.pdf}
-  \caption{Row-major fits after removal of the larger member of each bounded
-           twin-prime pair, cousin-prime pair, or their union. Grey bands are
-           2.5th--97.5th percentiles from $1\,000$ fixed-count patterns with
-           the corresponding remaining occupancy.}
-  \label{fig:ablation}
 \end{figure}
 
 \subsection{Hardy--Littlewood benchmark}

@@ -146,15 +146,15 @@ def build_figures(data):
                              gridspec_kw={'width_ratios': [1.05, 1]})
     axis = axes[0]
     metric_names = (r'Brody $\beta$', 'Clark–Evans R', r'$L(\bar r)-\bar r$',
-                    'Annulus count', r'Box slope', 'Pairwise slope')
+                    'Annulus count')
     nulls = (fixed['beta']['row_major'], fixed['nni'], fixed['ripley_at_nn'],
-             fixed['annulus'], fixed['box'], fixed['gp'])
+             fixed['annulus'])
     norm = TwoSlopeNorm(vmin=-36, vcenter=0, vmax=36)
     colourmap = plt.colormaps['RdBu_r']
     for row, name in enumerate(NAMES):
         pattern = patterns[name]
         values = (pattern['fits']['open']['beta'], pattern['nni'], pattern['ripley']['at_mean_nn'],
-                  pattern['annulus'], pattern['box']['slope'], pattern['gp']['slope'])
+                  pattern['annulus'])
         for column, (value, null) in enumerate(zip(values, nulls)):
             score = (value - null['mean']) / null['sd']
             axis.add_patch(Rectangle((column, row), 1, 1, facecolor=colourmap(norm(np.clip(score, -36, 36))),
@@ -184,43 +184,6 @@ def build_figures(data):
     axis.legend(frameon=False, loc='best')
     save(fig, 'fig_descriptor_benchmark.pdf')
 
-    fig, axes = plt.subplots(1, 2, figsize=(10, 4), layout='constrained')
-    axis = axes[0]
-    sizes = np.asarray(patterns['row_major']['box']['sizes'])
-    axis.plot(sizes, fixed['box_curve_mean'], color='0.3', linestyle='--', label='Fixed-count null mean')
-    for name in NAMES:
-        axis.plot(sizes, patterns[name]['box']['partition'], 'o-', color=COLOURS[name],
-                  markersize=3, label=LABELS[name])
-    axis.set_xscale('log')
-    axis.set_yscale('log')
-    axis.set_xlabel('Box width (lattice units)')
-    axis.set_ylabel(r'$Z_2(\varepsilon)$')
-    axis.set_title('(a) Finite-scale box partition')
-    axis.legend(frameon=False)
-    axis = axes[1]
-    axis.axhspan(fixed['gp']['q025'], fixed['gp']['q975'], color='0.86', label='Fixed-count null, 2.5–97.5%')
-    for index, name in enumerate(NAMES):
-        axis.plot(index, patterns[name]['gp']['slope'], 'o', color=COLOURS[name], markersize=6)
-    axis.axhline(2, color='0.4', linestyle=':', linewidth=1)
-    axis.set_xticks(range(3), [LABELS[name] for name in NAMES])
-    axis.set_ylabel('Pairwise log–log slope')
-    axis.set_title('(b) Finite-range pairwise slope')
-    axis.legend(frameon=False, loc='lower right')
-    save(fig, 'fig_d2_validation.pdf')
-
-    fig, axis = plt.subplots(figsize=(7, 4), layout='constrained')
-    ablation_keys = ('original', 'twin_larger', 'cousin_larger', 'both_larger')
-    ablation_labels = ('None', 'Twin larger\nmember', 'Cousin larger\nmember', 'Both larger\nmembers')
-    for index, key in enumerate(ablation_keys):
-        item = data['ablation'][key]
-        null = item['null']
-        axis.fill_between([index - 0.35, index + 0.35], null['q025'], null['q975'], color='0.85')
-        axis.plot(index, item['beta'], 'o', color=COLOURS['row_major'], markersize=6)
-    axis.set_xticks(range(4), ablation_labels)
-    axis.set_ylabel(r'Fitted $\beta$')
-    axis.set_xlabel('Removed prime labels')
-    save(fig, 'fig_ablation.pdf')
-
     fig, axis = plt.subplots(figsize=(7, 4), layout='constrained')
     finite = data['finite_size']
     population = np.array([item['population'] for item in finite])
@@ -235,7 +198,7 @@ def build_figures(data):
     axis.set_xlabel(r'Window area $W^2$')
     axis.set_ylabel(r'$\beta_{\rm prime}-\overline{\beta}_{\rm null}$')
     save(fig, 'fig_finite_size.pdf')
-    print(f"Built eight vector figures from {config['fixed_realisations']} paired realisations")
+    print(f"Built six vector figures from {config['fixed_realisations']} paired realisations")
 
 
 def main():

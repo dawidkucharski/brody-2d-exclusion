@@ -264,8 +264,6 @@ class PrimeSpatialAnalysisTests(unittest.TestCase):
             '$\\max|L(r)-r|$': ([patterns[name]['ripley']['max_abs'] for name in names],
                                  fixed['ripley_max_abs']),
             'Annulus $[1,3)$': ([patterns[name]['annulus'] for name in names], fixed['annulus']),
-            'Box slope': ([patterns[name]['box']['slope'] for name in names], fixed['box']),
-            'Pairwise slope': ([patterns[name]['gp']['slope'] for name in names], fixed['gp']),
         }
         for heading, (values, null) in metrics.items():
             cells = table_row('tab:descriptors', heading)

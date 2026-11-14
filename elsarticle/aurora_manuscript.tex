@@ -116,10 +116,10 @@ comparisons under a shared label set were discussed by
 \citet{GOREAUD-PELISSIER-2003}; a recent review of point-process
 goodness-of-fit tests is given by \citet{FEND-REDENBACH-2025}. Graph-edge
 counts under permutation have a longer methodological history: join-count
-moments under randomisation were derived by \citet{MORAN-1948}, the
-between-sample edge count of an arbitrary graph by
-\citet{FRIEDMAN-RAFSKY-1979}, and graph-based two-sample tests were developed
-by \citet{HENZE-1988}, \citet{SCHILLING-1986},
+moments under randomisation were derived by \citet{MORAN-1948}, while
+\citet{FRIEDMAN-RAFSKY-1979} introduced a minimum-spanning-tree edge-count
+test for multivariate two-sample comparisons, and graph-based two-sample
+tests were subsequently developed by \citet{HENZE-1988}, \citet{SCHILLING-1986},
 \citet{MAA-PEARL-BARTOSZYNSKI-1996} and \citet{CHEN-FRIEDMAN-2017}, building on
 the finite-population inclusion probabilities of
 \citet{HORVITZ-THOMPSON-1952}. The paired graph-count variance derived below
@@ -146,18 +146,21 @@ levels are therefore distinguished when they are reported.
 Random-labelling and permutation tests for spatial point patterns are long
 established, and exact permutation moments for edge counts under a
 randomisation null date at least to the join-count results of Moran and the
-general-graph treatment of Friedman and Rafsky. Comparing the same labelled
+minimum-spanning-tree edge-count test of Friedman and Rafsky. Comparing the same labelled
 set across two embeddings, however, couples two such statistics through one
 shared realisation, and the two graphs involved may have different, irregular
 edge sets. The exact moments of individual weighted join counts under random
 labelling are classical (\citet{CLIFF-ORD-1981}; \citet{SOKAL-ODEN-1978}), and
 the covariance of two statistics of this class follows from the same
 finite-population second-moment expansion (\citet{DANIELS-1944};
-\citet{HOEFFDING-1948}), and explicit covariances among the join counts of a
-single lattice were recorded by \citet{EPPERSON-2003}, whose framework
-concerns one population on one weight matrix. The present work makes this
-paired two-graph representation explicit, expressing the variance through an
-edge-overlap discrepancy and a normalised degree-discrepancy term. This
+\citet{HOEFFDING-1948}), and covariance expressions for join-count
+statistics involving multiple nominal types under free and non-free sampling
+were developed by \citet{EPPERSON-2003}. The present work considers a
+different formulation: a single binary occupancy field and the contrast
+between two separately normalised edge counts on potentially overlapping
+graphs over the same vertex set. It makes this paired two-graph
+representation explicit, expressing the variance through an edge-overlap
+discrepancy and a normalised degree-discrepancy term. This
 formulation provides a direct analytical characterisation of paired
 graph-count contrasts, including comparisons involving irregular graphs and
 unequal edge sets, whereas the established results provide moments for
@@ -350,8 +353,8 @@ simulation error; the approximation is checked empirically in Section~3.4.
 The same expression can be obtained by expanding
 $\operatorname{Var}(g_a-g_b)=\operatorname{Var}(g_a)+\operatorname{Var}(g_b)-2\operatorname{Cov}(g_a,g_b)$
 through the weighted join-count variance and covariance expressions of
-\citet{CLIFF-ORD-1981}, and the covariances among the join counts of a single
-lattice recorded by \citet{EPPERSON-2003}. The two-discrepancy form stated
+\citet{CLIFF-ORD-1981}, and the covariances among join counts of multiple
+nominal types recorded by \citet{EPPERSON-2003}. The two-discrepancy form stated
 here assembles that expansion directly, which is what makes the geometric
 interpretation of $S_e$ and $S_v$, and the regular and nested reductions
 below, immediate.

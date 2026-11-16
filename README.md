@@ -47,8 +47,8 @@ pip install -r ../requirements.txt
   manuscript against the JSONs, plus independent recomputations.
 - `validate_references.py` — verifies every bibliography entry against
   Crossref/DataCite.
-- `prime_spatial_reproducibility.zip` — the full reproducibility package,
-  including `deep_audit.py` (which is git-ignored in the repository).
+- `prime_spatial_reproducibility.zip` — the full reproducibility package
+  mirroring the files above.
 
 ## Reproducing the results
 

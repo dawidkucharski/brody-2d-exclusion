@@ -221,7 +221,7 @@ def run(args):
     histogram_axis.hist(contrasts, bins=60, density=True, color='0.82',
                         label=f'{args.null} paired null realisations')
     histogram_axis.plot(grid_points, density, color='#24658a',
-                        label=f'Exact null density ($\\sigma={sigma:.4f}$)')
+                        label=f'Normal density using exact null variance ($\sigma={sigma:.4f}$)')
     histogram_axis.axvline(observed, color='#b25c38', linewidth=1.5,
                            label=f'Observed {observed:+.4f}')
     histogram_axis.set_xlabel('Normalised count difference (rook $-$ queen)')

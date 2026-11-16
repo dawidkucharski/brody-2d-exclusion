@@ -15,6 +15,10 @@
 \pdfstringdefDisableCommands{\def\corref#1{}}
 \emergencystretch=1.5em
 \Urlmuskip=0mu plus 2mu
+% Typeset bibliography DOIs as clickable https://doi.org links (elsarticle-harv
+% otherwise prints a plain 'doi:' prefix with a display path that breaks awkwardly)
+\providecommand{\DOIprefix}{}
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{\url{https://doi.org/#1}}}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -128,7 +132,12 @@ framework, rather than a new general theory of graph permutation tests. The
 result provides a direct analytical standardisation of paired graph-based
 spatial contrasts, avoiding repeated permutation solely to estimate their null
 variance, while retaining the dependence induced by analysing the same
-labelled population under alternative neighbourhood definitions.
+labelled population under alternative neighbourhood definitions. A
+practitioner comparing, for one marked population, a distance-band graph with
+a $k$-nearest-neighbour graph, or two regional partitions of the same study
+region, obtains the null variability of the resulting contrast analytically,
+together with its decomposition into edge-overlap and degree-structure
+contributions.
 
 For unit-mean nearest-neighbour spacings under complete spatial randomness in
 two dimensions, the analytic Rayleigh law,
@@ -719,9 +728,10 @@ in space and time, so the cell set is a descriptive discretisation.
   \caption{Seismic-event cells under two adjacency graphs. (a) The $2\,920$
            occupied cells (at least one magnitude $\ge2.5$ epicentre,
            2000--2025, query end 1~January~2026) on the
-           $96\times96$ grid over the California region. (b) Paired
-           fixed-count null contrasts of the normalised rook--queen count
-           difference, with the exact null density of
+           $96\times96$ grid over the California region. (b) Empirical
+           paired permutation distribution of the normalised rook--queen
+           count difference (grey histogram), with a Gaussian reference
+           constructed from the exact null variance of
            Eq.~\eqref{eq:general-variance} and the observed contrast.}
   \label{fig:seismic-application}
 \end{figure}
@@ -775,7 +785,12 @@ randomisation. The underlying second-moment computation is classical
 (\citet{CLIFF-ORD-1981}; \citet{DANIELS-1944}); the contribution here is the
 paired two-graph form and the inference built on it. Section~4 applies the construction to
 seismic-event cells under two nested adjacency graphs, where the
-shared-edge term dominates by construction.
+shared-edge term dominates by construction and the degree term carries only
+$0.5\%$ of the variance. The two-discrepancy form is most informative in the
+complementary setting: when the two graphs are not nested and their
+normalised degree sequences differ, $S_v$ contributes beyond an edge-overlap
+calculation and separates the variability attributable to the degree
+structures alone.
 
 The analysis has several limitations. The three embeddings and the primary
 window were selected for this comparison, and no general ordering across

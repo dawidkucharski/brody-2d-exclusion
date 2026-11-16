@@ -1,0 +1,5 @@
+• 2D CSR baseline recalibrated to β = 0.96 ± 0.15, correcting 1D Poisson reference
+• Empirical β–r_excl calibration validated with Spearman ρ = 0.988 (p < 10⁻⁴)
+• Sparse-integer control proves prime exclusion is arithmetic, not sparsity-driven
+• Correlation dimension D₂ and multifractal spectra complement the Brody analysis
+• Framework demonstrated on 58 surfaces, PSI profilometry, and prime embeddings

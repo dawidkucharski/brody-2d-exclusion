@@ -88,6 +88,13 @@ cd elsarticle
 latexmk -pdf aurora_manuscript.tex   # or: pdflatex + bibtex + pdflatex + pdflatex
 ```
 
+## Repository history
+
+This repository previously also hosted a separate, unrelated project (a
+Brody-exponent study of manufactured surface textures, submitted to *Physica
+A*). Its files have been moved to `legacy-brody-exponent/` and play no role in
+the present paper.
+
 ## Citation
 
 Kucharski, D. (2026). Exact randomisation variance for paired spatial

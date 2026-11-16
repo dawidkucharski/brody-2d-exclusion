@@ -341,10 +341,10 @@
     "type": "misc",
     "fields": {
       "author": "D. Kucharski",
-      "title": "Prime spatial analysis: paired spatial statistics under alternative embeddings---code, data and figures (version 2.4.1)",
+      "title": "Prime spatial analysis: paired spatial statistics under alternative embeddings---code, data and figures (version 2.5.4)",
       "year": "2026",
-      "howpublished": "\\url{https://doi.org/10.5281/zenodo.24012387}",
-      "note": "GitHub repository \\url{https://github.com/dawidkucharski/brody-2d-exclusion}; concept DOI 10.5281/zenodo.23940934; archived 2026-11-06"
+      "howpublished": "\\url{https://doi.org/10.5281/zenodo.24274803}",
+      "note": "GitHub repository \\url{https://github.com/dawidkucharski/brody-2d-exclusion}; concept DOI 10.5281/zenodo.23940934; archived 2026-11-16"
     }
   },
   "USGS-ANSS-COMCAT": {
